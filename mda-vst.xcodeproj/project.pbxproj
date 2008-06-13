@@ -1,0 +1,3606 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		6CA0EFBB09C3773300811C25 /* Build All */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 6CA0EFBD09C3773500811C25 /* Build configuration list for PBXAggregateTarget "Build All" */;
+			buildPhases = (
+			);
+			dependencies = (
+				6CA0EFC309C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFC509C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFC709C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFC909C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFCB09C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFCD09C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFCF09C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFD109C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFD309C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFD509C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFD709C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFD909C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFDB09C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFDD09C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFE109C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFE309C377F700811C25 /* PBXTargetDependency */,
+				DA2FFA680A698F37001B44E6 /* PBXTargetDependency */,
+				6CA0EFE509C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFE709C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFE909C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFEB09C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFED09C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFEF09C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFF109C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFF309C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFF509C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFF909C377F700811C25 /* PBXTargetDependency */,
+				6CA0EFFB09C377F700811C25 /* PBXTargetDependency */,
+				DAB7DAC40B9C603300AE5662 /* PBXTargetDependency */,
+				6CA0F00109C377F700811C25 /* PBXTargetDependency */,
+				6CA0F00309C377F700811C25 /* PBXTargetDependency */,
+				6CA0F00509C377F700811C25 /* PBXTargetDependency */,
+				6CA0F00709C377F700811C25 /* PBXTargetDependency */,
+				6CA0F00909C377F700811C25 /* PBXTargetDependency */,
+				6CA0F00B09C377F700811C25 /* PBXTargetDependency */,
+			);
+			name = "Build All";
+			productName = "Build All";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		6CA0ED9609C3647200811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0ED9709C3647200811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0ED9809C3647200811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EDF009C36A0000811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EDF109C36A0000811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EDF209C36A0000811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EE1309C36F5F00811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EE1409C36F5F00811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EE1509C36F5F00811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EE1F09C36F8A00811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EE2009C36F8A00811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EE2109C36F8A00811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EE2B09C36F9300811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EE2C09C36F9300811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EE2D09C36F9300811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EE3709C36FB300811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EE3809C36FB300811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EE3909C36FB300811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EE4309C36FC400811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EE4409C36FC400811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EE4509C36FC400811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EE4F09C36FD400811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EE5009C36FD400811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EE5109C36FD400811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EE5B09C36FE900811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EE5C09C36FE900811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EE5D09C36FE900811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EE6709C36FF900811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EE6809C36FF900811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EE6909C36FF900811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EE7309C3701D00811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EE7409C3701D00811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EE7509C3701D00811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EE7F09C3703000811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EE8009C3703000811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EE8109C3703000811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EE8B09C3703D00811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EE8C09C3703D00811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EE8D09C3703D00811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EE9709C3705600811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EE9809C3705600811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EE9909C3705600811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EEAF09C3707A00811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EEB009C3707A00811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EEB109C3707A00811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EEBB09C3708C00811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EEBC09C3708C00811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EEBD09C3708C00811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EEC709C3709E00811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EEC809C3709E00811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EEC909C3709E00811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EED309C370B200811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EED409C370B200811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EED509C370B200811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EEE009C370D000811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EEE109C370D000811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EEE209C370D000811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EEEC09C370E300811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EEED09C370E300811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EEEE09C370E300811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EEF809C370F600811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EEF909C370F600811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EEFA09C370F600811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EF0609C3716000811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EF0709C3716000811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EF0809C3716000811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EF1209C3716700811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EF1309C3716700811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EF1409C3716700811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EF1E09C3716D00811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EF1F09C3716D00811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EF2009C3716D00811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EF2A09C3717600811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EF2B09C3717600811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EF2C09C3717600811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EF4209C371C600811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EF4309C371C600811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EF4409C371C600811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EF4E09C371D800811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EF4F09C371D800811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EF5009C371D800811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EF7209C3720D00811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EF7309C3720D00811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EF7409C3720D00811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EF7E09C3722300811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EF7F09C3722300811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EF8009C3722300811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EF8A09C3723600811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EF8B09C3723600811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EF8C09C3723600811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EF9609C3724900811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EF9709C3724900811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EF9809C3724900811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EFA209C3726500811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EFA309C3726500811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EFA409C3726500811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0EFAE09C3727C00811C25 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		6CA0EFAF09C3727C00811C25 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		6CA0EFB009C3727C00811C25 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		6CA0F00E09C3782C00811C25 /* mdaAmbience.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F00C09C3782C00811C25 /* mdaAmbience.cpp */; };
+		6CA0F01109C3785100811C25 /* mdaBandisto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F00F09C3785100811C25 /* mdaBandisto.cpp */; };
+		6CA0F01409C3786E00811C25 /* mdaBeatBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F01209C3786D00811C25 /* mdaBeatBox.cpp */; };
+		6CA0F01B09C37F3100811C25 /* mdaCombo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F01909C37F3100811C25 /* mdaCombo.cpp */; };
+		6CA0F01E09C37F4500811C25 /* mdaDe-ess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F01C09C37F4400811C25 /* mdaDe-ess.cpp */; };
+		6CA0F02109C37F5900811C25 /* mdaDegrade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F01F09C37F5900811C25 /* mdaDegrade.cpp */; };
+		6CA0F02409C37F8300811C25 /* mdaDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F02209C37F8200811C25 /* mdaDelay.cpp */; };
+		6CA0F02709C37F9E00811C25 /* mdaDetune.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F02509C37F9D00811C25 /* mdaDetune.cpp */; };
+		6CA0F02A09C37FB300811C25 /* mdaDither.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F02809C37FB200811C25 /* mdaDither.cpp */; };
+		6CA0F02D09C37FC700811C25 /* mdaDubDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F02B09C37FC700811C25 /* mdaDubDelay.cpp */; };
+		6CA0F03009C37FDB00811C25 /* mdaDX10.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F02E09C37FDB00811C25 /* mdaDX10.cpp */; };
+		6CA0F03309C37FF100811C25 /* mdaDynamics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F03109C37FF100811C25 /* mdaDynamics.cpp */; };
+		6CA0F03609C3800B00811C25 /* mdaVocoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F03409C3800B00811C25 /* mdaVocoder.cpp */; };
+		6CA0F03909C3802900811C25 /* mdaVocInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F03709C3802800811C25 /* mdaVocInput.cpp */; };
+		6CA0F03C09C3804300811C25 /* mdaTransient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F03A09C3804200811C25 /* mdaTransient.cpp */; };
+		6CA0F03F09C3805B00811C25 /* mdaTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F03D09C3805B00811C25 /* mdaTracker.cpp */; };
+		6CA0F04209C3807400811C25 /* mdaThruZero.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F04009C3807300811C25 /* mdaThruZero.cpp */; };
+		6CA0F04509C3809000811C25 /* mdaTestTone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F04309C3809000811C25 /* mdaTestTone.cpp */; };
+		6CA0F04E09C380DA00811C25 /* mdaStereo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F04C09C380DA00811C25 /* mdaStereo.cpp */; };
+		6CA0F05109C380F300811C25 /* mdaSplitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F04F09C380F300811C25 /* mdaSplitter.cpp */; };
+		6CA0F05709C3812900811C25 /* mdaShepard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F05509C3812900811C25 /* mdaShepard.cpp */; };
+		6CA0F05A09C3814800811C25 /* mdaRoundPan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F05809C3814800811C25 /* mdaRoundPan.cpp */; };
+		6CA0F05D09C3815D00811C25 /* mdaRingMod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F05B09C3815D00811C25 /* mdaRingMod.cpp */; };
+		6CA0F06009C3817500811C25 /* mdaRezFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F05E09C3817500811C25 /* mdaRezFilter.cpp */; };
+		6CA0F06309C3818E00811C25 /* mdaRePsycho!.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F06109C3818E00811C25 /* mdaRePsycho!.cpp */; };
+		6CA0F06609C381A500811C25 /* mdaPiano.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F06409C381A500811C25 /* mdaPiano.cpp */; };
+		6CA0F06909C381BC00811C25 /* mdaOverdrive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F06709C381BC00811C25 /* mdaOverdrive.cpp */; };
+		6CA0F06C09C381D600811C25 /* mdaMultiBand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F06A09C381D500811C25 /* mdaMultiBand.cpp */; };
+		6CA0F06F09C381F800811C25 /* mdaLoudness.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F06D09C381F800811C25 /* mdaLoudness.cpp */; };
+		6CA0F07209C3820E00811C25 /* mdaLimiter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F07009C3820E00811C25 /* mdaLimiter.cpp */; };
+		6CA0F07509C3822600811C25 /* mdaLeslie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F07309C3822600811C25 /* mdaLeslie.cpp */; };
+		6CA0F07B09C3825700811C25 /* mdaImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F07909C3825700811C25 /* mdaImage.cpp */; };
+		6CA0F07E09C3827200811C25 /* mdaEPiano.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F07C09C3827200811C25 /* mdaEPiano.cpp */; };
+		DA2FFA5A0A698CBE001B44E6 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		DA2FFA5B0A698CBE001B44E6 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		DA2FFA5C0A698CBE001B44E6 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		DA2FFA660A698D14001B44E6 /* mdaLooplex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA2FFA640A698D14001B44E6 /* mdaLooplex.cpp */; };
+		DAB133B10B982DA3006AA414 /* audioeffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9109C3647200811C25 /* audioeffect.cpp */; };
+		DAB133B20B982DA3006AA414 /* audioeffectx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9309C3647200811C25 /* audioeffectx.cpp */; };
+		DAB133B30B982DA3006AA414 /* vstplugmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0ED9509C3647200811C25 /* vstplugmain.cpp */; };
+		DAB133B60B982DA3006AA414 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAB133C10B982E2E006AA414 /* mdaSubSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DAB133BF0B982E2E006AA414 /* mdaSubSynth.cpp */; };
+		DAD3260E0A6AE12A00F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD3260F0A6AE12B00F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326100A6AE12C00F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326110A6AE12D00F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326120A6AE12D00F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326130A6AE12E00F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326160A6AE13000F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326170A6AE13100F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326190A6AE13300F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD3261A0A6AE13400F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD3261B0A6AE13500F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD3261C0A6AE13500F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD3261D0A6AE13600F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD3261E0A6AE13700F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD3261F0A6AE13800F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326200A6AE13900F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326210A6AE13A00F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326220A6AE13B00F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326230A6AE13C00F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326240A6AE13D00F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326260A6AE13E00F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326270A6AE13F00F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326280A6AE14000F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326290A6AE14500F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD3262A0A6AE14500F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD3262B0A6AE14600F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD3262C0A6AE14700F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD3262D0A6AE14800F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD3262E0A6AE14800F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD3262F0A6AE14900F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326300A6AE14A00F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326310A6AE14A00F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326320A6AE14B00F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		DAD326330A6AE14C00F3EA62 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6CA0EFC209C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D01CCC60486CAD60068D4B7;
+			remoteInfo = "mda Ambience";
+		};
+		6CA0EFC409C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EDED09C36A0000811C25;
+			remoteInfo = "mda Bandisto";
+		};
+		6CA0EFC609C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EE1009C36F5F00811C25;
+			remoteInfo = "mda BeatBox";
+		};
+		6CA0EFC809C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EE1C09C36F8A00811C25;
+			remoteInfo = "mda Combo";
+		};
+		6CA0EFCA09C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EE2809C36F9300811C25;
+			remoteInfo = "mda De-ess";
+		};
+		6CA0EFCC09C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EE3409C36FB300811C25;
+			remoteInfo = "mda Degrade";
+		};
+		6CA0EFCE09C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EE4009C36FC400811C25;
+			remoteInfo = "mda Delay";
+		};
+		6CA0EFD009C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EE4C09C36FD400811C25;
+			remoteInfo = "mda Detune";
+		};
+		6CA0EFD209C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EE5809C36FE900811C25;
+			remoteInfo = "mda Dither";
+		};
+		6CA0EFD409C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EE6409C36FF900811C25;
+			remoteInfo = "mda DubDelay";
+		};
+		6CA0EFD609C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EE7009C3701D00811C25;
+			remoteInfo = "mda DX10";
+		};
+		6CA0EFD809C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EE7C09C3703000811C25;
+			remoteInfo = "mda Dynamics";
+		};
+		6CA0EFDA09C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EE8809C3703D00811C25;
+			remoteInfo = "mda ePiano";
+		};
+		6CA0EFDC09C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EE9409C3705600811C25;
+			remoteInfo = "mda Image";
+		};
+		6CA0EFE009C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EEAC09C3707A00811C25;
+			remoteInfo = "mda Leslie";
+		};
+		6CA0EFE209C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EEB809C3708C00811C25;
+			remoteInfo = "mda Limiter";
+		};
+		6CA0EFE409C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EEC409C3709E00811C25;
+			remoteInfo = "mda Loudness";
+		};
+		6CA0EFE609C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EED009C370B200811C25;
+			remoteInfo = "mda MultiBand";
+		};
+		6CA0EFE809C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EEDD09C370D000811C25;
+			remoteInfo = "mda Overdrive";
+		};
+		6CA0EFEA09C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EEE909C370E300811C25;
+			remoteInfo = "mda Piano";
+		};
+		6CA0EFEC09C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EEF509C370F600811C25;
+			remoteInfo = "mda RePsycho!";
+		};
+		6CA0EFEE09C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EF0309C3716000811C25;
+			remoteInfo = "mda RezFilter";
+		};
+		6CA0EFF009C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EF0F09C3716700811C25;
+			remoteInfo = "mda RingMod";
+		};
+		6CA0EFF209C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EF1B09C3716D00811C25;
+			remoteInfo = "mda RoundPan";
+		};
+		6CA0EFF409C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EF2709C3717600811C25;
+			remoteInfo = "mda Shepard";
+		};
+		6CA0EFF809C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EF3F09C371C600811C25;
+			remoteInfo = "mda Splitter";
+		};
+		6CA0EFFA09C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EF4B09C371D800811C25;
+			remoteInfo = "mda Stereo";
+		};
+		6CA0F00009C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EF6F09C3720D00811C25;
+			remoteInfo = "mda TestTone";
+		};
+		6CA0F00209C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EF7B09C3722300811C25;
+			remoteInfo = "mda ThruZero";
+		};
+		6CA0F00409C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EF8709C3723600811C25;
+			remoteInfo = "mda Tracker";
+		};
+		6CA0F00609C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EF9309C3724900811C25;
+			remoteInfo = "mda Transient";
+		};
+		6CA0F00809C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EF9F09C3726500811C25;
+			remoteInfo = "mda VocInput";
+		};
+		6CA0F00A09C377F700811C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0EFAB09C3727C00811C25;
+			remoteInfo = "mda Vocoder";
+		};
+		DA2FFA670A698F37001B44E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA2FFA570A698CBE001B44E6;
+			remoteInfo = "mda Looplex";
+		};
+		DAB7DAC30B9C603300AE5662 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAB133AE0B982DA3006AA414;
+			remoteInfo = "mda SubSynth";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		6CA0ED8E09C3647200811C25 /* aeffect.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = aeffect.h; path = vst/aeffect.h; sourceTree = SOURCE_ROOT; };
+		6CA0ED8F09C3647200811C25 /* aeffectx.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = aeffectx.h; path = vst/aeffectx.h; sourceTree = SOURCE_ROOT; };
+		6CA0ED9009C3647200811C25 /* aeffeditor.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = aeffeditor.h; path = vst/aeffeditor.h; sourceTree = SOURCE_ROOT; };
+		6CA0ED9109C3647200811C25 /* audioeffect.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = audioeffect.cpp; path = vst/audioeffect.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0ED9209C3647200811C25 /* audioeffect.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = audioeffect.h; path = vst/audioeffect.h; sourceTree = SOURCE_ROOT; };
+		6CA0ED9309C3647200811C25 /* audioeffectx.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = audioeffectx.cpp; path = vst/audioeffectx.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0ED9409C3647200811C25 /* audioeffectx.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = audioeffectx.h; path = vst/audioeffectx.h; sourceTree = SOURCE_ROOT; };
+		6CA0ED9509C3647200811C25 /* vstplugmain.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = vstplugmain.cpp; path = vst/vstplugmain.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0EDF809C36A0000811C25 /* mda Bandisto.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Bandisto.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EE1A09C36F5F00811C25 /* mda BeatBox.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda BeatBox.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EE2609C36F8A00811C25 /* mda Combo.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Combo.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EE3209C36F9300811C25 /* mda De-ess.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda De-ess.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EE3E09C36FB300811C25 /* mda Degrade.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Degrade.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EE4A09C36FC400811C25 /* mda Delay.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Delay.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EE5609C36FD400811C25 /* mda Detune.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Detune.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EE6209C36FE900811C25 /* mda Dither.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Dither.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EE6E09C36FF900811C25 /* mda DubDelay.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda DubDelay.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EE7A09C3701D00811C25 /* mda DX10.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda DX10.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EE8609C3703000811C25 /* mda Dynamics.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Dynamics.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EE9209C3703D00811C25 /* mda ePiano.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda ePiano.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EE9E09C3705600811C25 /* mda Image.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Image.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EEB609C3707A00811C25 /* mda Leslie.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Leslie.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EEC209C3708C00811C25 /* mda Limiter.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Limiter.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EECE09C3709E00811C25 /* mda Loudness.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Loudness.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EEDA09C370B200811C25 /* mda MultiBand.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda MultiBand.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EEE709C370D000811C25 /* mda Overdrive.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Overdrive.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EEF309C370E300811C25 /* mda Piano.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Piano.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EEFF09C370F600811C25 /* mda RePsycho!.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda RePsycho!.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EF0D09C3716000811C25 /* mda RezFilter.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda RezFilter.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EF1909C3716700811C25 /* mda RingMod.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda RingMod.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EF2509C3716D00811C25 /* mda RoundPan.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda RoundPan.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EF3109C3717600811C25 /* mda Shepard.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Shepard.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EF4909C371C600811C25 /* mda Splitter.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Splitter.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EF5509C371D800811C25 /* mda Stereo.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Stereo.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EF7909C3720D00811C25 /* mda TestTone.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda TestTone.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EF8509C3722300811C25 /* mda ThruZero.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda ThruZero.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EF9109C3723600811C25 /* mda Tracker.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Tracker.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EF9D09C3724900811C25 /* mda Transient.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Transient.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EFA909C3726500811C25 /* mda VocInput.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda VocInput.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EFB509C3727C00811C25 /* mda Vocoder.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Vocoder.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0EFBC09C3773400811C25 /* mda.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = mda.plist; path = "mda-vst.xcodeproj/mda.plist"; sourceTree = "<group>"; };
+		6CA0F00C09C3782C00811C25 /* mdaAmbience.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaAmbience.cpp; path = src/mdaAmbience.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F00D09C3782C00811C25 /* mdaAmbience.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaAmbience.h; path = src/mdaAmbience.h; sourceTree = SOURCE_ROOT; };
+		6CA0F00F09C3785100811C25 /* mdaBandisto.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaBandisto.cpp; path = src/mdaBandisto.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F01009C3785100811C25 /* mdaBandisto.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaBandisto.h; path = src/mdaBandisto.h; sourceTree = SOURCE_ROOT; };
+		6CA0F01209C3786D00811C25 /* mdaBeatBox.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaBeatBox.cpp; path = src/mdaBeatBox.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F01309C3786D00811C25 /* mdaBeatBox.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaBeatBox.h; path = src/mdaBeatBox.h; sourceTree = SOURCE_ROOT; };
+		6CA0F01909C37F3100811C25 /* mdaCombo.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaCombo.cpp; path = src/mdaCombo.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F01A09C37F3100811C25 /* mdaCombo.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaCombo.h; path = src/mdaCombo.h; sourceTree = SOURCE_ROOT; };
+		6CA0F01C09C37F4400811C25 /* mdaDe-ess.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = "mdaDe-ess.cpp"; path = "src/mdaDe-ess.cpp"; sourceTree = SOURCE_ROOT; };
+		6CA0F01D09C37F4400811C25 /* mdaDe-ess.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = "mdaDe-ess.h"; path = "src/mdaDe-ess.h"; sourceTree = SOURCE_ROOT; };
+		6CA0F01F09C37F5900811C25 /* mdaDegrade.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaDegrade.cpp; path = src/mdaDegrade.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F02009C37F5900811C25 /* mdaDegrade.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaDegrade.h; path = src/mdaDegrade.h; sourceTree = SOURCE_ROOT; };
+		6CA0F02209C37F8200811C25 /* mdaDelay.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaDelay.cpp; path = src/mdaDelay.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F02309C37F8200811C25 /* mdaDelay.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaDelay.h; path = src/mdaDelay.h; sourceTree = SOURCE_ROOT; };
+		6CA0F02509C37F9D00811C25 /* mdaDetune.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaDetune.cpp; path = src/mdaDetune.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F02609C37F9D00811C25 /* mdaDetune.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaDetune.h; path = src/mdaDetune.h; sourceTree = SOURCE_ROOT; };
+		6CA0F02809C37FB200811C25 /* mdaDither.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaDither.cpp; path = src/mdaDither.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F02909C37FB200811C25 /* mdaDither.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaDither.h; path = src/mdaDither.h; sourceTree = SOURCE_ROOT; };
+		6CA0F02B09C37FC700811C25 /* mdaDubDelay.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaDubDelay.cpp; path = src/mdaDubDelay.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F02C09C37FC700811C25 /* mdaDubDelay.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaDubDelay.h; path = src/mdaDubDelay.h; sourceTree = SOURCE_ROOT; };
+		6CA0F02E09C37FDB00811C25 /* mdaDX10.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaDX10.cpp; path = src/mdaDX10.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F02F09C37FDB00811C25 /* mdaDX10.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaDX10.h; path = src/mdaDX10.h; sourceTree = SOURCE_ROOT; };
+		6CA0F03109C37FF100811C25 /* mdaDynamics.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaDynamics.cpp; path = src/mdaDynamics.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F03209C37FF100811C25 /* mdaDynamics.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaDynamics.h; path = src/mdaDynamics.h; sourceTree = SOURCE_ROOT; };
+		6CA0F03409C3800B00811C25 /* mdaVocoder.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaVocoder.cpp; path = src/mdaVocoder.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F03509C3800B00811C25 /* mdaVocoder.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaVocoder.h; path = src/mdaVocoder.h; sourceTree = SOURCE_ROOT; };
+		6CA0F03709C3802800811C25 /* mdaVocInput.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaVocInput.cpp; path = src/mdaVocInput.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F03809C3802800811C25 /* mdaVocInput.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaVocInput.h; path = src/mdaVocInput.h; sourceTree = SOURCE_ROOT; };
+		6CA0F03A09C3804200811C25 /* mdaTransient.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaTransient.cpp; path = src/mdaTransient.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F03B09C3804200811C25 /* mdaTransient.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaTransient.h; path = src/mdaTransient.h; sourceTree = SOURCE_ROOT; };
+		6CA0F03D09C3805B00811C25 /* mdaTracker.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaTracker.cpp; path = src/mdaTracker.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F03E09C3805B00811C25 /* mdaTracker.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaTracker.h; path = src/mdaTracker.h; sourceTree = SOURCE_ROOT; };
+		6CA0F04009C3807300811C25 /* mdaThruZero.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaThruZero.cpp; path = src/mdaThruZero.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F04109C3807400811C25 /* mdaThruZero.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaThruZero.h; path = src/mdaThruZero.h; sourceTree = SOURCE_ROOT; };
+		6CA0F04309C3809000811C25 /* mdaTestTone.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaTestTone.cpp; path = src/mdaTestTone.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F04409C3809000811C25 /* mdaTestTone.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaTestTone.h; path = src/mdaTestTone.h; sourceTree = SOURCE_ROOT; };
+		6CA0F04C09C380DA00811C25 /* mdaStereo.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaStereo.cpp; path = src/mdaStereo.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F04D09C380DA00811C25 /* mdaStereo.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaStereo.h; path = src/mdaStereo.h; sourceTree = SOURCE_ROOT; };
+		6CA0F04F09C380F300811C25 /* mdaSplitter.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaSplitter.cpp; path = src/mdaSplitter.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F05009C380F300811C25 /* mdaSplitter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaSplitter.h; path = src/mdaSplitter.h; sourceTree = SOURCE_ROOT; };
+		6CA0F05509C3812900811C25 /* mdaShepard.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaShepard.cpp; path = src/mdaShepard.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F05609C3812900811C25 /* mdaShepard.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaShepard.h; path = src/mdaShepard.h; sourceTree = SOURCE_ROOT; };
+		6CA0F05809C3814800811C25 /* mdaRoundPan.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaRoundPan.cpp; path = src/mdaRoundPan.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F05909C3814800811C25 /* mdaRoundPan.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaRoundPan.h; path = src/mdaRoundPan.h; sourceTree = SOURCE_ROOT; };
+		6CA0F05B09C3815D00811C25 /* mdaRingMod.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaRingMod.cpp; path = src/mdaRingMod.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F05C09C3815D00811C25 /* mdaRingMod.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaRingMod.h; path = src/mdaRingMod.h; sourceTree = SOURCE_ROOT; };
+		6CA0F05E09C3817500811C25 /* mdaRezFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaRezFilter.cpp; path = src/mdaRezFilter.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F05F09C3817500811C25 /* mdaRezFilter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaRezFilter.h; path = src/mdaRezFilter.h; sourceTree = SOURCE_ROOT; };
+		6CA0F06109C3818E00811C25 /* mdaRePsycho!.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = "mdaRePsycho!.cpp"; path = "src/mdaRePsycho!.cpp"; sourceTree = SOURCE_ROOT; };
+		6CA0F06209C3818E00811C25 /* mdaRePsycho!.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = "mdaRePsycho!.h"; path = "src/mdaRePsycho!.h"; sourceTree = SOURCE_ROOT; };
+		6CA0F06409C381A500811C25 /* mdaPiano.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaPiano.cpp; path = src/mdaPiano.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F06509C381A500811C25 /* mdaPiano.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaPiano.h; path = src/mdaPiano.h; sourceTree = SOURCE_ROOT; };
+		6CA0F06709C381BC00811C25 /* mdaOverdrive.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaOverdrive.cpp; path = src/mdaOverdrive.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F06809C381BC00811C25 /* mdaOverdrive.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaOverdrive.h; path = src/mdaOverdrive.h; sourceTree = SOURCE_ROOT; };
+		6CA0F06A09C381D500811C25 /* mdaMultiBand.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaMultiBand.cpp; path = src/mdaMultiBand.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F06B09C381D500811C25 /* mdaMultiBand.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaMultiBand.h; path = src/mdaMultiBand.h; sourceTree = SOURCE_ROOT; };
+		6CA0F06D09C381F800811C25 /* mdaLoudness.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaLoudness.cpp; path = src/mdaLoudness.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F06E09C381F800811C25 /* mdaLoudness.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaLoudness.h; path = src/mdaLoudness.h; sourceTree = SOURCE_ROOT; };
+		6CA0F07009C3820E00811C25 /* mdaLimiter.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaLimiter.cpp; path = src/mdaLimiter.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F07109C3820E00811C25 /* mdaLimiter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaLimiter.h; path = src/mdaLimiter.h; sourceTree = SOURCE_ROOT; };
+		6CA0F07309C3822600811C25 /* mdaLeslie.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaLeslie.cpp; path = src/mdaLeslie.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F07409C3822600811C25 /* mdaLeslie.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaLeslie.h; path = src/mdaLeslie.h; sourceTree = SOURCE_ROOT; };
+		6CA0F07909C3825700811C25 /* mdaImage.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaImage.cpp; path = src/mdaImage.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F07A09C3825700811C25 /* mdaImage.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaImage.h; path = src/mdaImage.h; sourceTree = SOURCE_ROOT; };
+		6CA0F07C09C3827200811C25 /* mdaEPiano.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaEPiano.cpp; path = src/mdaEPiano.cpp; sourceTree = SOURCE_ROOT; };
+		6CA0F07D09C3827200811C25 /* mdaEPiano.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaEPiano.h; path = src/mdaEPiano.h; sourceTree = SOURCE_ROOT; };
+		8D01CCD20486CAD60068D4B7 /* mda Ambience.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Ambience.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA2FFA620A698CBE001B44E6 /* mda Looplex.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda Looplex.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA2FFA640A698D14001B44E6 /* mdaLooplex.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaLooplex.cpp; path = src/mdaLooplex.cpp; sourceTree = "<group>"; };
+		DA2FFA650A698D14001B44E6 /* mdaLooplex.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaLooplex.h; path = src/mdaLooplex.h; sourceTree = "<group>"; };
+		DA2FFAE40A699751001B44E6 /* mdaEPianoData.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaEPianoData.h; path = src/mdaEPianoData.h; sourceTree = "<group>"; };
+		DA2FFAE50A69977C001B44E6 /* mdaPianoData.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaPianoData.h; path = src/mdaPianoData.h; sourceTree = "<group>"; };
+		DAB133BA0B982DA3006AA414 /* mda SubSynth.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mda SubSynth.vst"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAB133BC0B982E12006AA414 /* mdaSubBass.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaSubBass.cpp; path = src/mdaSubBass.cpp; sourceTree = "<group>"; };
+		DAB133BD0B982E12006AA414 /* mdaSubBass.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaSubBass.h; path = src/mdaSubBass.h; sourceTree = "<group>"; };
+		DAB133BF0B982E2E006AA414 /* mdaSubSynth.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mdaSubSynth.cpp; path = src/mdaSubSynth.cpp; sourceTree = "<group>"; };
+		DAB133C00B982E2E006AA414 /* mdaSubSynth.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mdaSubSynth.h; path = src/mdaSubSynth.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6CA0EDF409C36A0000811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326320A6AE14B00F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE1609C36F5F00811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326310A6AE14A00F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE2209C36F8A00811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326300A6AE14A00F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE2E09C36F9300811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD3262F0A6AE14900F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE3A09C36FB300811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD3262E0A6AE14800F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE4609C36FC400811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD3262D0A6AE14800F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE5209C36FD400811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD3262C0A6AE14700F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE5E09C36FE900811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD3262B0A6AE14600F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE6A09C36FF900811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD3262A0A6AE14500F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE7609C3701D00811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326290A6AE14500F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE8209C3703000811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326280A6AE14000F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE8E09C3703D00811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326270A6AE13F00F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE9A09C3705600811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326260A6AE13E00F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EEB209C3707A00811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326240A6AE13D00F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EEBE09C3708C00811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326230A6AE13C00F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EECA09C3709E00811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326210A6AE13A00F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EED609C370B200811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326200A6AE13900F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EEE309C370D000811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD3261F0A6AE13800F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EEEF09C370E300811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD3261E0A6AE13700F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EEFB09C370F600811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD3261D0A6AE13600F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF0909C3716000811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD3261C0A6AE13500F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF1509C3716700811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD3261B0A6AE13500F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF2109C3716D00811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD3261A0A6AE13400F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF2D09C3717600811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326190A6AE13300F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF4509C371C600811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326170A6AE13100F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF5109C371D800811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326160A6AE13000F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF7509C3720D00811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326130A6AE12E00F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF8109C3722300811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326120A6AE12D00F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF8D09C3723600811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326110A6AE12D00F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF9909C3724900811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326100A6AE12C00F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EFA509C3726500811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD3260F0A6AE12B00F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EFB109C3727C00811C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD3260E0A6AE12A00F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D01CCCD0486CAD60068D4B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326330A6AE14C00F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA2FFA5E0A698CBE001B44E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD326220A6AE13B00F3EA62 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAB133B50B982DA3006AA414 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAB133B60B982DA3006AA414 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* vst 2.4 examples */ = {
+			isa = PBXGroup;
+			children = (
+				6CA0EFBC09C3773400811C25 /* mda.plist */,
+				08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */,
+				08FB77ADFE841716C02AAC07 /* Source */,
+				19C28FB4FE9D528D11CA2CBB /* Products */,
+			);
+			name = "vst 2.4 examples";
+			sourceTree = "<group>";
+		};
+		08FB77ADFE841716C02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				F4FF51CD0929F9C400DDED7A /* vst */,
+				6CA0F00C09C3782C00811C25 /* mdaAmbience.cpp */,
+				6CA0F00D09C3782C00811C25 /* mdaAmbience.h */,
+				6CA0F00F09C3785100811C25 /* mdaBandisto.cpp */,
+				6CA0F01009C3785100811C25 /* mdaBandisto.h */,
+				6CA0F01209C3786D00811C25 /* mdaBeatBox.cpp */,
+				6CA0F01309C3786D00811C25 /* mdaBeatBox.h */,
+				6CA0F01909C37F3100811C25 /* mdaCombo.cpp */,
+				6CA0F01A09C37F3100811C25 /* mdaCombo.h */,
+				6CA0F01C09C37F4400811C25 /* mdaDe-ess.cpp */,
+				6CA0F01D09C37F4400811C25 /* mdaDe-ess.h */,
+				6CA0F01F09C37F5900811C25 /* mdaDegrade.cpp */,
+				6CA0F02009C37F5900811C25 /* mdaDegrade.h */,
+				6CA0F02209C37F8200811C25 /* mdaDelay.cpp */,
+				6CA0F02309C37F8200811C25 /* mdaDelay.h */,
+				6CA0F02509C37F9D00811C25 /* mdaDetune.cpp */,
+				6CA0F02609C37F9D00811C25 /* mdaDetune.h */,
+				6CA0F02809C37FB200811C25 /* mdaDither.cpp */,
+				6CA0F02909C37FB200811C25 /* mdaDither.h */,
+				6CA0F02B09C37FC700811C25 /* mdaDubDelay.cpp */,
+				6CA0F02C09C37FC700811C25 /* mdaDubDelay.h */,
+				6CA0F02E09C37FDB00811C25 /* mdaDX10.cpp */,
+				6CA0F02F09C37FDB00811C25 /* mdaDX10.h */,
+				6CA0F03109C37FF100811C25 /* mdaDynamics.cpp */,
+				6CA0F03209C37FF100811C25 /* mdaDynamics.h */,
+				DA2FFAE40A699751001B44E6 /* mdaEPianoData.h */,
+				6CA0F07C09C3827200811C25 /* mdaEPiano.cpp */,
+				6CA0F07D09C3827200811C25 /* mdaEPiano.h */,
+				6CA0F07909C3825700811C25 /* mdaImage.cpp */,
+				6CA0F07A09C3825700811C25 /* mdaImage.h */,
+				6CA0F07309C3822600811C25 /* mdaLeslie.cpp */,
+				6CA0F07409C3822600811C25 /* mdaLeslie.h */,
+				6CA0F07009C3820E00811C25 /* mdaLimiter.cpp */,
+				6CA0F07109C3820E00811C25 /* mdaLimiter.h */,
+				DA2FFA640A698D14001B44E6 /* mdaLooplex.cpp */,
+				DA2FFA650A698D14001B44E6 /* mdaLooplex.h */,
+				6CA0F06D09C381F800811C25 /* mdaLoudness.cpp */,
+				6CA0F06E09C381F800811C25 /* mdaLoudness.h */,
+				6CA0F06A09C381D500811C25 /* mdaMultiBand.cpp */,
+				6CA0F06B09C381D500811C25 /* mdaMultiBand.h */,
+				6CA0F06709C381BC00811C25 /* mdaOverdrive.cpp */,
+				6CA0F06809C381BC00811C25 /* mdaOverdrive.h */,
+				DA2FFAE50A69977C001B44E6 /* mdaPianoData.h */,
+				6CA0F06409C381A500811C25 /* mdaPiano.cpp */,
+				6CA0F06509C381A500811C25 /* mdaPiano.h */,
+				6CA0F06109C3818E00811C25 /* mdaRePsycho!.cpp */,
+				6CA0F06209C3818E00811C25 /* mdaRePsycho!.h */,
+				6CA0F05E09C3817500811C25 /* mdaRezFilter.cpp */,
+				6CA0F05F09C3817500811C25 /* mdaRezFilter.h */,
+				6CA0F05B09C3815D00811C25 /* mdaRingMod.cpp */,
+				6CA0F05C09C3815D00811C25 /* mdaRingMod.h */,
+				6CA0F05809C3814800811C25 /* mdaRoundPan.cpp */,
+				6CA0F05909C3814800811C25 /* mdaRoundPan.h */,
+				6CA0F05509C3812900811C25 /* mdaShepard.cpp */,
+				6CA0F05609C3812900811C25 /* mdaShepard.h */,
+				6CA0F04F09C380F300811C25 /* mdaSplitter.cpp */,
+				6CA0F05009C380F300811C25 /* mdaSplitter.h */,
+				6CA0F04C09C380DA00811C25 /* mdaStereo.cpp */,
+				6CA0F04D09C380DA00811C25 /* mdaStereo.h */,
+				DAB133BC0B982E12006AA414 /* mdaSubBass.cpp */,
+				DAB133BD0B982E12006AA414 /* mdaSubBass.h */,
+				DAB133BF0B982E2E006AA414 /* mdaSubSynth.cpp */,
+				DAB133C00B982E2E006AA414 /* mdaSubSynth.h */,
+				6CA0F04309C3809000811C25 /* mdaTestTone.cpp */,
+				6CA0F04409C3809000811C25 /* mdaTestTone.h */,
+				6CA0F04009C3807300811C25 /* mdaThruZero.cpp */,
+				6CA0F04109C3807400811C25 /* mdaThruZero.h */,
+				6CA0F03D09C3805B00811C25 /* mdaTracker.cpp */,
+				6CA0F03E09C3805B00811C25 /* mdaTracker.h */,
+				6CA0F03A09C3804200811C25 /* mdaTransient.cpp */,
+				6CA0F03B09C3804200811C25 /* mdaTransient.h */,
+				6CA0F03709C3802800811C25 /* mdaVocInput.cpp */,
+				6CA0F03809C3802800811C25 /* mdaVocInput.h */,
+				6CA0F03409C3800B00811C25 /* mdaVocoder.cpp */,
+				6CA0F03509C3800B00811C25 /* mdaVocoder.h */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		19C28FB4FE9D528D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D01CCD20486CAD60068D4B7 /* mda Ambience.vst */,
+				6CA0EDF809C36A0000811C25 /* mda Bandisto.vst */,
+				6CA0EE1A09C36F5F00811C25 /* mda BeatBox.vst */,
+				6CA0EE2609C36F8A00811C25 /* mda Combo.vst */,
+				6CA0EE3209C36F9300811C25 /* mda De-ess.vst */,
+				6CA0EE3E09C36FB300811C25 /* mda Degrade.vst */,
+				6CA0EE4A09C36FC400811C25 /* mda Delay.vst */,
+				6CA0EE5609C36FD400811C25 /* mda Detune.vst */,
+				6CA0EE6209C36FE900811C25 /* mda Dither.vst */,
+				6CA0EE6E09C36FF900811C25 /* mda DubDelay.vst */,
+				6CA0EE7A09C3701D00811C25 /* mda DX10.vst */,
+				6CA0EE8609C3703000811C25 /* mda Dynamics.vst */,
+				6CA0EE9209C3703D00811C25 /* mda ePiano.vst */,
+				6CA0EE9E09C3705600811C25 /* mda Image.vst */,
+				6CA0EEB609C3707A00811C25 /* mda Leslie.vst */,
+				6CA0EEC209C3708C00811C25 /* mda Limiter.vst */,
+				6CA0EECE09C3709E00811C25 /* mda Loudness.vst */,
+				6CA0EEDA09C370B200811C25 /* mda MultiBand.vst */,
+				6CA0EEE709C370D000811C25 /* mda Overdrive.vst */,
+				6CA0EEF309C370E300811C25 /* mda Piano.vst */,
+				6CA0EEFF09C370F600811C25 /* mda RePsycho!.vst */,
+				6CA0EF0D09C3716000811C25 /* mda RezFilter.vst */,
+				6CA0EF1909C3716700811C25 /* mda RingMod.vst */,
+				6CA0EF2509C3716D00811C25 /* mda RoundPan.vst */,
+				6CA0EF3109C3717600811C25 /* mda Shepard.vst */,
+				6CA0EF4909C371C600811C25 /* mda Splitter.vst */,
+				6CA0EF5509C371D800811C25 /* mda Stereo.vst */,
+				6CA0EF7909C3720D00811C25 /* mda TestTone.vst */,
+				6CA0EF8509C3722300811C25 /* mda ThruZero.vst */,
+				6CA0EF9109C3723600811C25 /* mda Tracker.vst */,
+				6CA0EF9D09C3724900811C25 /* mda Transient.vst */,
+				6CA0EFA909C3726500811C25 /* mda VocInput.vst */,
+				6CA0EFB509C3727C00811C25 /* mda Vocoder.vst */,
+				DA2FFA620A698CBE001B44E6 /* mda Looplex.vst */,
+				DAB133BA0B982DA3006AA414 /* mda SubSynth.vst */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F4FF51CD0929F9C400DDED7A /* vst */ = {
+			isa = PBXGroup;
+			children = (
+				6CA0ED8E09C3647200811C25 /* aeffect.h */,
+				6CA0ED8F09C3647200811C25 /* aeffectx.h */,
+				6CA0ED9009C3647200811C25 /* aeffeditor.h */,
+				6CA0ED9109C3647200811C25 /* audioeffect.cpp */,
+				6CA0ED9209C3647200811C25 /* audioeffect.h */,
+				6CA0ED9309C3647200811C25 /* audioeffectx.cpp */,
+				6CA0ED9409C3647200811C25 /* audioeffectx.h */,
+				6CA0ED9509C3647200811C25 /* vstplugmain.cpp */,
+			);
+			name = vst;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6CA0EDED09C36A0000811C25 /* mda Bandisto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EDF509C36A0000811C25 /* Build configuration list for PBXNativeTarget "mda Bandisto" */;
+			buildPhases = (
+				6CA0EDEE09C36A0000811C25 /* Resources */,
+				6CA0EDEF09C36A0000811C25 /* Sources */,
+				6CA0EDF409C36A0000811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Bandisto";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EDF809C36A0000811C25 /* mda Bandisto.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EE1009C36F5F00811C25 /* mda BeatBox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EE1709C36F5F00811C25 /* Build configuration list for PBXNativeTarget "mda BeatBox" */;
+			buildPhases = (
+				6CA0EE1109C36F5F00811C25 /* Resources */,
+				6CA0EE1209C36F5F00811C25 /* Sources */,
+				6CA0EE1609C36F5F00811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda BeatBox";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EE1A09C36F5F00811C25 /* mda BeatBox.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EE1C09C36F8A00811C25 /* mda Combo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EE2309C36F8A00811C25 /* Build configuration list for PBXNativeTarget "mda Combo" */;
+			buildPhases = (
+				6CA0EE1D09C36F8A00811C25 /* Resources */,
+				6CA0EE1E09C36F8A00811C25 /* Sources */,
+				6CA0EE2209C36F8A00811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Combo";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EE2609C36F8A00811C25 /* mda Combo.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EE2809C36F9300811C25 /* mda De-ess */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EE2F09C36F9300811C25 /* Build configuration list for PBXNativeTarget "mda De-ess" */;
+			buildPhases = (
+				6CA0EE2909C36F9300811C25 /* Resources */,
+				6CA0EE2A09C36F9300811C25 /* Sources */,
+				6CA0EE2E09C36F9300811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda De-ess";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EE3209C36F9300811C25 /* mda De-ess.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EE3409C36FB300811C25 /* mda Degrade */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EE3B09C36FB300811C25 /* Build configuration list for PBXNativeTarget "mda Degrade" */;
+			buildPhases = (
+				6CA0EE3509C36FB300811C25 /* Resources */,
+				6CA0EE3609C36FB300811C25 /* Sources */,
+				6CA0EE3A09C36FB300811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Degrade";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EE3E09C36FB300811C25 /* mda Degrade.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EE4009C36FC400811C25 /* mda Delay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EE4709C36FC400811C25 /* Build configuration list for PBXNativeTarget "mda Delay" */;
+			buildPhases = (
+				6CA0EE4109C36FC400811C25 /* Resources */,
+				6CA0EE4209C36FC400811C25 /* Sources */,
+				6CA0EE4609C36FC400811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Delay";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EE4A09C36FC400811C25 /* mda Delay.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EE4C09C36FD400811C25 /* mda Detune */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EE5309C36FD400811C25 /* Build configuration list for PBXNativeTarget "mda Detune" */;
+			buildPhases = (
+				6CA0EE4D09C36FD400811C25 /* Resources */,
+				6CA0EE4E09C36FD400811C25 /* Sources */,
+				6CA0EE5209C36FD400811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Detune";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EE5609C36FD400811C25 /* mda Detune.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EE5809C36FE900811C25 /* mda Dither */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EE5F09C36FE900811C25 /* Build configuration list for PBXNativeTarget "mda Dither" */;
+			buildPhases = (
+				6CA0EE5909C36FE900811C25 /* Resources */,
+				6CA0EE5A09C36FE900811C25 /* Sources */,
+				6CA0EE5E09C36FE900811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Dither";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EE6209C36FE900811C25 /* mda Dither.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EE6409C36FF900811C25 /* mda DubDelay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EE6B09C36FF900811C25 /* Build configuration list for PBXNativeTarget "mda DubDelay" */;
+			buildPhases = (
+				6CA0EE6509C36FF900811C25 /* Resources */,
+				6CA0EE6609C36FF900811C25 /* Sources */,
+				6CA0EE6A09C36FF900811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda DubDelay";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EE6E09C36FF900811C25 /* mda DubDelay.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EE7009C3701D00811C25 /* mda DX10 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EE7709C3701D00811C25 /* Build configuration list for PBXNativeTarget "mda DX10" */;
+			buildPhases = (
+				6CA0EE7109C3701D00811C25 /* Resources */,
+				6CA0EE7209C3701D00811C25 /* Sources */,
+				6CA0EE7609C3701D00811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda DX10";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EE7A09C3701D00811C25 /* mda DX10.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EE7C09C3703000811C25 /* mda Dynamics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EE8309C3703000811C25 /* Build configuration list for PBXNativeTarget "mda Dynamics" */;
+			buildPhases = (
+				6CA0EE7D09C3703000811C25 /* Resources */,
+				6CA0EE7E09C3703000811C25 /* Sources */,
+				6CA0EE8209C3703000811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Dynamics";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EE8609C3703000811C25 /* mda Dynamics.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EE8809C3703D00811C25 /* mda ePiano */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EE8F09C3703D00811C25 /* Build configuration list for PBXNativeTarget "mda ePiano" */;
+			buildPhases = (
+				6CA0EE8909C3703D00811C25 /* Resources */,
+				6CA0EE8A09C3703D00811C25 /* Sources */,
+				6CA0EE8E09C3703D00811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda ePiano";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EE9209C3703D00811C25 /* mda ePiano.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EE9409C3705600811C25 /* mda Image */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EE9B09C3705600811C25 /* Build configuration list for PBXNativeTarget "mda Image" */;
+			buildPhases = (
+				6CA0EE9509C3705600811C25 /* Resources */,
+				6CA0EE9609C3705600811C25 /* Sources */,
+				6CA0EE9A09C3705600811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Image";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EE9E09C3705600811C25 /* mda Image.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EEAC09C3707A00811C25 /* mda Leslie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EEB309C3707A00811C25 /* Build configuration list for PBXNativeTarget "mda Leslie" */;
+			buildPhases = (
+				6CA0EEAD09C3707A00811C25 /* Resources */,
+				6CA0EEAE09C3707A00811C25 /* Sources */,
+				6CA0EEB209C3707A00811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Leslie";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EEB609C3707A00811C25 /* mda Leslie.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EEB809C3708C00811C25 /* mda Limiter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EEBF09C3708C00811C25 /* Build configuration list for PBXNativeTarget "mda Limiter" */;
+			buildPhases = (
+				6CA0EEB909C3708C00811C25 /* Resources */,
+				6CA0EEBA09C3708C00811C25 /* Sources */,
+				6CA0EEBE09C3708C00811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Limiter";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EEC209C3708C00811C25 /* mda Limiter.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EEC409C3709E00811C25 /* mda Loudness */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EECB09C3709E00811C25 /* Build configuration list for PBXNativeTarget "mda Loudness" */;
+			buildPhases = (
+				6CA0EEC509C3709E00811C25 /* Resources */,
+				6CA0EEC609C3709E00811C25 /* Sources */,
+				6CA0EECA09C3709E00811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Loudness";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EECE09C3709E00811C25 /* mda Loudness.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EED009C370B200811C25 /* mda MultiBand */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EED709C370B200811C25 /* Build configuration list for PBXNativeTarget "mda MultiBand" */;
+			buildPhases = (
+				6CA0EED109C370B200811C25 /* Resources */,
+				6CA0EED209C370B200811C25 /* Sources */,
+				6CA0EED609C370B200811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda MultiBand";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EEDA09C370B200811C25 /* mda MultiBand.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EEDD09C370D000811C25 /* mda Overdrive */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EEE409C370D000811C25 /* Build configuration list for PBXNativeTarget "mda Overdrive" */;
+			buildPhases = (
+				6CA0EEDE09C370D000811C25 /* Resources */,
+				6CA0EEDF09C370D000811C25 /* Sources */,
+				6CA0EEE309C370D000811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Overdrive";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EEE709C370D000811C25 /* mda Overdrive.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EEE909C370E300811C25 /* mda Piano */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EEF009C370E300811C25 /* Build configuration list for PBXNativeTarget "mda Piano" */;
+			buildPhases = (
+				6CA0EEEA09C370E300811C25 /* Resources */,
+				6CA0EEEB09C370E300811C25 /* Sources */,
+				6CA0EEEF09C370E300811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Piano";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EEF309C370E300811C25 /* mda Piano.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EEF509C370F600811C25 /* mda RePsycho! */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EEFC09C370F600811C25 /* Build configuration list for PBXNativeTarget "mda RePsycho!" */;
+			buildPhases = (
+				6CA0EEF609C370F600811C25 /* Resources */,
+				6CA0EEF709C370F600811C25 /* Sources */,
+				6CA0EEFB09C370F600811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda RePsycho!";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EEFF09C370F600811C25 /* mda RePsycho!.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EF0309C3716000811C25 /* mda RezFilter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EF0A09C3716000811C25 /* Build configuration list for PBXNativeTarget "mda RezFilter" */;
+			buildPhases = (
+				6CA0EF0409C3716000811C25 /* Resources */,
+				6CA0EF0509C3716000811C25 /* Sources */,
+				6CA0EF0909C3716000811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda RezFilter";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EF0D09C3716000811C25 /* mda RezFilter.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EF0F09C3716700811C25 /* mda RingMod */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EF1609C3716700811C25 /* Build configuration list for PBXNativeTarget "mda RingMod" */;
+			buildPhases = (
+				6CA0EF1009C3716700811C25 /* Resources */,
+				6CA0EF1109C3716700811C25 /* Sources */,
+				6CA0EF1509C3716700811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda RingMod";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EF1909C3716700811C25 /* mda RingMod.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EF1B09C3716D00811C25 /* mda RoundPan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EF2209C3716D00811C25 /* Build configuration list for PBXNativeTarget "mda RoundPan" */;
+			buildPhases = (
+				6CA0EF1C09C3716D00811C25 /* Resources */,
+				6CA0EF1D09C3716D00811C25 /* Sources */,
+				6CA0EF2109C3716D00811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda RoundPan";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EF2509C3716D00811C25 /* mda RoundPan.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EF2709C3717600811C25 /* mda Shepard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EF2E09C3717600811C25 /* Build configuration list for PBXNativeTarget "mda Shepard" */;
+			buildPhases = (
+				6CA0EF2809C3717600811C25 /* Resources */,
+				6CA0EF2909C3717600811C25 /* Sources */,
+				6CA0EF2D09C3717600811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Shepard";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EF3109C3717600811C25 /* mda Shepard.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EF3F09C371C600811C25 /* mda Splitter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EF4609C371C600811C25 /* Build configuration list for PBXNativeTarget "mda Splitter" */;
+			buildPhases = (
+				6CA0EF4009C371C600811C25 /* Resources */,
+				6CA0EF4109C371C600811C25 /* Sources */,
+				6CA0EF4509C371C600811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Splitter";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EF4909C371C600811C25 /* mda Splitter.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EF4B09C371D800811C25 /* mda Stereo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EF5209C371D800811C25 /* Build configuration list for PBXNativeTarget "mda Stereo" */;
+			buildPhases = (
+				6CA0EF4C09C371D800811C25 /* Resources */,
+				6CA0EF4D09C371D800811C25 /* Sources */,
+				6CA0EF5109C371D800811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Stereo";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EF5509C371D800811C25 /* mda Stereo.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EF6F09C3720D00811C25 /* mda TestTone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EF7609C3720D00811C25 /* Build configuration list for PBXNativeTarget "mda TestTone" */;
+			buildPhases = (
+				6CA0EF7009C3720D00811C25 /* Resources */,
+				6CA0EF7109C3720D00811C25 /* Sources */,
+				6CA0EF7509C3720D00811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda TestTone";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EF7909C3720D00811C25 /* mda TestTone.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EF7B09C3722300811C25 /* mda ThruZero */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EF8209C3722300811C25 /* Build configuration list for PBXNativeTarget "mda ThruZero" */;
+			buildPhases = (
+				6CA0EF7C09C3722300811C25 /* Resources */,
+				6CA0EF7D09C3722300811C25 /* Sources */,
+				6CA0EF8109C3722300811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda ThruZero";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EF8509C3722300811C25 /* mda ThruZero.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EF8709C3723600811C25 /* mda Tracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EF8E09C3723600811C25 /* Build configuration list for PBXNativeTarget "mda Tracker" */;
+			buildPhases = (
+				6CA0EF8809C3723600811C25 /* Resources */,
+				6CA0EF8909C3723600811C25 /* Sources */,
+				6CA0EF8D09C3723600811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Tracker";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EF9109C3723600811C25 /* mda Tracker.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EF9309C3724900811C25 /* mda Transient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EF9A09C3724900811C25 /* Build configuration list for PBXNativeTarget "mda Transient" */;
+			buildPhases = (
+				6CA0EF9409C3724900811C25 /* Resources */,
+				6CA0EF9509C3724900811C25 /* Sources */,
+				6CA0EF9909C3724900811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Transient";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EF9D09C3724900811C25 /* mda Transient.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EF9F09C3726500811C25 /* mda VocInput */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EFA609C3726500811C25 /* Build configuration list for PBXNativeTarget "mda VocInput" */;
+			buildPhases = (
+				6CA0EFA009C3726500811C25 /* Resources */,
+				6CA0EFA109C3726500811C25 /* Sources */,
+				6CA0EFA509C3726500811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda VocInput";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EFA909C3726500811C25 /* mda VocInput.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6CA0EFAB09C3727C00811C25 /* mda Vocoder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0EFB209C3727C00811C25 /* Build configuration list for PBXNativeTarget "mda Vocoder" */;
+			buildPhases = (
+				6CA0EFAC09C3727C00811C25 /* Resources */,
+				6CA0EFAD09C3727C00811C25 /* Sources */,
+				6CA0EFB109C3727C00811C25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Vocoder";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 6CA0EFB509C3727C00811C25 /* mda Vocoder.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		8D01CCC60486CAD60068D4B7 /* mda Ambience */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FADC23308B4156C00ABE55E /* Build configuration list for PBXNativeTarget "mda Ambience" */;
+			buildPhases = (
+				8D01CCC90486CAD60068D4B7 /* Resources */,
+				8D01CCCB0486CAD60068D4B7 /* Sources */,
+				8D01CCCD0486CAD60068D4B7 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Ambience";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = 8D01CCD20486CAD60068D4B7 /* mda Ambience.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		DA2FFA570A698CBE001B44E6 /* mda Looplex */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA2FFA5F0A698CBE001B44E6 /* Build configuration list for PBXNativeTarget "mda Looplex" */;
+			buildPhases = (
+				DA2FFA580A698CBE001B44E6 /* Resources */,
+				DA2FFA590A698CBE001B44E6 /* Sources */,
+				DA2FFA5E0A698CBE001B44E6 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda Looplex";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = DA2FFA620A698CBE001B44E6 /* mda Looplex.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+		DAB133AE0B982DA3006AA414 /* mda SubSynth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAB133B70B982DA3006AA414 /* Build configuration list for PBXNativeTarget "mda SubSynth" */;
+			buildPhases = (
+				DAB133AF0B982DA3006AA414 /* Resources */,
+				DAB133B00B982DA3006AA414 /* Sources */,
+				DAB133B50B982DA3006AA414 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mda SubSynth";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "vst 2.4 examples";
+			productReference = DAB133BA0B982DA3006AA414 /* mda SubSynth.vst */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 4FADC23708B4156C00ABE55E /* Build configuration list for PBXProject "mda-vst" */;
+			hasScannedForEncodings = 1;
+			mainGroup = 089C166AFE841209C02AAC07 /* vst 2.4 examples */;
+			projectDirPath = "";
+			targets = (
+				6CA0EFBB09C3773300811C25 /* Build All */,
+				8D01CCC60486CAD60068D4B7 /* mda Ambience */,
+				6CA0EDED09C36A0000811C25 /* mda Bandisto */,
+				6CA0EE1009C36F5F00811C25 /* mda BeatBox */,
+				6CA0EE1C09C36F8A00811C25 /* mda Combo */,
+				6CA0EE2809C36F9300811C25 /* mda De-ess */,
+				6CA0EE3409C36FB300811C25 /* mda Degrade */,
+				6CA0EE4009C36FC400811C25 /* mda Delay */,
+				6CA0EE4C09C36FD400811C25 /* mda Detune */,
+				6CA0EE5809C36FE900811C25 /* mda Dither */,
+				6CA0EE6409C36FF900811C25 /* mda DubDelay */,
+				6CA0EE7009C3701D00811C25 /* mda DX10 */,
+				6CA0EE7C09C3703000811C25 /* mda Dynamics */,
+				6CA0EE8809C3703D00811C25 /* mda ePiano */,
+				6CA0EE9409C3705600811C25 /* mda Image */,
+				6CA0EEAC09C3707A00811C25 /* mda Leslie */,
+				6CA0EEB809C3708C00811C25 /* mda Limiter */,
+				DA2FFA570A698CBE001B44E6 /* mda Looplex */,
+				6CA0EEC409C3709E00811C25 /* mda Loudness */,
+				6CA0EED009C370B200811C25 /* mda MultiBand */,
+				6CA0EEDD09C370D000811C25 /* mda Overdrive */,
+				6CA0EEE909C370E300811C25 /* mda Piano */,
+				6CA0EEF509C370F600811C25 /* mda RePsycho! */,
+				6CA0EF0309C3716000811C25 /* mda RezFilter */,
+				6CA0EF0F09C3716700811C25 /* mda RingMod */,
+				6CA0EF1B09C3716D00811C25 /* mda RoundPan */,
+				6CA0EF2709C3717600811C25 /* mda Shepard */,
+				6CA0EF3F09C371C600811C25 /* mda Splitter */,
+				6CA0EF4B09C371D800811C25 /* mda Stereo */,
+				DAB133AE0B982DA3006AA414 /* mda SubSynth */,
+				6CA0EF6F09C3720D00811C25 /* mda TestTone */,
+				6CA0EF7B09C3722300811C25 /* mda ThruZero */,
+				6CA0EF8709C3723600811C25 /* mda Tracker */,
+				6CA0EF9309C3724900811C25 /* mda Transient */,
+				6CA0EF9F09C3726500811C25 /* mda VocInput */,
+				6CA0EFAB09C3727C00811C25 /* mda Vocoder */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6CA0EDEE09C36A0000811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE1109C36F5F00811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE1D09C36F8A00811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE2909C36F9300811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE3509C36FB300811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE4109C36FC400811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE4D09C36FD400811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE5909C36FE900811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE6509C36FF900811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE7109C3701D00811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE7D09C3703000811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE8909C3703D00811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE9509C3705600811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EEAD09C3707A00811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EEB909C3708C00811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EEC509C3709E00811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EED109C370B200811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EEDE09C370D000811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EEEA09C370E300811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EEF609C370F600811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF0409C3716000811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF1009C3716700811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF1C09C3716D00811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF2809C3717600811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF4009C371C600811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF4C09C371D800811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF7009C3720D00811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF7C09C3722300811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF8809C3723600811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF9409C3724900811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EFA009C3726500811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EFAC09C3727C00811C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D01CCC90486CAD60068D4B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA2FFA580A698CBE001B44E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAB133AF0B982DA3006AA414 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6CA0EDEF09C36A0000811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EDF009C36A0000811C25 /* audioeffect.cpp in Sources */,
+				6CA0EDF109C36A0000811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EDF209C36A0000811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F01109C3785100811C25 /* mdaBandisto.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE1209C36F5F00811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EE1309C36F5F00811C25 /* audioeffect.cpp in Sources */,
+				6CA0EE1409C36F5F00811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EE1509C36F5F00811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F01409C3786E00811C25 /* mdaBeatBox.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE1E09C36F8A00811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EE1F09C36F8A00811C25 /* audioeffect.cpp in Sources */,
+				6CA0EE2009C36F8A00811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EE2109C36F8A00811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F01B09C37F3100811C25 /* mdaCombo.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE2A09C36F9300811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EE2B09C36F9300811C25 /* audioeffect.cpp in Sources */,
+				6CA0EE2C09C36F9300811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EE2D09C36F9300811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F01E09C37F4500811C25 /* mdaDe-ess.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE3609C36FB300811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EE3709C36FB300811C25 /* audioeffect.cpp in Sources */,
+				6CA0EE3809C36FB300811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EE3909C36FB300811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F02109C37F5900811C25 /* mdaDegrade.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE4209C36FC400811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EE4309C36FC400811C25 /* audioeffect.cpp in Sources */,
+				6CA0EE4409C36FC400811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EE4509C36FC400811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F02409C37F8300811C25 /* mdaDelay.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE4E09C36FD400811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EE4F09C36FD400811C25 /* audioeffect.cpp in Sources */,
+				6CA0EE5009C36FD400811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EE5109C36FD400811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F02709C37F9E00811C25 /* mdaDetune.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE5A09C36FE900811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EE5B09C36FE900811C25 /* audioeffect.cpp in Sources */,
+				6CA0EE5C09C36FE900811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EE5D09C36FE900811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F02A09C37FB300811C25 /* mdaDither.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE6609C36FF900811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EE6709C36FF900811C25 /* audioeffect.cpp in Sources */,
+				6CA0EE6809C36FF900811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EE6909C36FF900811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F02D09C37FC700811C25 /* mdaDubDelay.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE7209C3701D00811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EE7309C3701D00811C25 /* audioeffect.cpp in Sources */,
+				6CA0EE7409C3701D00811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EE7509C3701D00811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F03009C37FDB00811C25 /* mdaDX10.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE7E09C3703000811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EE7F09C3703000811C25 /* audioeffect.cpp in Sources */,
+				6CA0EE8009C3703000811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EE8109C3703000811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F03309C37FF100811C25 /* mdaDynamics.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE8A09C3703D00811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EE8B09C3703D00811C25 /* audioeffect.cpp in Sources */,
+				6CA0EE8C09C3703D00811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EE8D09C3703D00811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F07E09C3827200811C25 /* mdaEPiano.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EE9609C3705600811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EE9709C3705600811C25 /* audioeffect.cpp in Sources */,
+				6CA0EE9809C3705600811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EE9909C3705600811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F07B09C3825700811C25 /* mdaImage.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EEAE09C3707A00811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EEAF09C3707A00811C25 /* audioeffect.cpp in Sources */,
+				6CA0EEB009C3707A00811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EEB109C3707A00811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F07509C3822600811C25 /* mdaLeslie.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EEBA09C3708C00811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EEBB09C3708C00811C25 /* audioeffect.cpp in Sources */,
+				6CA0EEBC09C3708C00811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EEBD09C3708C00811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F07209C3820E00811C25 /* mdaLimiter.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EEC609C3709E00811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EEC709C3709E00811C25 /* audioeffect.cpp in Sources */,
+				6CA0EEC809C3709E00811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EEC909C3709E00811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F06F09C381F800811C25 /* mdaLoudness.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EED209C370B200811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EED309C370B200811C25 /* audioeffect.cpp in Sources */,
+				6CA0EED409C370B200811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EED509C370B200811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F06C09C381D600811C25 /* mdaMultiBand.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EEDF09C370D000811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EEE009C370D000811C25 /* audioeffect.cpp in Sources */,
+				6CA0EEE109C370D000811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EEE209C370D000811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F06909C381BC00811C25 /* mdaOverdrive.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EEEB09C370E300811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EEEC09C370E300811C25 /* audioeffect.cpp in Sources */,
+				6CA0EEED09C370E300811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EEEE09C370E300811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F06609C381A500811C25 /* mdaPiano.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EEF709C370F600811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EEF809C370F600811C25 /* audioeffect.cpp in Sources */,
+				6CA0EEF909C370F600811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EEFA09C370F600811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F06309C3818E00811C25 /* mdaRePsycho!.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF0509C3716000811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EF0609C3716000811C25 /* audioeffect.cpp in Sources */,
+				6CA0EF0709C3716000811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EF0809C3716000811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F06009C3817500811C25 /* mdaRezFilter.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF1109C3716700811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EF1209C3716700811C25 /* audioeffect.cpp in Sources */,
+				6CA0EF1309C3716700811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EF1409C3716700811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F05D09C3815D00811C25 /* mdaRingMod.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF1D09C3716D00811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EF1E09C3716D00811C25 /* audioeffect.cpp in Sources */,
+				6CA0EF1F09C3716D00811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EF2009C3716D00811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F05A09C3814800811C25 /* mdaRoundPan.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF2909C3717600811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EF2A09C3717600811C25 /* audioeffect.cpp in Sources */,
+				6CA0EF2B09C3717600811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EF2C09C3717600811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F05709C3812900811C25 /* mdaShepard.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF4109C371C600811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EF4209C371C600811C25 /* audioeffect.cpp in Sources */,
+				6CA0EF4309C371C600811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EF4409C371C600811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F05109C380F300811C25 /* mdaSplitter.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF4D09C371D800811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EF4E09C371D800811C25 /* audioeffect.cpp in Sources */,
+				6CA0EF4F09C371D800811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EF5009C371D800811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F04E09C380DA00811C25 /* mdaStereo.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF7109C3720D00811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EF7209C3720D00811C25 /* audioeffect.cpp in Sources */,
+				6CA0EF7309C3720D00811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EF7409C3720D00811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F04509C3809000811C25 /* mdaTestTone.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF7D09C3722300811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EF7E09C3722300811C25 /* audioeffect.cpp in Sources */,
+				6CA0EF7F09C3722300811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EF8009C3722300811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F04209C3807400811C25 /* mdaThruZero.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF8909C3723600811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EF8A09C3723600811C25 /* audioeffect.cpp in Sources */,
+				6CA0EF8B09C3723600811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EF8C09C3723600811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F03F09C3805B00811C25 /* mdaTracker.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EF9509C3724900811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EF9609C3724900811C25 /* audioeffect.cpp in Sources */,
+				6CA0EF9709C3724900811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EF9809C3724900811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F03C09C3804300811C25 /* mdaTransient.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EFA109C3726500811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EFA209C3726500811C25 /* audioeffect.cpp in Sources */,
+				6CA0EFA309C3726500811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EFA409C3726500811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F03909C3802900811C25 /* mdaVocInput.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CA0EFAD09C3727C00811C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0EFAE09C3727C00811C25 /* audioeffect.cpp in Sources */,
+				6CA0EFAF09C3727C00811C25 /* audioeffectx.cpp in Sources */,
+				6CA0EFB009C3727C00811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F03609C3800B00811C25 /* mdaVocoder.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D01CCCB0486CAD60068D4B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA0ED9609C3647200811C25 /* audioeffect.cpp in Sources */,
+				6CA0ED9709C3647200811C25 /* audioeffectx.cpp in Sources */,
+				6CA0ED9809C3647200811C25 /* vstplugmain.cpp in Sources */,
+				6CA0F00E09C3782C00811C25 /* mdaAmbience.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA2FFA590A698CBE001B44E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA2FFA5A0A698CBE001B44E6 /* audioeffect.cpp in Sources */,
+				DA2FFA5B0A698CBE001B44E6 /* audioeffectx.cpp in Sources */,
+				DA2FFA5C0A698CBE001B44E6 /* vstplugmain.cpp in Sources */,
+				DA2FFA660A698D14001B44E6 /* mdaLooplex.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAB133B00B982DA3006AA414 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAB133B10B982DA3006AA414 /* audioeffect.cpp in Sources */,
+				DAB133B20B982DA3006AA414 /* audioeffectx.cpp in Sources */,
+				DAB133B30B982DA3006AA414 /* vstplugmain.cpp in Sources */,
+				DAB133C10B982E2E006AA414 /* mdaSubSynth.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6CA0EFC309C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D01CCC60486CAD60068D4B7 /* mda Ambience */;
+			targetProxy = 6CA0EFC209C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFC509C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EDED09C36A0000811C25 /* mda Bandisto */;
+			targetProxy = 6CA0EFC409C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFC709C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EE1009C36F5F00811C25 /* mda BeatBox */;
+			targetProxy = 6CA0EFC609C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFC909C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EE1C09C36F8A00811C25 /* mda Combo */;
+			targetProxy = 6CA0EFC809C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFCB09C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EE2809C36F9300811C25 /* mda De-ess */;
+			targetProxy = 6CA0EFCA09C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFCD09C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EE3409C36FB300811C25 /* mda Degrade */;
+			targetProxy = 6CA0EFCC09C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFCF09C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EE4009C36FC400811C25 /* mda Delay */;
+			targetProxy = 6CA0EFCE09C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFD109C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EE4C09C36FD400811C25 /* mda Detune */;
+			targetProxy = 6CA0EFD009C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFD309C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EE5809C36FE900811C25 /* mda Dither */;
+			targetProxy = 6CA0EFD209C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFD509C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EE6409C36FF900811C25 /* mda DubDelay */;
+			targetProxy = 6CA0EFD409C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFD709C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EE7009C3701D00811C25 /* mda DX10 */;
+			targetProxy = 6CA0EFD609C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFD909C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EE7C09C3703000811C25 /* mda Dynamics */;
+			targetProxy = 6CA0EFD809C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFDB09C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EE8809C3703D00811C25 /* mda ePiano */;
+			targetProxy = 6CA0EFDA09C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFDD09C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EE9409C3705600811C25 /* mda Image */;
+			targetProxy = 6CA0EFDC09C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFE109C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EEAC09C3707A00811C25 /* mda Leslie */;
+			targetProxy = 6CA0EFE009C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFE309C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EEB809C3708C00811C25 /* mda Limiter */;
+			targetProxy = 6CA0EFE209C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFE509C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EEC409C3709E00811C25 /* mda Loudness */;
+			targetProxy = 6CA0EFE409C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFE709C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EED009C370B200811C25 /* mda MultiBand */;
+			targetProxy = 6CA0EFE609C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFE909C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EEDD09C370D000811C25 /* mda Overdrive */;
+			targetProxy = 6CA0EFE809C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFEB09C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EEE909C370E300811C25 /* mda Piano */;
+			targetProxy = 6CA0EFEA09C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFED09C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EEF509C370F600811C25 /* mda RePsycho! */;
+			targetProxy = 6CA0EFEC09C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFEF09C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EF0309C3716000811C25 /* mda RezFilter */;
+			targetProxy = 6CA0EFEE09C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFF109C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EF0F09C3716700811C25 /* mda RingMod */;
+			targetProxy = 6CA0EFF009C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFF309C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EF1B09C3716D00811C25 /* mda RoundPan */;
+			targetProxy = 6CA0EFF209C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFF509C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EF2709C3717600811C25 /* mda Shepard */;
+			targetProxy = 6CA0EFF409C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFF909C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EF3F09C371C600811C25 /* mda Splitter */;
+			targetProxy = 6CA0EFF809C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0EFFB09C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EF4B09C371D800811C25 /* mda Stereo */;
+			targetProxy = 6CA0EFFA09C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0F00109C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EF6F09C3720D00811C25 /* mda TestTone */;
+			targetProxy = 6CA0F00009C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0F00309C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EF7B09C3722300811C25 /* mda ThruZero */;
+			targetProxy = 6CA0F00209C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0F00509C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EF8709C3723600811C25 /* mda Tracker */;
+			targetProxy = 6CA0F00409C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0F00709C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EF9309C3724900811C25 /* mda Transient */;
+			targetProxy = 6CA0F00609C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0F00909C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EF9F09C3726500811C25 /* mda VocInput */;
+			targetProxy = 6CA0F00809C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		6CA0F00B09C377F700811C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0EFAB09C3727C00811C25 /* mda Vocoder */;
+			targetProxy = 6CA0F00A09C377F700811C25 /* PBXContainerItemProxy */;
+		};
+		DA2FFA680A698F37001B44E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA2FFA570A698CBE001B44E6 /* mda Looplex */;
+			targetProxy = DA2FFA670A698F37001B44E6 /* PBXContainerItemProxy */;
+		};
+		DAB7DAC40B9C603300AE5662 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DAB133AE0B982DA3006AA414 /* mda SubSynth */;
+			targetProxy = DAB7DAC30B9C603300AE5662 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4FADC23408B4156C00ABE55E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				PRODUCT_NAME = "mda Ambience";
+			};
+			name = Debug;
+		};
+		4FADC23508B4156C00ABE55E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Ambience";
+			};
+			name = Release;
+		};
+		4FADC23808B4156C00ABE55E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				GCC_ALTIVEC_EXTENSIONS = NO;
+				GCC_AUTO_VECTORIZATION = NO;
+				GCC_ENABLE_SSE3_EXTENSIONS = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_PEDANTIC = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(HEADER_SEARCH_PATHS)",
+					../vst,
+				);
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				INFOPLIST_PREPROCESS = YES;
+				PREBINDING = NO;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				WARNING_CFLAGS = "-Wall";
+				WRAPPER_EXTENSION = vst;
+			};
+			name = Debug;
+		};
+		4FADC23908B4156C00ABE55E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				DEPLOYMENT_POSTPROCESSING = YES;
+				GCC_ALTIVEC_EXTENSIONS = NO;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_PEDANTIC = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(HEADER_SEARCH_PATHS)",
+					../vst,
+				);
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				INFOPLIST_PREPROCESS = YES;
+				PREBINDING = NO;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				WARNING_CFLAGS = "-Wall";
+				WRAPPER_EXTENSION = vst;
+			};
+			name = Release;
+		};
+		6CA0EDF609C36A0000811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Bandisto";
+			};
+			name = Debug;
+		};
+		6CA0EDF709C36A0000811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Bandisto";
+			};
+			name = Release;
+		};
+		6CA0EE1809C36F5F00811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda BeatBox";
+			};
+			name = Debug;
+		};
+		6CA0EE1909C36F5F00811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda BeatBox";
+			};
+			name = Release;
+		};
+		6CA0EE2409C36F8A00811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Combo";
+			};
+			name = Debug;
+		};
+		6CA0EE2509C36F8A00811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Combo";
+			};
+			name = Release;
+		};
+		6CA0EE3009C36F9300811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda De-ess";
+			};
+			name = Debug;
+		};
+		6CA0EE3109C36F9300811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda De-ess";
+			};
+			name = Release;
+		};
+		6CA0EE3C09C36FB300811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Degrade";
+			};
+			name = Debug;
+		};
+		6CA0EE3D09C36FB300811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Degrade";
+			};
+			name = Release;
+		};
+		6CA0EE4809C36FC400811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Delay";
+			};
+			name = Debug;
+		};
+		6CA0EE4909C36FC400811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Delay";
+			};
+			name = Release;
+		};
+		6CA0EE5409C36FD400811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Detune";
+			};
+			name = Debug;
+		};
+		6CA0EE5509C36FD400811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Detune";
+			};
+			name = Release;
+		};
+		6CA0EE6009C36FE900811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Dither";
+			};
+			name = Debug;
+		};
+		6CA0EE6109C36FE900811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Dither";
+			};
+			name = Release;
+		};
+		6CA0EE6C09C36FF900811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda DubDelay";
+			};
+			name = Debug;
+		};
+		6CA0EE6D09C36FF900811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda DubDelay";
+			};
+			name = Release;
+		};
+		6CA0EE7809C3701D00811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda DX10";
+			};
+			name = Debug;
+		};
+		6CA0EE7909C3701D00811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda DX10";
+			};
+			name = Release;
+		};
+		6CA0EE8409C3703000811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Dynamics";
+			};
+			name = Debug;
+		};
+		6CA0EE8509C3703000811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Dynamics";
+			};
+			name = Release;
+		};
+		6CA0EE9009C3703D00811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda ePiano";
+			};
+			name = Debug;
+		};
+		6CA0EE9109C3703D00811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda ePiano";
+			};
+			name = Release;
+		};
+		6CA0EE9C09C3705600811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Image";
+			};
+			name = Debug;
+		};
+		6CA0EE9D09C3705600811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Image";
+			};
+			name = Release;
+		};
+		6CA0EEB409C3707A00811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Leslie";
+			};
+			name = Debug;
+		};
+		6CA0EEB509C3707A00811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Leslie";
+			};
+			name = Release;
+		};
+		6CA0EEC009C3708C00811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Limiter";
+			};
+			name = Debug;
+		};
+		6CA0EEC109C3708C00811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Limiter";
+			};
+			name = Release;
+		};
+		6CA0EECC09C3709E00811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Loudness";
+			};
+			name = Debug;
+		};
+		6CA0EECD09C3709E00811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Loudness";
+			};
+			name = Release;
+		};
+		6CA0EED809C370B200811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda MultiBand";
+			};
+			name = Debug;
+		};
+		6CA0EED909C370B200811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda MultiBand";
+			};
+			name = Release;
+		};
+		6CA0EEE509C370D000811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Overdrive";
+			};
+			name = Debug;
+		};
+		6CA0EEE609C370D000811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Overdrive";
+			};
+			name = Release;
+		};
+		6CA0EEF109C370E300811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Piano";
+			};
+			name = Debug;
+		};
+		6CA0EEF209C370E300811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Piano";
+			};
+			name = Release;
+		};
+		6CA0EEFD09C370F600811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda RePsycho!";
+			};
+			name = Debug;
+		};
+		6CA0EEFE09C370F600811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda RePsycho!";
+			};
+			name = Release;
+		};
+		6CA0EF0B09C3716000811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda RezFilter";
+			};
+			name = Debug;
+		};
+		6CA0EF0C09C3716000811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda RezFilter";
+			};
+			name = Release;
+		};
+		6CA0EF1709C3716700811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda RingMod";
+			};
+			name = Debug;
+		};
+		6CA0EF1809C3716700811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda RingMod";
+			};
+			name = Release;
+		};
+		6CA0EF2309C3716D00811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda RoundPan";
+			};
+			name = Debug;
+		};
+		6CA0EF2409C3716D00811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda RoundPan";
+			};
+			name = Release;
+		};
+		6CA0EF2F09C3717600811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Shepard";
+			};
+			name = Debug;
+		};
+		6CA0EF3009C3717600811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Shepard";
+			};
+			name = Release;
+		};
+		6CA0EF4709C371C600811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Splitter";
+			};
+			name = Debug;
+		};
+		6CA0EF4809C371C600811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Splitter";
+			};
+			name = Release;
+		};
+		6CA0EF5309C371D800811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Stereo";
+			};
+			name = Debug;
+		};
+		6CA0EF5409C371D800811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Stereo";
+			};
+			name = Release;
+		};
+		6CA0EF7709C3720D00811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda TestTone";
+			};
+			name = Debug;
+		};
+		6CA0EF7809C3720D00811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda TestTone";
+			};
+			name = Release;
+		};
+		6CA0EF8309C3722300811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda ThruZero";
+			};
+			name = Debug;
+		};
+		6CA0EF8409C3722300811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda ThruZero";
+			};
+			name = Release;
+		};
+		6CA0EF8F09C3723600811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Tracker";
+			};
+			name = Debug;
+		};
+		6CA0EF9009C3723600811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Tracker";
+			};
+			name = Release;
+		};
+		6CA0EF9B09C3724900811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Transient";
+			};
+			name = Debug;
+		};
+		6CA0EF9C09C3724900811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Transient";
+			};
+			name = Release;
+		};
+		6CA0EFA709C3726500811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda VocInput";
+			};
+			name = Debug;
+		};
+		6CA0EFA809C3726500811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda VocInput";
+			};
+			name = Release;
+		};
+		6CA0EFB309C3727C00811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Vocoder";
+			};
+			name = Debug;
+		};
+		6CA0EFB409C3727C00811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Vocoder";
+			};
+			name = Release;
+		};
+		6CA0EFBE09C3773500811C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				OPTIMIZATION_CFLAGS = "-O0";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "Build All";
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		6CA0EFBF09C3773500811C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				OPTIMIZATION_CFLAGS = "-O0";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "Build All";
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
+		DA2FFA600A698CBE001B44E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "/Users/paul/_paul/vst2.4/mda/mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Looplex";
+			};
+			name = Debug;
+		};
+		DA2FFA610A698CBE001B44E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "/Users/paul/_paul/vst2.4/mda/mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda Looplex";
+			};
+			name = Release;
+		};
+		DAB133B80B982DA3006AA414 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				INFOPLIST_FILE = "/Users/paul/_paul/vst2.4/mda/mda-vst.xcodeproj/mda copy.plist";
+				PRODUCT_NAME = "mda SubBass";
+			};
+			name = Debug;
+		};
+		DAB133B90B982DA3006AA414 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "/Users/paul/_paul/vst2.4/mda/mda-vst.xcodeproj/mda.plist";
+				PRODUCT_NAME = "mda SubSynth";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4FADC23308B4156C00ABE55E /* Build configuration list for PBXNativeTarget "mda Ambience" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FADC23408B4156C00ABE55E /* Debug */,
+				4FADC23508B4156C00ABE55E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FADC23708B4156C00ABE55E /* Build configuration list for PBXProject "mda-vst" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FADC23808B4156C00ABE55E /* Debug */,
+				4FADC23908B4156C00ABE55E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EDF509C36A0000811C25 /* Build configuration list for PBXNativeTarget "mda Bandisto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EDF609C36A0000811C25 /* Debug */,
+				6CA0EDF709C36A0000811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EE1709C36F5F00811C25 /* Build configuration list for PBXNativeTarget "mda BeatBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EE1809C36F5F00811C25 /* Debug */,
+				6CA0EE1909C36F5F00811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EE2309C36F8A00811C25 /* Build configuration list for PBXNativeTarget "mda Combo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EE2409C36F8A00811C25 /* Debug */,
+				6CA0EE2509C36F8A00811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EE2F09C36F9300811C25 /* Build configuration list for PBXNativeTarget "mda De-ess" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EE3009C36F9300811C25 /* Debug */,
+				6CA0EE3109C36F9300811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EE3B09C36FB300811C25 /* Build configuration list for PBXNativeTarget "mda Degrade" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EE3C09C36FB300811C25 /* Debug */,
+				6CA0EE3D09C36FB300811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EE4709C36FC400811C25 /* Build configuration list for PBXNativeTarget "mda Delay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EE4809C36FC400811C25 /* Debug */,
+				6CA0EE4909C36FC400811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EE5309C36FD400811C25 /* Build configuration list for PBXNativeTarget "mda Detune" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EE5409C36FD400811C25 /* Debug */,
+				6CA0EE5509C36FD400811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EE5F09C36FE900811C25 /* Build configuration list for PBXNativeTarget "mda Dither" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EE6009C36FE900811C25 /* Debug */,
+				6CA0EE6109C36FE900811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EE6B09C36FF900811C25 /* Build configuration list for PBXNativeTarget "mda DubDelay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EE6C09C36FF900811C25 /* Debug */,
+				6CA0EE6D09C36FF900811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EE7709C3701D00811C25 /* Build configuration list for PBXNativeTarget "mda DX10" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EE7809C3701D00811C25 /* Debug */,
+				6CA0EE7909C3701D00811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EE8309C3703000811C25 /* Build configuration list for PBXNativeTarget "mda Dynamics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EE8409C3703000811C25 /* Debug */,
+				6CA0EE8509C3703000811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EE8F09C3703D00811C25 /* Build configuration list for PBXNativeTarget "mda ePiano" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EE9009C3703D00811C25 /* Debug */,
+				6CA0EE9109C3703D00811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EE9B09C3705600811C25 /* Build configuration list for PBXNativeTarget "mda Image" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EE9C09C3705600811C25 /* Debug */,
+				6CA0EE9D09C3705600811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EEB309C3707A00811C25 /* Build configuration list for PBXNativeTarget "mda Leslie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EEB409C3707A00811C25 /* Debug */,
+				6CA0EEB509C3707A00811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EEBF09C3708C00811C25 /* Build configuration list for PBXNativeTarget "mda Limiter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EEC009C3708C00811C25 /* Debug */,
+				6CA0EEC109C3708C00811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EECB09C3709E00811C25 /* Build configuration list for PBXNativeTarget "mda Loudness" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EECC09C3709E00811C25 /* Debug */,
+				6CA0EECD09C3709E00811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EED709C370B200811C25 /* Build configuration list for PBXNativeTarget "mda MultiBand" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EED809C370B200811C25 /* Debug */,
+				6CA0EED909C370B200811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EEE409C370D000811C25 /* Build configuration list for PBXNativeTarget "mda Overdrive" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EEE509C370D000811C25 /* Debug */,
+				6CA0EEE609C370D000811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EEF009C370E300811C25 /* Build configuration list for PBXNativeTarget "mda Piano" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EEF109C370E300811C25 /* Debug */,
+				6CA0EEF209C370E300811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EEFC09C370F600811C25 /* Build configuration list for PBXNativeTarget "mda RePsycho!" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EEFD09C370F600811C25 /* Debug */,
+				6CA0EEFE09C370F600811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EF0A09C3716000811C25 /* Build configuration list for PBXNativeTarget "mda RezFilter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EF0B09C3716000811C25 /* Debug */,
+				6CA0EF0C09C3716000811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EF1609C3716700811C25 /* Build configuration list for PBXNativeTarget "mda RingMod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EF1709C3716700811C25 /* Debug */,
+				6CA0EF1809C3716700811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EF2209C3716D00811C25 /* Build configuration list for PBXNativeTarget "mda RoundPan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EF2309C3716D00811C25 /* Debug */,
+				6CA0EF2409C3716D00811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EF2E09C3717600811C25 /* Build configuration list for PBXNativeTarget "mda Shepard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EF2F09C3717600811C25 /* Debug */,
+				6CA0EF3009C3717600811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EF4609C371C600811C25 /* Build configuration list for PBXNativeTarget "mda Splitter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EF4709C371C600811C25 /* Debug */,
+				6CA0EF4809C371C600811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EF5209C371D800811C25 /* Build configuration list for PBXNativeTarget "mda Stereo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EF5309C371D800811C25 /* Debug */,
+				6CA0EF5409C371D800811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EF7609C3720D00811C25 /* Build configuration list for PBXNativeTarget "mda TestTone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EF7709C3720D00811C25 /* Debug */,
+				6CA0EF7809C3720D00811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EF8209C3722300811C25 /* Build configuration list for PBXNativeTarget "mda ThruZero" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EF8309C3722300811C25 /* Debug */,
+				6CA0EF8409C3722300811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EF8E09C3723600811C25 /* Build configuration list for PBXNativeTarget "mda Tracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EF8F09C3723600811C25 /* Debug */,
+				6CA0EF9009C3723600811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EF9A09C3724900811C25 /* Build configuration list for PBXNativeTarget "mda Transient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EF9B09C3724900811C25 /* Debug */,
+				6CA0EF9C09C3724900811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EFA609C3726500811C25 /* Build configuration list for PBXNativeTarget "mda VocInput" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EFA709C3726500811C25 /* Debug */,
+				6CA0EFA809C3726500811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EFB209C3727C00811C25 /* Build configuration list for PBXNativeTarget "mda Vocoder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EFB309C3727C00811C25 /* Debug */,
+				6CA0EFB409C3727C00811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0EFBD09C3773500811C25 /* Build configuration list for PBXAggregateTarget "Build All" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CA0EFBE09C3773500811C25 /* Debug */,
+				6CA0EFBF09C3773500811C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA2FFA5F0A698CBE001B44E6 /* Build configuration list for PBXNativeTarget "mda Looplex" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA2FFA600A698CBE001B44E6 /* Debug */,
+				DA2FFA610A698CBE001B44E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAB133B70B982DA3006AA414 /* Build configuration list for PBXNativeTarget "mda SubSynth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAB133B80B982DA3006AA414 /* Debug */,
+				DAB133B90B982DA3006AA414 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}
