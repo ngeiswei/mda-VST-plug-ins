@@ -13,6 +13,7 @@ public:
 	virtual void processReplacing(float **inputs, float **outputs, VstInt32 sampleFrames);
 	virtual void setProgramName(char *name);
 	virtual void getProgramName(char *name);
+	virtual bool getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name);
 	virtual void setParameter(VstInt32 index, float value);
 	virtual float getParameter(VstInt32 index);
 	virtual void getParameterLabel(VstInt32 index, char *label);
@@ -35,7 +36,7 @@ protected:
   float fParam6;
 
   float *buffer;               //delay
-	long size, ipos;             //delay max time, pointer, left time, right time
+	VstInt32 size, ipos;             //delay max time, pointer, left time, right time
   float wet, dry, fbk;         //wet & dry mix
   float lmix, hmix, fil, fil0; //low & high mix, crossover filter coeff & buffer
   float env, rel;              //limiter (clipper when release is instant)

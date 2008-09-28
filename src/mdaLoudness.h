@@ -13,8 +13,6 @@ class mdaLoudnessProgram
 {
 public:
   mdaLoudnessProgram();
-  ~mdaLoudnessProgram() {}
-
 private:
   friend class mdaLoudness;
   float param[NPARAMS];
@@ -33,6 +31,7 @@ public:
   virtual void  setProgram(VstInt32 program);
   virtual void  setProgramName(char *name);
   virtual void  getProgramName(char *name);
+	virtual bool getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name);
   virtual void  setParameter(VstInt32 index, float value);
   virtual float getParameter(VstInt32 index);
   virtual void  getParameterLabel(VstInt32 index, char *label);
@@ -47,14 +46,12 @@ public:
 	virtual VstInt32 getVendorVersion() { return 1000; }
 
 protected:
-  float param[NPARAMS];
-  char programName[32];
   mdaLoudnessProgram *programs;
 
   ///global internal variables
   float Z0, Z1, Z2, Z3, A0, A1, A2, gain;
   float igain, ogain;
-  long  mode;
+  VstInt32  mode;
 };
 
 #endif

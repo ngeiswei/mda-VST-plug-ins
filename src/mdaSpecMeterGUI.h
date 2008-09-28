@@ -12,12 +12,12 @@ public:
  ~CDraw();
 
 	void draw(CDrawContext *pContext);
-	long x2pix(float x);
-	long x22pix(float x);
+	VstInt32 x2pix(float x);
+	VstInt32 x22pix(float x);
 
   float Lpeak, Lrms, Lmin, Rpeak, Rrms, Rmin, Corr;
   float band[2][16];
-  long temp;
+  VstInt32 temp;
 
 protected:
   CBitmap *bitmap;
@@ -37,7 +37,7 @@ public:
 private:
   CDraw  *draw;
   CBitmap *background;
-	long xtimer;
+	VstInt32 xtimer;
 };
 
 

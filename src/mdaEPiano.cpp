@@ -19,15 +19,15 @@ mdaEPiano::mdaEPiano(audioMasterCallback audioMaster) : AudioEffectX(audioMaster
 	if(programs)
   {
     //fill patches...
-    long i=0;
+    VstInt32 i=0;
     fillpatch(i++, "Default", 0.500f, 0.500f, 0.500f, 0.500f, 0.500f, 0.650f, 0.250f, 0.500f, 0.50f, 0.500f, 0.146f, 0.000f);
     fillpatch(i++, "Bright", 0.500f, 0.500f, 1.000f, 0.800f, 0.500f, 0.650f, 0.250f, 0.500f, 0.50f, 0.500f, 0.146f, 0.500f);
     fillpatch(i++, "Mellow", 0.500f, 0.500f, 0.000f, 0.000f, 0.500f, 0.650f, 0.250f, 0.500f, 0.50f, 0.500f, 0.246f, 0.000f);
     fillpatch(i++, "Autopan", 0.500f, 0.500f, 0.500f, 0.500f, 0.250f, 0.650f, 0.250f, 0.500f, 0.50f, 0.500f, 0.246f, 0.000f);
     fillpatch(i++, "Tremolo", 0.500f, 0.500f, 0.500f, 0.500f, 0.750f, 0.650f, 0.250f, 0.500f, 0.50f, 0.500f, 0.246f, 0.000f);
-    fillpatch(i++, " ", 0.500f, 0.500f, 0.500f, 0.500f, 0.500f, 0.650f, 0.250f, 0.500f, 0.50f, 0.500f, 0.146f, 0.000f);
-    fillpatch(i++, " ", 0.500f, 0.500f, 0.500f, 0.500f, 0.500f, 0.650f, 0.250f, 0.500f, 0.50f, 0.500f, 0.146f, 0.000f);
-    fillpatch(i++, " ", 0.500f, 0.500f, 0.500f, 0.500f, 0.500f, 0.650f, 0.250f, 0.500f, 0.50f, 0.500f, 0.146f, 0.000f);
+    fillpatch(i++, "(default)", 0.500f, 0.500f, 0.500f, 0.500f, 0.500f, 0.650f, 0.250f, 0.500f, 0.50f, 0.500f, 0.146f, 0.000f);
+    fillpatch(i++, "(default)", 0.500f, 0.500f, 0.500f, 0.500f, 0.500f, 0.650f, 0.250f, 0.500f, 0.50f, 0.500f, 0.146f, 0.000f);
+    fillpatch(i++, "(default)", 0.500f, 0.500f, 0.500f, 0.500f, 0.500f, 0.650f, 0.250f, 0.500f, 0.50f, 0.500f, 0.146f, 0.000f);
     setProgram(0);
   }
 
@@ -90,10 +90,10 @@ mdaEPiano::mdaEPiano(audioMasterCallback audioMaster) : AudioEffectX(audioMaster
   kgrp[32].pos = 414487;  kgrp[32].end = 422408;  kgrp[32].loop = 2169;  
 
   //extra xfade looping...
-  for(long k=0; k<28; k++)
+  for(VstInt32 k=0; k<28; k++)
   {
-    long p0 = kgrp[k].end;
-    long p1 = kgrp[k].end - kgrp[k].loop;
+    VstInt32 p0 = kgrp[k].end;
+    VstInt32 p1 = kgrp[k].end - kgrp[k].loop;
 
     float xf = 1.0f;
     float dxf = -0.02f;
@@ -108,7 +108,7 @@ mdaEPiano::mdaEPiano(audioMasterCallback audioMaster) : AudioEffectX(audioMaster
   }
 
   //initialise...
-  for(long v=0; v<NVOICES; v++) 
+  for(VstInt32 v=0; v<NVOICES; v++) 
   {
     voice[v].env = 0.0f;
     voice[v].dec = 0.99f; //all notes off
@@ -128,7 +128,8 @@ mdaEPiano::mdaEPiano(audioMasterCallback audioMaster) : AudioEffectX(audioMaster
 
 void mdaEPiano::update()  //parameter change
 {
-  size = (long)(12.0f * param[2] - 6.0f);
+  float * param = programs[curProgram].param;
+  size = (VstInt32)(12.0f * param[2] - 6.0f);
   
   treb = 4.0f * param[3] * param[3] - 1.0f; //treble gain
   if(param[3] > 0.5f) tfrq = 14000.0f; else tfrq = 5000.0f; //treble freq
@@ -143,7 +144,7 @@ void mdaEPiano::update()  //parameter change
   if(param[6] < 0.25f) velsens -= 0.75f - 3.0f * param[6];
   
   width = 0.03f * param[7];
-  poly = 1 + (long)(31.9f * param[8]);
+  poly = 1 + (VstInt32)(31.9f * param[8]);
   fine = param[9] - 0.5f;
   random = 0.077f * param[10] * param[10];
   stretch = 0.0f; //0.000434f * (param[11] - 0.5f); parameter re-used for overdrive!
@@ -155,7 +156,7 @@ void mdaEPiano::resume()
 {	
   Fs = getSampleRate();
   iFs = 1.0f / Fs;
-  dlfo = 6.283f * iFs * (float)exp(6.22f * param[5] - 2.61f); //lfo rate
+  dlfo = 6.283f * iFs * (float)exp(6.22f * programs[curProgram].param[5] - 2.61f); //lfo rate
 
   DECLARE_VST_DEPRECATED (wantEvents) ();
 }
@@ -169,19 +170,14 @@ mdaEPiano::~mdaEPiano ()  //destroy any buffers...
 
 void mdaEPiano::setProgram(VstInt32 program)
 {
-	long i;
-
-  mdaEPianoProgram *p = &programs[program];
 	curProgram = program;
-	for(i=0; i<NPARAMS; i++) param[i] = p->param[i];
-  update();
+    update();
 }
 
 
 void mdaEPiano::setParameter(VstInt32 index, float value)
 {
-  mdaEPianoProgram *p = &programs[curProgram];
-  param[index] = p->param[index] = value;
+  programs[curProgram].param[index] = value;
   update();
 
   //if(editor) editor->postUpdate(); ///For GUI
@@ -190,7 +186,7 @@ void mdaEPiano::setParameter(VstInt32 index, float value)
 }
 
 
-void mdaEPiano::fillpatch(long p, char *name, float p0, float p1, float p2, float p3, float p4,
+void mdaEPiano::fillpatch(VstInt32 p, char *name, float p0, float p1, float p2, float p3, float p4,
                       float p5, float p6, float p7, float p8, float p9, float p10,float p11)
 {
   strcpy(programs[p].name, name);
@@ -203,7 +199,7 @@ void mdaEPiano::fillpatch(long p, char *name, float p0, float p1, float p2, floa
 }
 
 
-float mdaEPiano::getParameter(VstInt32 index)     { return param[index]; }
+float mdaEPiano::getParameter(VstInt32 index)     { return programs[curProgram].param[index]; }
 void  mdaEPiano::setProgramName(char *name)   { strcpy(programs[curProgram].name, name); }
 void  mdaEPiano::getProgramName(char *name)   { strcpy(name, programs[curProgram].name); }
 void  mdaEPiano::setBlockSize(VstInt32 blockSize) {	AudioEffectX::setBlockSize(blockSize); }
@@ -228,7 +224,7 @@ bool mdaEPiano::getOutputProperties(VstInt32 index, VstPinProperties* properties
 
 bool mdaEPiano::getProgramNameIndexed(VstInt32 category, VstInt32 index, char* text)
 {
-	if(index<NPROGS)
+	if ((unsigned int)index < NPROGS)
 	{
 		strcpy(text, programs[index].name);
 		return true;
@@ -282,6 +278,7 @@ void mdaEPiano::getParameterName(VstInt32 index, char *label)
 void mdaEPiano::getParameterDisplay(VstInt32 index, char *text)
 {
 	char string[16];
+	float * param = programs[curProgram].param;
   
   switch(index)
   {
@@ -296,7 +293,7 @@ void mdaEPiano::getParameterDisplay(VstInt32 index, char *text)
 
     case  5: sprintf(string, "%.2f", (float)exp(6.22f * param[5] - 2.61f)); break; //LFO Hz 
     case  7: sprintf(string, "%.0f", 200.0f * param[index]); break;
-    case  8: sprintf(string, "%ld", poly); break;
+    case  8: sprintf(string, "%d", poly); break;
     case 10: sprintf(string, "%.1f",  50.0f * param[index] * param[index]); break;
     case 11: sprintf(string, "%.1f", 100.0f * param[index]); break;
     default: sprintf(string, "%.0f", 100.0f * param[index]);
@@ -332,9 +329,9 @@ void mdaEPiano::process(float **inputs, float **outputs, VstInt32 sampleFrames)
 {
 	float* out0 = outputs[0];
 	float* out1 = outputs[1];
-	long event=0, frame=0, frames, v;
+	VstInt32 event=0, frame=0, frames, v;
   float x, l, r, od=overdrive;
-  long i;
+  VstInt32 i;
 
   while(frame<sampleFrames)
   {
@@ -382,10 +379,10 @@ void mdaEPiano::process(float **inputs, float **outputs, VstInt32 sampleFrames)
 
     if(frame<sampleFrames)
     {
-      if(activevoices == 0 && param[4] > 0.5f) 
+      if(activevoices == 0 && programs[curProgram].param[4] > 0.5f) 
         { lfo0 = -0.7071f;  lfo1 = 0.7071f; } //reset LFO phase - good idea?
-      long note = notes[event++];
-      long vel  = notes[event++];
+      VstInt32 note = notes[event++];
+      VstInt32 vel  = notes[event++];
       noteOn(note, vel);
     }
   }
@@ -401,9 +398,9 @@ void mdaEPiano::processReplacing(float **inputs, float **outputs, VstInt32 sampl
 {
 	float* out0 = outputs[0];
 	float* out1 = outputs[1];
-	long event=0, frame=0, frames, v;
+	VstInt32 event=0, frame=0, frames, v;
   float x, l, r, od=overdrive;
-  long i;
+  VstInt32 i;
 
   while(frame<sampleFrames)
   {
@@ -455,10 +452,10 @@ void mdaEPiano::processReplacing(float **inputs, float **outputs, VstInt32 sampl
 
     if(frame<sampleFrames)
     {
-      if(activevoices == 0 && param[4] > 0.5f) 
+      if(activevoices == 0 && programs[curProgram].param[4] > 0.5f) 
         { lfo0 = -0.7071f;  lfo1 = 0.7071f; } //reset LFO phase - good idea?
-      long note = notes[event++];
-      long vel  = notes[event++];
+      VstInt32 note = notes[event++];
+      VstInt32 vel  = notes[event++];
       noteOn(note, vel);
     }
   }
@@ -470,10 +467,11 @@ void mdaEPiano::processReplacing(float **inputs, float **outputs, VstInt32 sampl
 }
 
 
-void mdaEPiano::noteOn(long note, long velocity)
+void mdaEPiano::noteOn(VstInt32 note, VstInt32 velocity)
 {
+  float * param = programs[curProgram].param;
   float l=99.0f;
-  long  v, vl=0, k, s;
+  VstInt32  v, vl=0, k, s;
   
   if(velocity > 0) 
   {
@@ -496,13 +494,13 @@ void mdaEPiano::noteOn(long note, long velocity)
     if(note > 60) l += stretch * (float)k; //stretch
 
     s = size;
-    if(velocity > 40) s += (long)(sizevel * (float)(velocity - 40));  
+    if(velocity > 40) s += (VstInt32)(sizevel * (float)(velocity - 40));  
 
     k = 0;
     while(note > (kgrp[k].high + s)) k += 3;  //find keygroup
     l += (float)(note - kgrp[k].root); //pitch
     l = 32000.0f * iFs * (float)exp(0.05776226505 * l);
-    voice[vl].delta = (long)(65536.0f * l);
+    voice[vl].delta = (VstInt32)(65536.0f * l);
     voice[vl].frac = 0;
 
     if(velocity > 48) k++; //mid velocity sample
@@ -546,9 +544,10 @@ void mdaEPiano::noteOn(long note, long velocity)
 
 VstInt32 mdaEPiano::processEvents(VstEvents* ev)
 {
-  long npos=0;
+  float * param = programs[curProgram].param;
+  VstInt32 npos=0;
   
-  for (long i=0; i<ev->numEvents; i++)
+  for (VstInt32 i=0; i<ev->numEvents; i++)
 	{
 		if((ev->events[i])->type != kVstMidiType) continue;
 		VstMidiEvent* event = (VstMidiEvent*)ev->events[i];
@@ -599,7 +598,7 @@ VstInt32 mdaEPiano::processEvents(VstEvents* ev)
           default:  //all notes off
             if(midiData[1]>0x7A) 
             {  
-              for(long v=0; v<NVOICES; v++) voice[v].dec=0.99f;
+              for(VstInt32 v=0; v<NVOICES; v++) voice[v].dec=0.99f;
               sustain = 0;
               muff = 160.0f;
             }

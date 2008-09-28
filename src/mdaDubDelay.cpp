@@ -29,7 +29,7 @@ mdaDubDelay::mdaDubDelay(audioMasterCallback audioMaster)	: AudioEffectX(audioMa
 
   setNumInputs(2);		  
 	setNumOutputs(2);		  
-	setUniqueID('mdaß');  //identify here
+	setUniqueID('mdaï¿½');  //identify here
 	DECLARE_VST_DEPRECATED(canMono) ();				      
 	canProcessReplacing();	
 	strcpy(programName, "Dub Feedback Delay");
@@ -106,6 +106,16 @@ void mdaDubDelay::getProgramName(char *name)
 	strcpy(name, programName);
 }
 
+bool mdaDubDelay::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if (index == 0) 
+	{
+	    strcpy(name, programName);
+	    return true;
+	}
+	return false;
+}
+
 float mdaDubDelay::getParameter(VstInt32 index)
 {
 	float v=0;
@@ -138,20 +148,20 @@ void mdaDubDelay::getParameterName(VstInt32 index, char *label)
 }
 
 #include <stdio.h>
-void long2string(long value, char *string) { sprintf(string, "%ld", value); }
+void int2strng(VstInt32 value, char *string) { sprintf(string, "%d", value); }
 void float2strng(float value, char *string) { sprintf(string, "%.2f", value); }
 
 void mdaDubDelay::getParameterDisplay(VstInt32 index, char *text)
 {
 	switch(index)
   {
-    case 0: long2string((long)(del * 1000.0f / getSampleRate()), text); break;
-    case 1: long2string((long)(220 * fParam1 - 110), text); break;
-    case 2: long2string((long)(200 * fParam2 - 100), text); break;
-    case 3: long2string((long)(100 * fParam3), text); break;
+    case 0: int2strng((VstInt32)(del * 1000.0f / getSampleRate()), text); break;
+    case 1: int2strng((VstInt32)(220 * fParam1 - 110), text); break;
+    case 2: int2strng((VstInt32)(200 * fParam2 - 100), text); break;
+    case 3: int2strng((VstInt32)(100 * fParam3), text); break;
     case 4: float2strng((float)pow(10.0f, 2.0f - 3.0f * fParam4), text); break;
-    case 5: long2string((long)(100 * fParam5), text); break;
-    case 6: long2string((long)(20 * log10(2.0 * fParam6)), text); break;
+    case 5: int2strng((VstInt32)(100 * fParam5), text); break;
+    case 6: int2strng((VstInt32)(20 * log10(2.0 * fParam6)), text); break;
   }
 }
 
@@ -181,7 +191,7 @@ void mdaDubDelay::process(float **inputs, float **outputs, VstInt32 sampleFrames
   float lx=lmix, hx=hmix, f=fil, f0=fil0, tmp;
   float e=env, g, r=rel; //limiter envelope, gain, release
   float twopi=6.2831853f;
-  long  i=ipos, l, s=size, k=0;
+  VstInt32  i=ipos, l, s=size, k=0;
 
 	--in1;	
 	--in2;	
@@ -206,7 +216,7 @@ void mdaDubDelay::process(float **inputs, float **outputs, VstInt32 sampleFrames
  
     i--; if(i<0) i=s;                         //delay positions
     
-    l = (long)dl;
+    l = (VstInt32)dl;
     tmp = dl - (float)l; //remainder
     l += i; if(l>s) l-=(s+1);
     
@@ -246,7 +256,7 @@ void mdaDubDelay::processReplacing(float **inputs, float **outputs, VstInt32 sam
   float lx=lmix, hx=hmix, f=fil, f0=fil0, tmp;
   float e=env, g, r=rel; //limiter envelope, gain, release
   float twopi=6.2831853f;
-  long  i=ipos, l, s=size, k=0;
+  VstInt32  i=ipos, l, s=size, k=0;
 
 	--in1;	
 	--in2;	
@@ -269,7 +279,7 @@ void mdaDubDelay::processReplacing(float **inputs, float **outputs, VstInt32 sam
  
     i--; if(i<0) i=s;                         //delay positions
     
-    l = (long)dl;
+    l = (VstInt32)dl;
     tmp = dl - (float)l; //remainder
     l += i; if(l>s) l-=(s+1);
     

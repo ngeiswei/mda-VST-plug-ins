@@ -57,7 +57,7 @@ mdaJX10Program::mdaJX10Program()
 
 mdaJX10::mdaJX10(audioMasterCallback audioMaster) : AudioEffectX(audioMaster, NPROGS, NPARAMS)
 {
-  long i=0;
+  VstInt32 i=0;
   Fs = 44100.0f;
 
   programs = new mdaJX10Program[NPROGS];
@@ -133,7 +133,7 @@ mdaJX10::mdaJX10(audioMasterCallback audioMaster) : AudioEffectX(audioMaster, NP
 	}
 
   //initialise...
-  for(long v=0; v<NVOICES; v++) 
+  for(VstInt32 v=0; v<NVOICES; v++) 
   {
     voice[v].dp   = voice[v].dp2   = 1.0f;
     voice[v].saw  = voice[v].p     = voice[v].p2    = 0.0f;
@@ -157,8 +157,9 @@ mdaJX10::mdaJX10(audioMasterCallback audioMaster) : AudioEffectX(audioMaster, NP
 void mdaJX10::update()  //parameter change
 {
   double ifs = 1.0 / Fs;
+  float * param = programs[curProgram].param;
 
-  mode = (long)(7.9f * param[3]);
+  mode = (VstInt32)(7.9f * param[3]);
   noisemix = param[21] * param[21];
   voltrim = (3.2f - param[0] - 1.5f * noisemix) * (1.5f - 0.5f * param[7]);
   noisemix *= 0.06f;
@@ -221,7 +222,7 @@ void mdaJX10::resume()
 
 void mdaJX10::suspend() //Used by Logic (have note off code in 3 places now...)
 {
-  for(long v=0; v<NVOICES; v++)
+  for(VstInt32 v=0; v<NVOICES; v++)
   {
     voice[v].envl = voice[v].env = 0.0f; 
     voice[v].envd = 0.99f;
@@ -239,26 +240,21 @@ mdaJX10::~mdaJX10()  //destroy any buffers...
 
 void mdaJX10::setProgram(VstInt32 program)
 {
-	long i;
-
-  mdaJX10Program *p = &programs[program];
 	curProgram = program;
-	for(i=0; i<NPARAMS; i++) param[i] = p->param[i];
-  update();
+    update();
 } //may want all notes off here - but this stops use of patches as snapshots!
 
 
 void mdaJX10::setParameter(VstInt32 index, float value)
 {
-  mdaJX10Program *p = &programs[curProgram];
-  param[index] = p->param[index] = value;
+  programs[curProgram].param[index] = value;
   update();
 
   ///if(editor) editor->postUpdate();
 }
 
 
-void mdaJX10::fillpatch(long p, char *name,
+void mdaJX10::fillpatch(VstInt32 p, char *name,
                       float p0,  float p1,  float p2,  float p3,  float p4,  float p5, 
                       float p6,  float p7,  float p8,  float p9,  float p10, float p11,
                       float p12, float p13, float p14, float p15, float p16, float p17, 
@@ -280,7 +276,7 @@ void mdaJX10::fillpatch(long p, char *name,
 }
 
 
-float mdaJX10::getParameter(VstInt32 index)     { return param[index]; }
+float mdaJX10::getParameter(VstInt32 index)     { return programs[curProgram].param[index]; }
 void  mdaJX10::setProgramName(char *name)   { strcpy(programs[curProgram].name, name); }
 void  mdaJX10::getProgramName(char *name)   { strcpy(name, programs[curProgram].name); }
 void  mdaJX10::setBlockSize(VstInt32 blockSize) {	AudioEffectX::setBlockSize(blockSize); }
@@ -304,7 +300,7 @@ bool mdaJX10::getOutputProperties(VstInt32 index, VstPinProperties* properties)
 
 bool mdaJX10::getProgramNameIndexed(VstInt32 category, VstInt32 index, char* text)
 {
-	if(index<NPROGS)
+	if ((unsigned int)index < NPROGS)
 	{
 		strcpy(text, programs[index].name);
 		return true;
@@ -374,6 +370,7 @@ void mdaJX10::getParameterName(VstInt32 index, char *label)
 void mdaJX10::getParameterDisplay(VstInt32 index, char *text)
 {
 	char string[16];
+	float * param = programs[curProgram].param;
   
   switch(index)
   {
@@ -398,7 +395,7 @@ void mdaJX10::getParameterDisplay(VstInt32 index, char *text)
     case 19: sprintf(string, "%.3f", lfoHz); break;
     case 20: if(param[index]<0.5f) sprintf(string, "PWM %3.0f", 100.0f - 200.0f * param[index]);
                else sprintf(string, "%7.0f", 200.0f * param[index] - 100.0f); break;
-    case 22: sprintf(string, "%d", (long)(param[index] * 4.9f) - 2); break;
+    case 22: sprintf(string, "%d", (VstInt32)(param[index] * 4.9f) - 2); break;
     default: sprintf(string, "%.0f", 100.0f * param[index]);
   }
 	string[8] = 0;
@@ -426,12 +423,12 @@ void mdaJX10::process(float **inputs, float **outputs, VstInt32 sampleFrames)
 {
 	float* out1 = outputs[0];
 	float* out2 = outputs[1];
-	long event=0, frame=0, frames, v;
+	VstInt32 event=0, frame=0, frames, v;
   float o, e, vib, pwm, pb=pbend, ipb=ipbend, gl=glide;
   float x, y, hpf=0.997f, min=1.0f, w=0.0f, ww=noisemix;
   float ff, fe=filtenv, fq=filtq * rezwhl, fx=1.97f-0.85f*fq, fz=fzip;
-  long k=K;
-  unsigned long r;
+  VstInt32 k=K;
+  unsigned int r;
 
   vib = (float)sin(lfo);
   ff = filtf + filtwhl + (filtlfo + press) * vib; //have to do again here as way that
@@ -565,8 +562,8 @@ void mdaJX10::process(float **inputs, float **outputs, VstInt32 sampleFrames)
 
       if(frame<sampleFrames)
       {
-        long note = notes[event++];
-        long vel  = notes[event++];
+        VstInt32 note = notes[event++];
+        VstInt32 vel  = notes[event++];
         noteOn(note, vel);
       }
     }
@@ -592,12 +589,12 @@ void mdaJX10::processReplacing(float **inputs, float **outputs, VstInt32 sampleF
 {
 	float* out1 = outputs[0];
 	float* out2 = outputs[1];
-	long event=0, frame=0, frames, v;
+	VstInt32 event=0, frame=0, frames, v;
   float o, e, vib, pwm, pb=pbend, ipb=ipbend, gl=glide;
   float x, y, hpf=0.997f, min=1.0f, w=0.0f, ww=noisemix;
   float ff, fe=filtenv, fq=filtq * rezwhl, fx=1.97f-0.85f*fq, fz=fzip;
-  long k=K;
-  unsigned long r;
+  VstInt32 k=K;
+  unsigned int r;
 
   vib = (float)sin(lfo);
   ff = filtf + filtwhl + (filtlfo + press) * vib; //have to do again here as way that
@@ -732,8 +729,8 @@ void mdaJX10::processReplacing(float **inputs, float **outputs, VstInt32 sampleF
 
       if(frame<sampleFrames)
       {
-        long note = notes[event++];
-        long vel  = notes[event++];
+        VstInt32 note = notes[event++];
+        VstInt32 vel  = notes[event++];
         noteOn(note, vel);
       }
     }
@@ -763,10 +760,10 @@ void mdaJX10::processReplacing(float **inputs, float **outputs, VstInt32 sampleF
 }
 
 
-void mdaJX10::noteOn(long note, long velocity)
+void mdaJX10::noteOn(VstInt32 note, VstInt32 velocity)
 {
   float p, l=100.0f; //louder than any envelope!
-  long  v=0, tmp, held=0;
+  VstInt32  v=0, tmp, held=0;
   
   if(velocity>0) //note on
   {
@@ -818,7 +815,7 @@ void mdaJX10::noteOn(long note, long velocity)
     voice[v].lev = voltrim * volume * (0.004f * (float)((velocity + 64) * (velocity + 64)) - 8.0f);
     voice[v].lev2 = voice[v].lev * oscmix;
 
-    if(param[20]<0.5f) //force 180 deg phase difference for PWM
+    if(programs[curProgram].param[20]<0.5f) //force 180 deg phase difference for PWM
     {
       if(voice[v].dp>0.0f)
       {
@@ -842,7 +839,7 @@ void mdaJX10::noteOn(long note, long velocity)
     }
     else
     {
-      //if(param[15] < 0.28f) 
+      //if(programs[curProgram].param[15] < 0.28f) 
       //{
       //  voice[v].f0 = voice[v].f1 = voice[v].f2 = 0.0f; //reset filter
       //  voice[v].env = SILENCE + SILENCE;
@@ -905,9 +902,9 @@ void mdaJX10::noteOn(long note, long velocity)
 
 VstInt32 mdaJX10::processEvents(VstEvents* ev)
 {
-  long npos=0;
+  VstInt32 npos=0;
   
-  for (long i=0; i<ev->numEvents; i++)
+  for (VstInt32 i=0; i<ev->numEvents; i++)
 	{
 		if((ev->events[i])->type != kVstMidiType) continue;
 		VstMidiEvent* event = (VstMidiEvent*)ev->events[i];
@@ -963,7 +960,7 @@ VstInt32 mdaJX10::processEvents(VstEvents* ev)
           default:  //all notes off
             if(midiData[1]>0x7A) 
             {  
-              for(long v=0; v<NVOICES; v++) 
+              for(VstInt32 v=0; v<NVOICES; v++) 
               { 
                 voice[v].envl = voice[v].env = 0.0f; 
                 voice[v].envd = 0.99f;

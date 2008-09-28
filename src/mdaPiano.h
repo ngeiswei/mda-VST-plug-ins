@@ -30,11 +30,11 @@ private:
 
 struct VOICE  //voice state
 {
-  long  delta;  //sample playback
-  long  frac;
-  long  pos;
-  long  end;
-  long  loop;
+  VstInt32  delta;  //sample playback
+  VstInt32  frac;
+  VstInt32  pos;
+  VstInt32  end;
+  VstInt32  loop;
   
   float env;  //envelope
   float dec;
@@ -45,17 +45,17 @@ struct VOICE  //voice state
 
   float outl;
   float outr;
-  long  note; //remember what note triggered this
+  VstInt32  note; //remember what note triggered this
 };
 
 
 struct KGRP  //keygroup
 {
-  long  root;  //MIDI root note
-  long  high;  //highest note
-  long  pos;
-  long  end;
-  long  loop;
+  VstInt32  root;  //MIDI root note
+  VstInt32  high;  //highest note
+  VstInt32  pos;
+  VstInt32  end;
+  VstInt32  loop;
 };
 
 class mdaPiano : public AudioEffectX
@@ -90,13 +90,13 @@ public:
   
   virtual VstInt32 getNumMidiInputChannels ()  { return 1; }
 
-  long guiUpdate;
+  VstInt32 guiUpdate;
   void guiGetDisplay(VstInt32 index, char *label);
 
 private:
 	void update();  //my parameter update
-  void noteOn(long note, long velocity);
-  void fillpatch(long p, char *name, float p0, float p1, float p2, float p3, float p4,
+  void noteOn(VstInt32 note, VstInt32 velocity);
+  void fillpatch(VstInt32 p, char *name, float p0, float p1, float p2, float p3, float p4,
                  float p5, float p6, float p7, float p8, float p9, float p10,float p11);
 
   float param[NPARAMS];
@@ -105,16 +105,16 @@ private:
 
   #define EVENTBUFFER 120
   #define EVENTS_DONE 99999999
-  long notes[EVENTBUFFER + 8];  //list of delta|note|velocity for current block
+  VstInt32 notes[EVENTBUFFER + 8];  //list of delta|note|velocity for current block
 
   ///global internal variables
   KGRP  kgrp[16];
   VOICE voice[NVOICES];
-  long  activevoices, poly, cpos;
+  VstInt32  activevoices, poly, cpos;
   short *waves;
-  long  cmax;
+  VstInt32  cmax;
   float *comb, cdep, width, trim;
-  long  size, sustain;
+  VstInt32  size, sustain;
   float tune, fine, random, stretch;
   float muff, muffvel, sizevel, velsens, volume;
 };

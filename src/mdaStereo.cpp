@@ -136,6 +136,16 @@ void mdaStereo::getProgramName(char *name)
 	strcpy(name, programName);
 }
 
+bool mdaStereo::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if (index == 0) 
+	{
+	    strcpy(name, programName);
+	    return true;
+	}
+	return false;
+}
+
 float mdaStereo::getParameter(VstInt32 index)
 {
 	float v=0;
@@ -164,16 +174,16 @@ void mdaStereo::getParameterName(VstInt32 index, char *label)
 }
 
 #include <stdio.h>
-void long2string(long value, char *string) { sprintf(string, "%ld", value); }
+void int2strng(VstInt32 value, char *string) { sprintf(string, "%d", value); }
 void float2strng(float value, char *string) { sprintf(string, "%.2f", value); }
 
 void mdaStereo::getParameterDisplay(VstInt32 index, char *text)
 {
 	switch(index)
   {
-    case 0: long2string((long)(200.0 * fabs(fParam1 - 0.5)), text);break;
+    case 0: int2strng((VstInt32)(200.0 * fabs(fParam1 - 0.5)), text);break;
     case 1: float2strng((float)(1000.0 * fdel / getSampleRate()), text); break;
-    case 2: long2string((long)(200.0 * (fParam3 - 0.5)), text); break;
+    case 2: int2strng((VstInt32)(200.0 * (fParam3 - 0.5)), text); break;
     case 3: if(mod>0.f) float2strng((float)(1000.0 * mod / getSampleRate()), text);
             else strcpy(text, "OFF"); break;
     case 4: float2strng((float)pow(10.0,2.0 - 3.0 * fParam5), text); break;
@@ -204,7 +214,7 @@ void mdaStereo::process(float **inputs, float **outputs, VstInt32 sampleFrames)
 	float *out2 = outputs[1];
 	float a, b, c, d;	
   float li, ld, ri, rd, del, ph=phi, dph=dphi, mo=mod;
-  long  tmp, bp = bufpos;
+  VstInt32  tmp, bp = bufpos;
   
   li = fli;
   ld = fld;
@@ -275,7 +285,7 @@ void mdaStereo::processReplacing(float **inputs, float **outputs, VstInt32 sampl
 	float *out2 = outputs[1];
 	float a, b, c, d;	
   float li, ld, ri, rd, del, ph=phi, dph=dphi, mo=mod;
-  long tmp, bp = bufpos;
+  VstInt32 tmp, bp = bufpos;
   
   li = fli;
   ld = fld;

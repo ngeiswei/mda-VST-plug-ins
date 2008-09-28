@@ -38,7 +38,7 @@ mdaSplitter::mdaSplitter(audioMasterCallback audioMaster): AudioEffectX(audioMas
 	DECLARE_VST_DEPRECATED(canMono) ();				      
   canProcessReplacing();
 
-  programs = new mdaSplitterProgram[numPrograms];
+  programs = new mdaSplitterProgram[NPROGS];
   setProgram(0);
   
   ///differences from default program...
@@ -57,7 +57,7 @@ bool  mdaSplitter::getEffectName(char* name)    { strcpy(name, "Splitter"); retu
 
 void mdaSplitter::resume() ///update internal parameters...
 {
-  long tmp;
+  float * param = programs[curProgram].param;
 
   freq = param[1];
   fdisp = (float)pow(10.0f, 2.0f + 2.0f * freq);  //frequency
@@ -65,7 +65,7 @@ void mdaSplitter::resume() ///update internal parameters...
   if(freq>1.0f) freq = 1.0f;
 
   ff = -1.0f;               //above
-  tmp = (long)(2.9f * param[2]);  //frequency switching
+  VstInt32 tmp = (VstInt32)(2.9f * param[2]);  //frequency switching
   if(tmp==0) ff = 0.0f;     //below
   if(tmp==1) freq = 0.001f; //all
 
@@ -73,7 +73,7 @@ void mdaSplitter::resume() ///update internal parameters...
   level = (float)pow(10.0f, 0.05f * ldisp + 0.3f);
 
   ll = 0.0f;                //above
-  tmp = (long)(2.9f * param[4]);  //level switching
+  tmp = (VstInt32)(2.9f * param[4]);  //level switching
   if(tmp==0) ll = -1.0f;    //below
   if(tmp==1) level = 0.0f;  //all
   
@@ -88,7 +88,7 @@ void mdaSplitter::resume() ///update internal parameters...
 
   i2l = i2r = o2l = o2r = (float)pow(10.0f, 2.0f * param[6] - 1.0f);  //gain
 
-  mode = (long)(3.9f * param[0]);  //output routing
+  mode = (VstInt32)(3.9f * param[0]);  //output routing
   switch(mode)
   {
     case  0: i2l  =  0.0f;  i2r  =  0.0f;  break;
@@ -113,27 +113,30 @@ mdaSplitter::~mdaSplitter() ///destroy any buffers...
 
 void mdaSplitter::setProgram(VstInt32 program)
 {
-  int i=0;
-
-  mdaSplitterProgram *p = &programs[program];
   curProgram = program;
-  setProgramName(p->name);
-  for(i=0; i<NPARAMS; i++) param[i] = p->param[i];
   resume();
 }
 
 
 void  mdaSplitter::setParameter(VstInt32 index, float value) 
 { 
-  programs[curProgram].param[index] = param[index] = value; //bug was here!
+  programs[curProgram].param[index] = value; //bug was here!
   resume(); 
 }
 
 
-float mdaSplitter::getParameter(VstInt32 index) { return param[index]; }
-void  mdaSplitter::setProgramName(char *name) { strcpy(programName, name); }
-void  mdaSplitter::getProgramName(char *name) { strcpy(name, programName); }
-
+float mdaSplitter::getParameter(VstInt32 index) { return programs[curProgram].param[index]; }
+void  mdaSplitter::setProgramName(char *name) { strcpy(programs[curProgram].name, name); }
+void  mdaSplitter::getProgramName(char *name) { strcpy(name, programs[curProgram].name); }
+bool mdaSplitter::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if ((unsigned int)index < NPROGS) 
+	{
+	    strcpy(name, programs[index].name);
+	    return true;
+	}
+	return false;
+}
 
 void mdaSplitter::getParameterName(VstInt32 index, char *label)
 {
@@ -153,6 +156,7 @@ void mdaSplitter::getParameterName(VstInt32 index, char *label)
 void mdaSplitter::getParameterDisplay(VstInt32 index, char *text)
 {
  	char string[16];
+ 	float * param = programs[curProgram].param;
 
   switch(index)
   {
@@ -167,7 +171,7 @@ void mdaSplitter::getParameterDisplay(VstInt32 index, char *text)
     case  3: sprintf(string, "%.0f", ldisp); break;
     case  5: sprintf(string, "%.0f", (float)pow(10.0f, 1.0f + 2.0f * param[index])); break;
     case  6: sprintf(string, "%.1f", 40.0f * param[index] - 20.0f); break;
-    default: switch((long)(2.9f * param[index]))
+    default: switch((VstInt32)(2.9f * param[index]))
              {
                 case  0: strcpy (string, "BELOW"); break;
                 case  1: strcpy (string, "ALL"); break;

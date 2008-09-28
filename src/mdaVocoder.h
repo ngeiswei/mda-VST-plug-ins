@@ -15,8 +15,6 @@ class mdaVocoderProgram
 {
 public:
   mdaVocoderProgram();
-  ~mdaVocoderProgram() {}
-
 private:
   friend class mdaVocoder;
   float param[NPARAMS];
@@ -35,6 +33,7 @@ public:
   virtual void  setProgram(VstInt32 program);
   virtual void  setProgramName(char *name);
   virtual void  getProgramName(char *name);
+	virtual bool getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name);
   virtual void  setParameter(VstInt32 index, float value);
   virtual float getParameter(VstInt32 index);
   virtual void  getParameterLabel(VstInt32 index, char *label);
@@ -49,17 +48,15 @@ public:
 	virtual VstInt32 getVendorVersion() { return 1000; }
   
 protected:
-  float param[NPARAMS];
-  char programName[32];
   mdaVocoderProgram *programs;
 
   ///global internal variables
-  long  swap;       //input channel swap
+  VstInt32  swap;       //input channel swap
   float gain;       //output level
   float thru, high; //hf thru              
   float kout; //downsampled output
-  long  kval; //downsample counter
-  long  nbnd; //number of bands
+  VstInt32  kval; //downsample counter
+  VstInt32  nbnd; //number of bands
   
   //filter coeffs and buffers - seems it's faster to leave this global than make local copy 
   float f[NBANDS][13]; //[0-8][0 1 2 | 0 1 2 3 | 0 1 2 3 | val rate]

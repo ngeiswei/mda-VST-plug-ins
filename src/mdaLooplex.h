@@ -18,8 +18,6 @@ class mdaLooplexProgram
   friend class mdaLooplex;
 public:
 	mdaLooplexProgram();
-	~mdaLooplexProgram() {}
-
 private:
   float param[NPARAMS];
   char  name[24];
@@ -63,21 +61,20 @@ public:
 private:
 	void update();  //my parameter update
 
-  float param[NPARAMS];
   mdaLooplexProgram* programs;
   float Fs;
 
   #define EVENTBUFFER 120
   #define EVENTS_DONE 99999999
-  long notes[EVENTBUFFER + 8];  //list of delta|note|velocity for current block
+  VstInt32 notes[EVENTBUFFER + 8];  //list of delta|note|velocity for current block
 
   ///global internal variables
   float in_mix, in_pan, out_mix, feedback, modwhl;
 
   short *buffer;
-  long bufpos, buflen, bufmax, mode;
+  VstInt32 bufpos, buflen, bufmax, mode;
 
-  long bypass, bypassed, busy, status, recreq;
+  VstInt32 bypass, bypassed, busy, status, recreq;
   float oldParam0, oldParam1, oldParam2;
 
 };

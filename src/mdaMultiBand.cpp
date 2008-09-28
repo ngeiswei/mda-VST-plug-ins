@@ -100,6 +100,16 @@ void mdaMultiBand::getProgramName(char *name)
 	strcpy(name, programName);
 }
 
+bool mdaMultiBand::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if (index == 0) 
+	{
+	    strcpy(name, programName);
+	    return true;
+	}
+	return false;
+}
+
 void mdaMultiBand::setParameter(VstInt32 index, float value)
 {
 	switch(index)
@@ -196,7 +206,7 @@ void mdaMultiBand::getParameterName(VstInt32 index, char *label)
 }
 
 #include <stdio.h>
-void long2string(long value, char *string) { sprintf(string, "%ld", value); }
+void int2strng(VstInt32 value, char *string) { sprintf(string, "%d", value); }
 
 void mdaMultiBand::getParameterDisplay(VstInt32 index, char *text)
 {
@@ -207,17 +217,17 @@ void mdaMultiBand::getParameterDisplay(VstInt32 index, char *text)
     case 1: case 2: strcpy(text, "Mid"); break;
     case 3: case 4: strcpy(text, "High"); break; 
      default: strcpy(text, "Output"); break; } break;
-    case 1: long2string((long)(getSampleRate() * fi1 * (0.098 + 0.09*fi1 + 0.5*(float)pow(fi1,8.2f))), text); break;
-    case 2: long2string((long)(getSampleRate() * fi2 * (0.015 + 0.15*fi2 + 0.9*(float)pow(fi2,8.2f))), text); break;
-    case 3: long2string((long)(30.0 * fParam4), text); break;
-    case 4: long2string((long)(30.0 * fParam5), text); break;
-    case 5: long2string((long)(30.0 * fParam6), text); break;
-    case 6: long2string((long)(40.0 * fParam7 - 20.0), text); break;
-    case 7: long2string((long)(40.0 * fParam8 - 20.0), text); break;
-    case 8: long2string((long)(40.0 * fParam9 - 20.0), text); break;
-    case 9: long2string((long)(-301030.1 / (getSampleRate() * log10(1.0 - att2))),text); break;
-    case 10: long2string((long)(-301.0301 / (getSampleRate() * log10(1.0 - rel2))),text); break;
-    case 11: long2string((long)(200.0 * fParam12), text); break;
+    case 1: int2strng((VstInt32)(getSampleRate() * fi1 * (0.098 + 0.09*fi1 + 0.5*(float)pow(fi1,8.2f))), text); break;
+    case 2: int2strng((VstInt32)(getSampleRate() * fi2 * (0.015 + 0.15*fi2 + 0.9*(float)pow(fi2,8.2f))), text); break;
+    case 3: int2strng((VstInt32)(30.0 * fParam4), text); break;
+    case 4: int2strng((VstInt32)(30.0 * fParam5), text); break;
+    case 5: int2strng((VstInt32)(30.0 * fParam6), text); break;
+    case 6: int2strng((VstInt32)(40.0 * fParam7 - 20.0), text); break;
+    case 7: int2strng((VstInt32)(40.0 * fParam8 - 20.0), text); break;
+    case 8: int2strng((VstInt32)(40.0 * fParam9 - 20.0), text); break;
+    case 9: int2strng((VstInt32)(-301030.1 / (getSampleRate() * log10(1.0 - att2))),text); break;
+    case 10: int2strng((VstInt32)(-301.0301 / (getSampleRate() * log10(1.0 - rel2))),text); break;
+    case 11: int2strng((VstInt32)(200.0 * fParam12), text); break;
     case 12: if(mswap) strcpy(text, "S"); 
                   else strcpy(text, "M"); break;
   }
@@ -236,7 +246,7 @@ void mdaMultiBand::getParameterLabel(VstInt32 index, char *label)
     case 6: strcpy(label, "dB"); break; 
     case 7: strcpy(label, "dB"); break; 
     case 8: strcpy(label, "dB"); break; 
-    case 9: strcpy(label, "µs"); break; 
+    case 9: strcpy(label, "ï¿½s"); break; 
     case 10: strcpy(label, "ms"); break; 
     case 11: strcpy(label, "% Width"); break; 
     case 12: strcpy(label, ""); break; 

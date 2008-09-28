@@ -31,6 +31,7 @@ bool  mdaDetune::getVendorString(char* text)  { strcpy(text, "mda"); return true
 bool  mdaDetune::getEffectName(char* name)    { strcpy(name, "Detune"); return true; }
 
 mdaDetune::mdaDetune(audioMasterCallback audioMaster): AudioEffectX(audioMaster, NPROGS, NPARAMS)
+, programs(0), buf(0), win(0)
 {
   setNumInputs(2);
   setNumOutputs(2);
@@ -43,7 +44,7 @@ mdaDetune::mdaDetune(audioMasterCallback audioMaster): AudioEffectX(audioMaster,
   win = new float[BUFMAX];
   buflen=0;
 
-  programs = new mdaDetuneProgram[numPrograms];
+  programs = new mdaDetuneProgram[NPROGS];
   setProgram(0);
   
   ///differences from default program...
@@ -60,7 +61,7 @@ mdaDetune::mdaDetune(audioMasterCallback audioMaster): AudioEffectX(audioMaster,
 
 void mdaDetune::resume() ///update internal parameters...
 {
-  long tmp;
+  float * param = programs[curProgram].param;
   
   semi = 3.0f * param[0] * param[0] * param[0];
   dpos2 = (float)pow(1.0594631f, semi);
@@ -70,14 +71,14 @@ void mdaDetune::resume() ///update internal parameters...
   dry = wet - wet * param[1] * param[1];
   wet = (wet + wet - wet * param[1]) * param[1];
 
-  tmp = 1 << (8 + (long)(4.9f * param[3]));
+  VstInt32 tmp = 1 << (8 + (VstInt32)(4.9f * param[3]));
 
   if(tmp!=buflen) //recalculate crossfade window
   {
     buflen = tmp;
     bufres = 1000.0f * (float)buflen / getSampleRate();
 
-    long i; //hanning half-overlap-and-add
+    VstInt32 i; //hanning half-overlap-and-add
     double p=0.0, dp=6.28318530718/buflen;
     for(i=0;i<buflen;i++) { win[i] = (float)(0.5 - 0.5 * cos(p)); p+=dp; }
   }
@@ -101,26 +102,30 @@ mdaDetune::~mdaDetune() ///destroy any buffers...
 
 void mdaDetune::setProgram(VstInt32 program)
 {
-  int i=0;
-
-  mdaDetuneProgram *p = &programs[program];
   curProgram = program;
-  setProgramName(p->name);
-  for(i=0; i<NPARAMS; i++) param[i] = p->param[i];
   resume();
 }
 
 
 void  mdaDetune::setParameter(VstInt32 index, float value)
 { 
-  programs[curProgram].param[index] = param[index] = value; //bug was here!
+  programs[curProgram].param[index] = value;
   resume();
 }
 
 
-float mdaDetune::getParameter(VstInt32 index) { return param[index]; }
-void  mdaDetune::setProgramName(char *name) { strcpy(programName, name); }
-void  mdaDetune::getProgramName(char *name) { strcpy(name, programName); }
+float mdaDetune::getParameter(VstInt32 index) { return programs[curProgram].param[index]; }
+void  mdaDetune::setProgramName(char *name) { strcpy(programs[curProgram].name, name); }
+void  mdaDetune::getProgramName(char *name) { strcpy(name, programs[curProgram].name); }
+bool mdaDetune::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if ((unsigned int)index < NPROGS) 
+	{
+	    strcpy(name, programs[index].name);
+	    return true;
+	}
+	return false;
+}
 
 
 void mdaDetune::getParameterName(VstInt32 index, char *label)
@@ -141,8 +146,8 @@ void mdaDetune::getParameterDisplay(VstInt32 index, char *text)
 
   switch(index)
   {
-    case  1: sprintf(string, "%.0f", 99.0f * param[index]); break;
-    case  2: sprintf(string, "%.1f", 40.0f * param[index] - 20.0f); break;
+    case  1: sprintf(string, "%.0f", 99.0f * programs[curProgram].param[index]); break;
+    case  2: sprintf(string, "%.1f", 40.0f * programs[curProgram].param[index] - 20.0f); break;
     case  3: sprintf(string, "%.1f", bufres); break;
     default: sprintf(string, "%.1f", 100.0f * semi);
   }
@@ -172,8 +177,8 @@ void mdaDetune::process(float **inputs, float **outputs, VstInt32 sampleFrames)
   float a, b, c, d;
   float x, w=wet, y=dry, p1=pos1, p1f, d1=dpos1;
   float                  p2=pos2,      d2=dpos2;
-  long  p0=pos0, p1i, p2i;
-  long  l=buflen-1, lh=buflen>>1;
+  VstInt32  p0=pos0, p1i, p2i;
+  VstInt32  l=buflen-1, lh=buflen>>1;
   float lf = (float)buflen;
 
   --in1;
@@ -195,7 +200,7 @@ void mdaDetune::process(float **inputs, float **outputs, VstInt32 sampleFrames)
 
     p1 -= d1;
     if(p1<0.0f) p1 += lf;           //output
-    p1i = (long)p1;
+    p1i = (VstInt32)p1;
     p1f = p1 - (float)p1i;
     a = *(buf + p1i);
     ++p1i &= l;
@@ -214,7 +219,7 @@ void mdaDetune::process(float **inputs, float **outputs, VstInt32 sampleFrames)
 
     p2 -= d2;                //repeat for downwards shift - can't see a more efficient way?
     if(p2<0.0f) p2 += lf;           //output
-    p1i = (long)p2;
+    p1i = (VstInt32)p2;
     p1f = p2 - (float)p1i;
     a = *(buf + p1i);
     ++p1i &= l;
@@ -247,8 +252,8 @@ void mdaDetune::processReplacing(float **inputs, float **outputs, VstInt32 sampl
   float a, b, c, d;
   float x, w=wet, y=dry, p1=pos1, p1f, d1=dpos1;
   float                  p2=pos2,      d2=dpos2;
-  long  p0=pos0, p1i, p2i;
-  long  l=buflen-1, lh=buflen>>1;
+  VstInt32  p0=pos0, p1i, p2i;
+  VstInt32  l=buflen-1, lh=buflen>>1;
   float lf = (float)buflen;
 
   --in1;
@@ -268,7 +273,7 @@ void mdaDetune::processReplacing(float **inputs, float **outputs, VstInt32 sampl
 
     p1 -= d1;
     if(p1<0.0f) p1 += lf;           //output
-    p1i = (long)p1;
+    p1i = (VstInt32)p1;
     p1f = p1 - (float)p1i;
     a = *(buf + p1i);
     ++p1i &= l;
@@ -287,7 +292,7 @@ void mdaDetune::processReplacing(float **inputs, float **outputs, VstInt32 sampl
 
     p2 -= d2;  //repeat for downwards shift - can't see a more efficient way?
     if(p2<0.0f) p2 += lf;           //output
-    p1i = (long)p2;
+    p1i = (VstInt32)p2;
     p1f = p2 - (float)p1i;
     a = *(buf + p1i);
     ++p1i &= l;

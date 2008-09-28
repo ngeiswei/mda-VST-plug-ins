@@ -91,6 +91,16 @@ void mdaShepard::getProgramName(char *name)
 	strcpy(name, programName);
 }
 
+bool mdaShepard::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if (index == 0) 
+	{
+	    strcpy(name, programName);
+	    return true;
+	}
+	return false;
+}
+
 float mdaShepard::getParameter(VstInt32 index)
 {
 	float v=0;
@@ -115,7 +125,7 @@ void mdaShepard::getParameterName(VstInt32 index, char *label)
 }
 
 #include <stdio.h>
-void long2string(long value, char *string) { sprintf(string, "%ld", value); }
+void int2strng(VstInt32 value, char *string) { sprintf(string, "%d", value); }
 
 void mdaShepard::getParameterDisplay(VstInt32 index, char *text)
 {
@@ -127,8 +137,8 @@ void mdaShepard::getParameterDisplay(VstInt32 index, char *text)
               case 1: strcpy(text, "RING MOD"); break;
               case 2: strcpy(text, "TONES+IN"); break;
             } break;
-    case 1: long2string((long)(200 * fParam1 - 100), text); break;
-    case 2: long2string((long)(40 * fParam2 - 20), text); break;
+    case 1: int2strng((VstInt32)(200 * fParam1 - 100), text); break;
+    case 2: int2strng((VstInt32)(40 * fParam2 - 20), text); break;
   }
 }
 
@@ -153,7 +163,7 @@ void mdaShepard::process(float **inputs, float **outputs, VstInt32 sampleFrames)
 	float *out2 = outputs[1];
 	float a, b, c, d;
   float r=rate, dr=drate, o=out, p=pos, di;
-  long x=max, m=mode, i1, i2;
+  VstInt32 x=max, m=mode, i1, i2;
 
 	--in1;	
 	--in2;	
@@ -205,7 +215,7 @@ void mdaShepard::processReplacing(float **inputs, float **outputs, VstInt32 samp
 	float *out2 = outputs[1];
 	float a, b;
   float r=rate, dr=drate, o=out, p=pos, di;
-  long x=max, m=mode, i1, i2;
+  VstInt32 x=max, m=mode, i1, i2;
 
 	--in1;	
 	--in2;	

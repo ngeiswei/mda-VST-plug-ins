@@ -16,10 +16,6 @@
 class mdaDX10Program
 {
   friend class mdaDX10;
-public:
-  mdaDX10Program() {}
- ~mdaDX10Program() {}
-
 private:
   float param[NPARAMS];
   char  name[24];
@@ -40,7 +36,7 @@ struct VOICE  //voice state
   float cenv; //smoothed env
   float catt; //smoothing
   float cdec; //carrier envelope decay
-  long  note; //remember what note triggered this
+  VstInt32  note; //remember what note triggered this
 };
 
 
@@ -79,24 +75,23 @@ public:
 
 private:
 	void update();  //my parameter update
-  void noteOn(long note, long velocity);
-  void fillpatch(long p, char *name, 
+  void noteOn(VstInt32 note, VstInt32 velocity);
+  void fillpatch(VstInt32 p, char *name, 
                  float p0,  float p1,  float p2,  float p3,  float p4,  float p5, 
                  float p6,  float p7,  float p8,  float p9,  float p10, float p11, 
                  float p12, float p13, float p14, float p15);
 
-  float param[NPARAMS];
   mdaDX10Program* programs;
   float Fs;
 
   #define EVENTBUFFER 120
   #define EVENTS_DONE 99999999
-  long notes[EVENTBUFFER + 8];  //list of delta|note|velocity for current block
+  VstInt32 notes[EVENTBUFFER + 8];  //list of delta|note|velocity for current block
 
   ///global internal variables
   VOICE voice[NVOICES];
   #define SUSTAIN 128
-  long sustain, activevoices, K;
+  VstInt32 sustain, activevoices, K;
 
   float tune, rati, ratf, ratio; //modulator ratio
   float catt, cdec, crel;        //carrier envelope

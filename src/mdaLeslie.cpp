@@ -13,19 +13,19 @@ AudioEffect *createEffectInstance(audioMasterCallback audioMaster)
 
 mdaLeslieProgram::mdaLeslieProgram()
 {
-	fParam1 = 0.66f;
-  fParam7 = 0.50f;
-  fParam9 = 0.60f;
-  fParam4 = 0.70f;
-  fParam5 = 0.60f;
-  fParam6 = 0.70f;
-  fParam3 = 0.48f;
-  fParam2 = 0.50f;
-  fParam8 = 0.50f;
+  param[0] = 0.66f;
+  param[1] = 0.50f;
+  param[2] = 0.48f;
+  param[3] = 0.70f;
+  param[4] = 0.60f;
+  param[5] = 0.70f;
+  param[6] = 0.50f;
+  param[7] = 0.50f;
+  param[8] = 0.60f;
   strcpy(name, "Leslie Simulator");
 }
 
-mdaLeslie::mdaLeslie(audioMasterCallback audioMaster)	: AudioEffectX(audioMaster, 3, 9)	// programs, parameters 
+mdaLeslie::mdaLeslie(audioMasterCallback audioMaster)	: AudioEffectX(audioMaster, 3, NPARAMS)	// programs, parameters 
 {
 
   size = 256; hpos = 0;
@@ -43,13 +43,13 @@ mdaLeslie::mdaLeslie(audioMasterCallback audioMaster)	: AudioEffectX(audioMaster
   programs = new mdaLeslieProgram[numPrograms]; 
   if(programs) 
   {
-    programs[1].fParam1 = 0.33f;
-    programs[1].fParam5 = 0.75f;
-    programs[1].fParam6 = 0.57f;
+    programs[1].param[0] = 0.33f;
+    programs[1].param[4] = 0.75f;
+    programs[1].param[5] = 0.57f;
     strcpy(programs[1].name,"Slow");
-    programs[2].fParam1 = 0.66f;
-    programs[2].fParam5 = 0.60f;
-    programs[2].fParam6 = 0.70f;
+    programs[2].param[0] = 0.66f;
+    programs[2].param[4] = 0.60f;
+    programs[2].param[5] = 0.70f;
     strcpy(programs[2].name,"Fast");
     setProgram(0);
   }
@@ -67,28 +67,47 @@ bool  mdaLeslie::getEffectName(char* name)    { strcpy(name, "Leslie"); return t
 
 void mdaLeslie::setParameter(VstInt32 index, float value)
 {
+  float * param = programs[curProgram].param;
   
-  float ifs = 1.0f / getSampleRate();
-  float spd = twopi * ifs * 2.0f * fParam8;
-
   switch(index)
   {
-    case 0: programs[curProgram].fParam1 = fParam1 = value; break;
-    case 1: programs[curProgram].fParam7 = fParam7 = value; break;
-    case 2: programs[curProgram].fParam9 = fParam9 = value; break;
-    case 3: programs[curProgram].fParam4 = fParam4 = value; break;
-    case 4: programs[curProgram].fParam5 = fParam5 = value; break;
-    case 5: programs[curProgram].fParam6 = fParam6 = value; break;
-    case 6: programs[curProgram].fParam3 = fParam3 = value; break;
-    case 7: programs[curProgram].fParam2 = fParam2 = value; break;
-    case 8: programs[curProgram].fParam8 = fParam8 = value; break;
+    case 0: param[0] = value; break;
+    case 1: param[6] = value; break;
+    case 2: param[8] = value; break;
+    case 3: param[3] = value; break;
+    case 4: param[4] = value; break;
+    case 5: param[5] = value; break;
+    case 6: param[2] = value; break;
+    case 7: param[1] = value; break;
+    case 8: param[7] = value; break;
   }
-  //calcs here!
-  filo = 1.f - (float)pow(10.0f, fParam3 * (2.27f - 0.54f * fParam3) - 1.92f);
+  update();
+}
 
-  if(fParam1<0.50f)
+mdaLeslie::~mdaLeslie()
+{
+  if(hbuf) delete [] hbuf;
+  if(programs) delete [] programs; 
+}
+
+void mdaLeslie::setProgram(VstInt32 program) 
+{
+	curProgram = program;
+    update();
+}
+
+void mdaLeslie::update()
+{
+  float ifs = 1.0f / getSampleRate();
+  float * param = programs[curProgram].param;
+  float spd = twopi * ifs * 2.0f * param[7];
+
+  //calcs here!
+  filo = 1.f - (float)pow(10.0f, param[2] * (2.27f - 0.54f * param[2]) - 1.92f);
+
+  if(param[0]<0.50f)
   {  
-     if(fParam1<0.1f) //stop
+     if(param[0]<0.1f) //stop
      { 
        lset = 0.00f; hset = 0.00f;
        lmom = 0.12f; hmom = 0.10f; 
@@ -109,35 +128,12 @@ void mdaLeslie::setParameter(VstInt32 index, float value)
   hset *= spd;
   lset *= spd;
 
-  gain = 0.4f * (float)pow(10.0f, 2.0f * fParam2 - 1.0f);
-  lwid = fParam7 * fParam7;
-  llev = gain * 0.9f * fParam9 * fParam9;
-  hwid = fParam4 * fParam4;
-  hdep = fParam5 * fParam5 * getSampleRate() / 760.0f;
-  hlev = gain * 0.9f * fParam6 * fParam6;
-}
-
-mdaLeslie::~mdaLeslie()
-{
-  if(hbuf) delete [] hbuf;
-  if(programs) delete [] programs; 
-}
-
-void mdaLeslie::setProgram(VstInt32 program) 
-{
-	mdaLeslieProgram *p = &programs[program];
-
-	curProgram = program;
-	setParameter(0, p->fParam1);	
-	setParameter(1, p->fParam7);	
-	setParameter(2, p->fParam9);	
-	setParameter(3, p->fParam4);	
-	setParameter(4, p->fParam5);	
-	setParameter(5, p->fParam6);
-	setParameter(6, p->fParam3);	
-	setParameter(7, p->fParam2);
-	setParameter(8, p->fParam8);	
-  setProgramName(p->name);
+  gain = 0.4f * (float)pow(10.0f, 2.0f * param[1] - 1.0f);
+  lwid = param[6] * param[6];
+  llev = gain * 0.9f * param[8] * param[8];
+  hwid = param[3] * param[3];
+  hdep = param[4] * param[4] * getSampleRate() / 760.0f;
+  hlev = gain * 0.9f * param[5] * param[5];
 }
 
 void mdaLeslie::suspend()
@@ -147,29 +143,40 @@ void mdaLeslie::suspend()
 
 void mdaLeslie::setProgramName(char *name)
 {
-	strcpy(programName, name);
+	strcpy(programs[curProgram].name, name);
 }
 
 void mdaLeslie::getProgramName(char *name)
 {
-	strcpy(name, programName);
+	strcpy(name, programs[curProgram].name);
+}
+
+bool mdaLeslie::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if ((unsigned int)index < NPROGS) 
+	{
+	    strcpy(name, programs[index].name);
+	    return true;
+	}
+	return false;
 }
 
 float mdaLeslie::getParameter(VstInt32 index)
 {
-	float v=0;
+  float v=0;
+  float * param = programs[curProgram].param;
 
   switch(index)
   {
-    case 0: v = fParam1; break;
-    case 1: v = fParam7; break;
-    case 2: v = fParam9; break;
-    case 3: v = fParam4; break;
-    case 4: v = fParam5; break;
-    case 5: v = fParam6; break;
-    case 6: v = fParam3; break;
-    case 7: v = fParam2; break;
-    case 8: v = fParam8; break;
+    case 0: v = param[0]; break;
+    case 1: v = param[6]; break;
+    case 2: v = param[8]; break;
+    case 3: v = param[3]; break;
+    case 4: v = param[4]; break;
+    case 5: v = param[5]; break;
+    case 6: v = param[2]; break;
+    case 7: v = param[1]; break;
+    case 8: v = param[7]; break;
   }
   return v;
 }
@@ -191,26 +198,27 @@ void mdaLeslie::getParameterName(VstInt32 index, char *label)
 }
 
 #include <stdio.h>
-void long2string(long value, char *string) { sprintf(string, "%ld", value); }
+void int2strng(VstInt32 value, char *string) { sprintf(string, "%d", value); }
 
 void mdaLeslie::getParameterDisplay(VstInt32 index, char *text)
 {
+  float * param = programs[curProgram].param;
 	switch(index)
   {
     case 0: 
-      if(fParam1<0.5f) 
+      if(param[0]<0.5f) 
       { 
-        if(fParam1 < 0.1f) strcpy(text, "STOP"); 
+        if(param[0] < 0.1f) strcpy(text, "STOP"); 
                       else strcpy(text, "SLOW");
       }               else strcpy(text, "FAST");  break;   
-    case 1: long2string((long)(100 * fParam7), text); break;
-    case 2: long2string((long)(100 * fParam9), text); break;
-    case 3: long2string((long)(100 * fParam4), text); break;
-    case 4: long2string((long)(100 * fParam5), text); break;
-    case 5: long2string((long)(100 * fParam6), text); break;
-    case 6: long2string((long)(10*int((float)pow(10.0f,1.179f + fParam3))), text); break; 
-    case 7: long2string((long)(40 * fParam2 - 20), text); break;
-    case 8: long2string((long)(200 * fParam8), text); break;
+    case 1: int2strng((VstInt32)(100 * param[6]), text); break;
+    case 2: int2strng((VstInt32)(100 * param[8]), text); break;
+    case 3: int2strng((VstInt32)(100 * param[3]), text); break;
+    case 4: int2strng((VstInt32)(100 * param[4]), text); break;
+    case 5: int2strng((VstInt32)(100 * param[5]), text); break;
+    case 6: int2strng((VstInt32)(10*int((float)pow(10.0f,1.179f + param[2]))), text); break; 
+    case 7: int2strng((VstInt32)(40 * param[1] - 20), text); break;
+    case 8: int2strng((VstInt32)(200 * param[7]), text); break;
   }
 }
 
@@ -238,7 +246,7 @@ void mdaLeslie::process(float **inputs, float **outputs, VstInt32 sampleFrames)
   float hl=hlev, hs=hspd, ht, hm=hmom, hp=hphi, hw=hwid, hd=hdep;
   float ll=llev, ls=lspd, lt, lm=lmom, lp=lphi, lw=lwid;
   float hint, k0=0.03125f, k1=32.f;
-  long  hdd, hdd2, k=0, hps=hpos;
+  VstInt32  hdd, hdd2, k=0, hps=hpos;
 
   ht=hset*(1.f-hm);
   lt=lset*(1.f-lm);
@@ -271,7 +279,7 @@ void mdaLeslie::process(float **inputs, float **outputs, VstInt32 sampleFrames)
       dshp = k0 * ((float)sin(hp + k1*hs) - shp);
       dslp = k0 * ((float)sin(lp + k1*ls) - slp);
       
-      k=(long)k1;
+      k=(VstInt32)k1;
     }
 
     fb1 = fo * (fb1 - a) + a;
@@ -325,7 +333,7 @@ void mdaLeslie::processReplacing(float **inputs, float **outputs, VstInt32 sampl
   float hl=hlev, hs=hspd, ht, hm=hmom, hp=hphi, hw=hwid, hd=hdep;
   float ll=llev, ls=lspd, lt, lm=lmom, lp=lphi, lw=lwid;
   float hint, k0=0.03125f, k1=32.f; //k0 = 1/k1
-  long  hdd, hdd2, k=0, hps=hpos;
+  VstInt32  hdd, hdd2, k=0, hps=hpos;
 
   ht=hset*(1.f-hm); //target speeds
   lt=lset*(1.f-lm);
@@ -356,7 +364,7 @@ void mdaLeslie::processReplacing(float **inputs, float **outputs, VstInt32 sampl
       dshp = k0 * ((float)sin(hp + k1*hs) - shp);
       dslp = k0 * ((float)sin(lp + k1*ls) - slp);
       
-      k=(long)k1;
+      k=(VstInt32)k1;
     }
 
     fb1 = fo * (fb1 - a) + a; //crossover

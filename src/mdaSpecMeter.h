@@ -26,8 +26,6 @@ class mdaSpecMeterProgram
 friend class mdaSpecMeter;
 public:
 	mdaSpecMeterProgram();
-	~mdaSpecMeterProgram() {}
-	
 private:	
 	float param[NPARAMS];
 	char  name[24];
@@ -45,6 +43,7 @@ public:
 	virtual void  setProgram(VstInt32 program);
 	virtual void  setProgramName(char *name);
 	virtual void  getProgramName(char *name);
+	virtual bool  getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name);
 	virtual void  setParameter(VstInt32 index, float value);
 	virtual float getParameter(VstInt32 index);
 	virtual void  getParameterLabel(VstInt32 index, char *label);
@@ -59,17 +58,16 @@ public:
 	virtual VstInt32 getVendorVersion() { return 1000; }
 
   //accessible from editor
-  long  counter;
+  VstInt32  counter;
   float Lpeak, Lhold, Lmin, Lrms, Rpeak, Rhold, Rmin, Rrms, Corr; // #11  #12
   float band[2][16]; //8  16  31  64  125  250  500  1k  2k  4k  8k  16k  32k
  
 private:
 	mdaSpecMeterProgram *programs;
-	float param[NPARAMS];
 
   float iK, lpeak, lmin, lrms, rpeak, rmin, rrms, corr, den;
   float lpp[6][16], rpp[6][16];
-  long  topband, K, kmax;
+  VstInt32  topband, K, kmax;
 
   float gain;
 };

@@ -162,6 +162,16 @@ void mdaCombo::getProgramName(char *name)
 	strcpy(name, programName);
 }
 
+bool mdaCombo::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if (index == 0) 
+	{
+	    strcpy(name, programName);
+	    return true;
+	}
+	return false;
+}
+
 float mdaCombo::getParameter(VstInt32 index)
 {
 	float v=0;
@@ -194,7 +204,7 @@ void mdaCombo::getParameterName(VstInt32 index, char *label)
 }
 
 #include <stdio.h>
-void long2string(long value, char *string) { sprintf(string, "%ld", value); }
+void int2strng(VstInt32 value, char *string) { sprintf(string, "%d", value); }
 void float2strng(float value, char *string) { sprintf(string, "%.2f", value); }
 
 void mdaCombo::getParameterDisplay(VstInt32 index, char *text)
@@ -213,13 +223,13 @@ void mdaCombo::getParameterDisplay(VstInt32 index, char *text)
               case 6: strcpy(text, "4x12 >"); break;
            } break;
 
-    case 1: long2string((long)(200 * fParam2 - 100), text); break;
-    case 2: long2string((long)(200 * fParam3 - 100), text); break;
-    case 3: long2string((long)(40 * fParam4 - 20), text); break;
+    case 1: int2strng((VstInt32)(200 * fParam2 - 100), text); break;
+    case 2: int2strng((VstInt32)(200 * fParam3 - 100), text); break;
+    case 3: int2strng((VstInt32)(40 * fParam4 - 20), text); break;
     case 4: if(fParam5>0.5) strcpy(text, "STEREO"); 
                        else strcpy(text, "MONO"); break;
-    case 5: long2string((long)(100 * fParam6), text); break;
-    case 6: long2string((long)(100 * fParam7), text); break;
+    case 5: int2strng((VstInt32)(100 * fParam6), text); break;
+    case 6: int2strng((VstInt32)(100 * fParam7), text); break;
   }
 }
 
@@ -251,7 +261,7 @@ void mdaCombo::process(float **inputs, float **outputs, VstInt32 sampleFrames)
   float f1=ff1, f2=ff2, f3=ff3, f4=ff4, f5=ff5;
   float a2, b2, f6=ff6, f7=ff7, f8=ff8, f9=ff9, f10=ff10;
   float h0=hh0, h1=hh1;
-  long d1=del1, d2=del2, bp = bufpos;
+  VstInt32 d1=del1, d2=del2, bp = bufpos;
 
   trm = trim * i * i * i * i;
 
@@ -376,7 +386,7 @@ void mdaCombo::processReplacing(float **inputs, float **outputs, VstInt32 sample
   float f1=ff1, f2=ff2, f3=ff3, f4=ff4, f5=ff5;
   float a2, b2, f6=ff6, f7=ff7, f8=ff8, f9=ff9, f10=ff10;
   float hf=hhf, hq=hhq, h0=hh0, h1=hh1;
-  long d1=del1, d2=del2, bp = bufpos;
+  VstInt32 d1=del1, d2=del2, bp = bufpos;
   
   trm = trim * i * i * i * i;
 

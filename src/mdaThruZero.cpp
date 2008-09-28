@@ -36,7 +36,7 @@ mdaThruZero::mdaThruZero(audioMasterCallback audioMaster): AudioEffectX(audioMas
 	DECLARE_VST_DEPRECATED(canMono) ();				      
   canProcessReplacing();
 
-  programs = new mdaThruZeroProgram[numPrograms]; ///////////////TODO: programs
+  programs = new mdaThruZeroProgram[NPROGS]; ///////////////TODO: programs
   setProgram(0);
   
   ///differences from default program...
@@ -73,6 +73,7 @@ bool  mdaThruZero::getEffectName(char* name)    { strcpy(name, "ThruZero"); retu
 
 void mdaThruZero::resume() ///update internal parameters...
 {
+  float * param = programs[curProgram].param;
   rat = (float)(pow(10.0f, 3.f * param[0] - 2.f) * 2.f / getSampleRate());
   dep = 2000.0f * param[1] * param[1];
   dem = dep - dep * param[4];
@@ -102,12 +103,7 @@ mdaThruZero::~mdaThruZero() ///destroy any buffers...
 
 void mdaThruZero::setProgram(VstInt32 program)
 {
-  int i=0;
-
-  mdaThruZeroProgram *p = &programs[program];
   curProgram = program;
-  setProgramName(p->name);
-  for(i=0; i<NPARAMS; i++) param[i] = p->param[i];
   resume();
 }
 
@@ -115,14 +111,23 @@ void mdaThruZero::setProgram(VstInt32 program)
 void  mdaThruZero::setParameter(VstInt32 index, float value) 
 { 
   if(index==3) phi=0.0f; //reset cycle
-  param[index] = value; resume(); 
+  programs[curProgram].param[index] = value;
+  resume(); 
 }
 
 
-float mdaThruZero::getParameter(VstInt32 index) { return param[index]; }
-void  mdaThruZero::setProgramName(char *name) { strcpy(programName, name); }
-void  mdaThruZero::getProgramName(char *name) { strcpy(name, programName); }
-
+float mdaThruZero::getParameter(VstInt32 index) { return programs[curProgram].param[index]; }
+void  mdaThruZero::setProgramName(char *name) { strcpy(programs[curProgram].name, name); }
+void  mdaThruZero::getProgramName(char *name) { strcpy(name, programs[curProgram].name); }
+bool mdaThruZero::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if ((unsigned int)index < NPROGS) 
+	{
+	    strcpy(name, programs[index].name);
+	    return true;
+	}
+	return false;
+}
 
 void mdaThruZero::getParameterName(VstInt32 index, char *label)
 {
@@ -140,6 +145,7 @@ void mdaThruZero::getParameterName(VstInt32 index, char *label)
 void mdaThruZero::getParameterDisplay(VstInt32 index, char *text)
 {
  	char string[16];
+ 	float * param = programs[curProgram].param;
 
   switch(index)
   {
@@ -201,7 +207,7 @@ void mdaThruZero::processReplacing(float **inputs, float **outputs, VstInt32 sam
   float *out2 = outputs[1];
 	float a, b, f=fb, f1=fb1, f2=fb2, ph=phi;	
   float ra=rat, de=dep, we=wet, dr=dry, ds=deps, dm=dem;
-  long  tmp, tmpi, bp=bufpos;
+  VstInt32  tmp, tmpi, bp=bufpos;
   float tmpf, dpt;
   
 	--in1;	

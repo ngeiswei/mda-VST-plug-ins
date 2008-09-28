@@ -49,6 +49,16 @@ void mdaDynamics::getProgramName(char *name)
 	strcpy(name, programName);
 }
 
+bool mdaDynamics::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if (index == 0) 
+	{
+	    strcpy(name, programName);
+	    return true;
+	}
+	return false;
+}
+
 void mdaDynamics::setParameter(VstInt32 index, float value)
 {
 	switch(index)
@@ -127,30 +137,30 @@ void mdaDynamics::getParameterName(VstInt32 index, char *label)
 }
 
 #include <stdio.h>
-void long2string(long value, char *string) { sprintf(string, "%ld", value); }
+void int2strng(VstInt32 value, char *string) { sprintf(string, "%d", value); }
 void float2strng(float value, char *string) { sprintf(string, "%.2f", value); }
 
 void mdaDynamics::getParameterDisplay(VstInt32 index, char *text)
 {
 	switch(index)
   {
-    case 0: long2string((long)(40.0*fParam1 - 40.0),text); break;
+    case 0: int2strng((VstInt32)(40.0*fParam1 - 40.0),text); break;
     case 1: if(fParam2>0.58) 
             { if(fParam2<0.62) strcpy(text, "Limit"); 
               else float2strng(-rat,text); }
             else 
             { if(fParam2<0.2) float2strng(0.5f+2.5f*fParam2,text); 
               else float2strng(1.f/(1.f-rat),text); } break;
-    case 2: long2string((long)(40.0*fParam3 - 0.0),text); break; ///was -20.0
-    case 3: long2string((long)(-301030.1 / (getSampleRate() * log10(1.0 - att))),text); break;
-    case 4: long2string((long)(-301.0301 / (getSampleRate() * log10(1.0 - rel))),text); break;
+    case 2: int2strng((VstInt32)(40.0*fParam3 - 0.0),text); break; ///was -20.0
+    case 3: int2strng((VstInt32)(-301030.1 / (getSampleRate() * log10(1.0 - att))),text); break;
+    case 4: int2strng((VstInt32)(-301.0301 / (getSampleRate() * log10(1.0 - rel))),text); break;
     case 5: if(lthr==0.f) strcpy(text, "OFF"); 
-            else long2string((long)(30.0*fParam6 - 20.0),text); break;
+            else int2strng((VstInt32)(30.0*fParam6 - 20.0),text); break;
     case 6: if(xthr==0.f) strcpy(text, "OFF"); 
-            else long2string((long)(60.0*fParam7 - 60.0),text); break;
-    case 7: long2string((long)(-301030.1 / (getSampleRate() * log10(1.0 - gatt))),text); break;
-    case 8: long2string((long)(-1806.0 / (getSampleRate() * log10(xrat))),text); break;
-    case 9: long2string((long)(100.0*fParam10),text); break;
+            else int2strng((VstInt32)(60.0*fParam7 - 60.0),text); break;
+    case 7: int2strng((VstInt32)(-301030.1 / (getSampleRate() * log10(1.0 - gatt))),text); break;
+    case 8: int2strng((VstInt32)(-1806.0 / (getSampleRate() * log10(xrat))),text); break;
+    case 9: int2strng((VstInt32)(100.0*fParam10),text); break;
 
   }
 }
@@ -162,11 +172,11 @@ void mdaDynamics::getParameterLabel(VstInt32 index, char *label)
     case 0: strcpy(label, "dB"); break;
     case 1: strcpy(label, ":1"); break;
     case 2: strcpy(label, "dB"); break; 
-    case 3: strcpy(label, "µs"); break; 
+    case 3: strcpy(label, "ï¿½s"); break; 
     case 4: strcpy(label, "ms"); break; 
     case 5: strcpy(label, "dB"); break; 
     case 6: strcpy(label, "dB"); break; 
-    case 7: strcpy(label, "µs"); break; 
+    case 7: strcpy(label, "ï¿½s"); break; 
     case 8: strcpy(label, "ms"); break; 
     case 9: strcpy(label, "%"); break; 
   }

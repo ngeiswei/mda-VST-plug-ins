@@ -63,7 +63,7 @@ void mdaDither::setParameter(VstInt32 index, float value)
   dith = 2.0f * fParam2 / (wlen * (float)32767);
   shap=0.0f;
 
-  switch((long)(fParam1*3.9)) //dither mode
+  switch((VstInt32)(fParam1*3.9)) //dither mode
   {  
      case 0: dith = 0.0f; break; //off
      case 3: shap = 0.5f; break; //noise shaping
@@ -88,6 +88,16 @@ void mdaDither::setProgramName(char *name)
 void mdaDither::getProgramName(char *name)
 {
 	strcpy(name, programName);
+}
+
+bool mdaDither::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if (index == 0) 
+	{
+	    strcpy(name, programName);
+	    return true;
+	}
+	return false;
 }
 
 float mdaDither::getParameter(VstInt32 index)
@@ -118,15 +128,15 @@ void mdaDither::getParameterName(VstInt32 index, char *label)
 }
 
 #include <stdio.h>
-void long2string(long value, char *string) { sprintf(string, "%ld", value); }
+void int2strng(VstInt32 value, char *string) { sprintf(string, "%d", value); }
 void float2strng(float value, char *string) { sprintf(string, "%.2f", value); }
 
 void mdaDither::getParameterDisplay(VstInt32 index, char *text)
 {
 	switch(index)
   {
-    case 0: long2string((long)bits, text); break;
-    case 1: switch((long)(fParam1*3.9))
+    case 0: int2strng((VstInt32)bits, text); break;
+    case 1: switch((VstInt32)(fParam1*3.9))
             {  case 0: strcpy(text, "OFF"); break;
                case 1: strcpy(text, "TRI"); break;
                case 2: strcpy(text, "HP-TRI"); break;
@@ -136,7 +146,7 @@ void mdaDither::getParameterDisplay(VstInt32 index, char *text)
     case 3: float2strng(4.0f * fParam3 - 2.0f, text); break;
     case 4: if(fParam4>0.1f) 
             if(gain<0.0001f) strcpy(text, "-80");
-                        else long2string((long)(20.0 * log10(gain)), text);
+                        else int2strng((VstInt32)(20.0 * log10(gain)), text);
                         else strcpy(text, "OFF"); break;
   }
 }
@@ -167,9 +177,9 @@ void mdaDither::process(float **inputs, float **outputs, VstInt32 sampleFrames)
   float dl=dith;                                 //dither level
   float o=offs, w=wlen, wi=1.0f/wlen;            //DC offset, word length & inverse
   float g=gain;                                  //gain for Zoom mode
-  long  r1=rnd1, r2, r3=rnd3, r4;                //random numbers for dither
-  long  m=1;                                     //dither mode
-  if((long)(fParam1 * 3.9f)==1) m=0;             //what is the fastest if(?)
+  VstInt32  r1=rnd1, r2, r3=rnd3, r4;                //random numbers for dither
+  VstInt32  m=1;                                     //dither mode
+  if((VstInt32)(fParam1 * 3.9f)==1) m=0;             //what is the fastest if(?)
 
   --in1;	
 	--in2;	
@@ -190,14 +200,14 @@ void mdaDither::process(float **inputs, float **outputs, VstInt32 sampleFrames)
     a  = g * a + sl * (s1 + s1 - s2);
     aa = a + o + dl * (float)(r1 - r2);
     if(aa<0.0f) aa-=wi;
-    aa = wi * (float)(long)(w * aa);
+    aa = wi * (float)(VstInt32)(w * aa);
     s2 = s1;                            
     s1 = a - aa;
 
     b  = g * b + sl * (s3 + s3 - s4);
     bb = b + o + dl * (float)(r3 - r4);
     if(bb<0.0f) bb-=wi;
-    bb = wi * (float)(long)(w * bb);
+    bb = wi * (float)(VstInt32)(w * bb);
     s4 = s3;
     s3 = b - bb;
 
@@ -220,9 +230,9 @@ void mdaDither::processReplacing(float **inputs, float **outputs, VstInt32 sampl
   float dl=dith;                                 //dither level
   float o=offs, w=wlen, wi=1.0f/wlen;            //DC offset, word length & inverse
   float g=gain;                                  //gain for Zoom mode
-  long  r1=rnd1, r2, r3=rnd3, r4;                //random numbers for dither
-  long  m=1;                                     //dither mode
-  if((long)(fParam1 * 3.9f)==1) m=0;             //what is the fastest if(?)
+  VstInt32  r1=rnd1, r2, r3=rnd3, r4;                //random numbers for dither
+  VstInt32  m=1;                                     //dither mode
+  if((VstInt32)(fParam1 * 3.9f)==1) m=0;             //what is the fastest if(?)
 
 	--in1;	
 	--in2;	
@@ -240,15 +250,15 @@ void mdaDither::processReplacing(float **inputs, float **outputs, VstInt32 sampl
     
     a  = g * a + sl * (s1 + s1 - s2);    //target level + error feedback
     aa = a + o + dl * (float)(r1 - r2);  //             + offset + dither 
-    if(aa<0.0f) aa-=wi;                 //(long) truncates towards zero!
-    aa = wi * (float)(long)(w * aa);    //truncate 
+    if(aa<0.0f) aa-=wi;                 //(VstInt32) truncates towards zero!
+    aa = wi * (float)(VstInt32)(w * aa);    //truncate 
     s2 = s1;                            
     s1 = a - aa;                        //error feedback: 2nd order noise shaping
 
     b  = g * b + sl * (s3 + s3 - s4);
     bb = b + o + dl * (float)(r3 - r4);
     if(bb<0.0f) bb-=wi;
-    bb = wi * (float)(long)(w * bb);
+    bb = wi * (float)(VstInt32)(w * bb);
     s4 = s3;
     s3 = b - bb;
 

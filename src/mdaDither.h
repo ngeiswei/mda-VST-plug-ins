@@ -13,6 +13,7 @@ public:
 	virtual void processReplacing(float **inputs, float **outputs, VstInt32 sampleFrames);
 	virtual void setProgramName(char *name);
 	virtual void getProgramName(char *name);
+	virtual bool getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name);
 	virtual void setParameter(VstInt32 index, float value);
 	virtual float getParameter(VstInt32 index);
 	virtual void getParameterLabel(VstInt32 index, char *label);
@@ -33,7 +34,7 @@ protected:
   float fParam4;
 
   float dith;
-  long  rnd1, rnd3;
+  VstInt32  rnd1, rnd3;
   float shap, sh1, sh2, sh3, sh4;
   float offs, bits, wlen, gain;
 

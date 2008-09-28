@@ -28,7 +28,7 @@ mdaTracker::mdaTracker(audioMasterCallback audioMaster)	: AudioEffectX(audioMast
 	strcpy(programName, "Pitch Tracker");
 
   dphi = 100.f/getSampleRate(); //initial pitch
-  min = (long)(getSampleRate()/30.0); //lower limit
+  min = (VstInt32)(getSampleRate()/30.0); //lower limit
   res1 = (float)cos(0.01); //p
   res2 = (float)sin(0.01); //q
 
@@ -53,7 +53,7 @@ void mdaTracker::setParameter(VstInt32 index, float value)
   fo = filterFreq(50.f); fi = (1.f - fo)*(1.f - fo);
   ddphi = fParam4 * fParam4;
   thr = (float)pow(10.0, 3.0*fParam7 - 3.8);
-  max = (long)(getSampleRate() / pow(10.0f, 1.6f + 2.2f * fParam6));
+  max = (VstInt32)(getSampleRate() / pow(10.0f, 1.6f + 2.2f * fParam6));
   trans = (float)pow(1.0594631,int(72.f*fParam5 - 36.f));
   wet = (float)pow(10.0, 2.0*fParam8 - 1.0);
   if(mode<4)
@@ -102,6 +102,16 @@ void mdaTracker::getProgramName(char *name)
 	strcpy(name, programName);
 }
 
+bool mdaTracker::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if (index == 0) 
+	{
+	    strcpy(name, programName);
+	    return true;
+	}
+	return false;
+}
+
 float mdaTracker::getParameter(VstInt32 index)
 {
 	float v=0;
@@ -136,7 +146,7 @@ void mdaTracker::getParameterName(VstInt32 index, char *label)
 }
 
 #include <stdio.h>
-void long2string(long value, char *string) { sprintf(string, "%ld", value); }
+void int2strng(VstInt32 value, char *string) { sprintf(string, "%d", value); }
 
 void mdaTracker::getParameterDisplay(VstInt32 index, char *text)
 {
@@ -150,13 +160,13 @@ void mdaTracker::getParameterDisplay(VstInt32 index, char *text)
               case 3: strcpy(text, "RING"); break;
               case 4: strcpy(text, "EQ"); break;
             } break;
-    case 1: long2string((long)(100 * fParam2), text); break;
-    case 2: long2string((long)(100 * fParam3), text); break;
-    case 3: long2string((long)(100 * fParam4), text); break;
-    case 4: long2string((long)(72*fParam5 - 36), text); break;
-    case 5: long2string((long)(getSampleRate()/max), text); break;
-    case 6: long2string((long)(60*fParam7 - 60), text); break;
-    case 7: long2string((long)(40*fParam8 - 20), text); break;
+    case 1: int2strng((VstInt32)(100 * fParam2), text); break;
+    case 2: int2strng((VstInt32)(100 * fParam3), text); break;
+    case 3: int2strng((VstInt32)(100 * fParam4), text); break;
+    case 4: int2strng((VstInt32)(72*fParam5 - 36), text); break;
+    case 5: int2strng((VstInt32)(getSampleRate()/max), text); break;
+    case 6: int2strng((VstInt32)(60*fParam7 - 60), text); break;
+    case 7: int2strng((VstInt32)(40*fParam8 - 20), text); break;
   }
 }
 
@@ -187,7 +197,7 @@ void mdaTracker::process(float **inputs, float **outputs, VstInt32 sampleFrames)
   float o=fo, i=fi, b1=buf1, b2=buf2, twopi=6.2831853f;
   float we=wet, dr=dry, bo=bold, r1=res1, r2=res2, b3=buf3, b4=buf4;
   float sw=saw, dsw=dsaw, dy=dyn, e=env, re=rel;
-  long  m=max, n=num, s=sig, mn=min, mo=mode;
+  VstInt32  m=max, n=num, s=sig, mn=min, mo=mode;
   
 	--in1;	
 	--in2;	
@@ -271,7 +281,7 @@ void mdaTracker::processReplacing(float **inputs, float **outputs, VstInt32 samp
   float o=fo, i=fi, b1=buf1, b2=buf2, twopi=6.2831853f;
   float we=wet, dr=dry, bo=bold, r1=res1, r2=res2, b3=buf3, b4=buf4;
   float sw=saw, dsw=dsaw, dy=dyn, e=env, re=rel;
-  long  m=max, n=num, s=sig, mn=min, mo=mode;
+  VstInt32  m=max, n=num, s=sig, mn=min, mo=mode;
   
 	--in1;	
 	--in2;	

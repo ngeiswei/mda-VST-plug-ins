@@ -106,6 +106,16 @@ void mdaRePsycho::getProgramName(char *name)
 	strcpy(name, programName);
 }
 
+bool mdaRePsycho::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if (index == 0) 
+	{
+	    strcpy(name, programName);
+	    return true;
+	}
+	return false;
+}
+
 float mdaRePsycho::getParameter(VstInt32 index)
 {
 	float v=0;
@@ -138,18 +148,18 @@ void mdaRePsycho::getParameterName(VstInt32 index, char *label)
 }
 
 #include <stdio.h>
-void long2string(long value, char *string) { sprintf(string, "%ld", value); }
+void int2strng(VstInt32 value, char *string) { sprintf(string, "%d", value); }
 
 void mdaRePsycho::getParameterDisplay(VstInt32 index, char *text)
 {
 	switch(index)
   {
-    case 3: long2string((long)((30.0 * fParam1) - 30.0), text); break;
-    case 2: long2string((long)((fParam2 - 0.5) * 100.0), text); break;
-    case 0: long2string((long)(int(24.0 * fParam3) - 24.0), text); break;
-    case 5: long2string((long)(100.0 * fParam4), text); break;
-    case 4: long2string((long)(1000.0 * dtim / getSampleRate()), text); break;
-    case 1: long2string((long)(int(99.0 * fParam6) - 99.0), text); break;
+    case 3: int2strng((VstInt32)((30.0 * fParam1) - 30.0), text); break;
+    case 2: int2strng((VstInt32)((fParam2 - 0.5) * 100.0), text); break;
+    case 0: int2strng((VstInt32)(int(24.0 * fParam3) - 24.0), text); break;
+    case 5: int2strng((VstInt32)(100.0 * fParam4), text); break;
+    case 4: int2strng((VstInt32)(1000.0 * dtim / getSampleRate()), text); break;
+    case 1: int2strng((VstInt32)(int(99.0 * fParam6) - 99.0), text); break;
     case 6: if(fParam7>0.5) strcpy(text, "HIGH");
             else strcpy(text, "LOW"); break;
   }
@@ -182,7 +192,7 @@ void mdaRePsycho::process(float **inputs, float **outputs, VstInt32 sampleFrames
   float we=wet, dr=dry, tu=tun, en=env;
   float ga=gai, x=0.0f, x2=0.0f, xx=buf, xx2=buf2;
   float it1, it2;
-  long ti=tim, dti=dtim, of1, of2;
+  VstInt32 ti=tim, dti=dtim, of1, of2;
   
   --in1;	
 	--in2;	
@@ -313,7 +323,7 @@ void mdaRePsycho::processReplacing(float **inputs, float **outputs, VstInt32 sam
   float we=wet, dr=dry, tu=tun, en=env;
   float ga=gai, x=0.0f, x2=0.0f, xx=buf, xx2=buf2;
   float it1, it2;
-  long ti=tim, dti=dtim, of1, of2;
+  VstInt32 ti=tim, dti=dtim, of1, of2;
 
 	--in1;	
 	--in2;	

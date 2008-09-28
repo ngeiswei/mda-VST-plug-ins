@@ -94,6 +94,16 @@ void mdaDegrade::getProgramName(char *name)
 	strcpy(name, programName);
 }
 
+bool mdaDegrade::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if (index == 0) 
+	{
+	    strcpy(name, programName);
+	    return true;
+	}
+	return false;
+}
+
 float mdaDegrade::getParameter(VstInt32 index)
 {
 	float v=0;
@@ -124,18 +134,18 @@ void mdaDegrade::getParameterName(VstInt32 index, char *label)
 }
 
 #include <stdio.h>
-void long2string(long value, char *string) { sprintf(string, "%ld", value); }
+void int2strng(VstInt32 value, char *string) { sprintf(string, "%d", value); }
 
 void mdaDegrade::getParameterDisplay(VstInt32 index, char *text)
 {
 	switch(index)
   {
-    case 0: long2string((long)(-30.0 * (1.0 - fParam1)), text); break;
-    case 1: long2string((long)(4.0 + 12.0 * fParam2), text); break;
-    case 2: long2string((long)(getSampleRate()/tn), text); break;
-    case 3: long2string((long)pow(10.0f, 2.30104f + 2.f*fParam4), text); break;
-    case 4: long2string((long)(200.0 * fabs(fParam5 - 0.5)), text); break;
-    case 5: long2string((long)(40.0 * fParam6 - 20.0), text); break;
+    case 0: int2strng((VstInt32)(-30.0 * (1.0 - fParam1)), text); break;
+    case 1: int2strng((VstInt32)(4.0 + 12.0 * fParam2), text); break;
+    case 2: int2strng((VstInt32)(getSampleRate()/tn), text); break;
+    case 3: int2strng((VstInt32)pow(10.0f, 2.30104f + 2.f*fParam4), text); break;
+    case 4: int2strng((VstInt32)(200.0 * fabs(fParam5 - 0.5)), text); break;
+    case 5: int2strng((VstInt32)(40.0 * fParam6 - 20.0), text); break;
   }
 }
 

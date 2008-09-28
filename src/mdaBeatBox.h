@@ -13,6 +13,7 @@ public:
 	virtual void processReplacing(float **inputs, float **outputs, VstInt32 sampleFrames);
 	virtual void setProgramName(char *name);
 	virtual void getProgramName(char *name);
+	virtual bool getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name);
 	virtual void setParameter(VstInt32 index, float value);
 	virtual float getParameter(VstInt32 index);
 	virtual void getParameterLabel(VstInt32 index, char *label);
@@ -48,10 +49,10 @@ protected:
   float *hbuf;
   float *kbuf;
   float *sbuf, *sbuf2;
-	long hbuflen, hbufpos, hdel;
-	long sbuflen, sbufpos, sdel, sfx;
-  long kbuflen, kbufpos, kdel, ksfx;
-  long rec, recx, recpos;
+	VstInt32 hbuflen, hbufpos, hdel;
+	VstInt32 sbuflen, sbufpos, sdel, sfx;
+  VstInt32 kbuflen, kbufpos, kdel, ksfx;
+  VstInt32 rec, recx, recpos;
 
 	char programName[32];
 };

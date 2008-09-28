@@ -59,6 +59,16 @@ void mdaDeEss::getProgramName(char *name)
 	strcpy(name, programName);
 }
 
+bool mdaDeEss::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if (index == 0) 
+	{
+	    strcpy(name, programName);
+	    return true;
+	}
+	return false;
+}
+
 float mdaDeEss::getParameter(VstInt32 index)
 {
 	float v=0;
@@ -83,15 +93,15 @@ void mdaDeEss::getParameterName(VstInt32 index, char *label)
 }
 
 #include <stdio.h>
-void long2string(long value, char *string) { sprintf(string, "%ld", value); }
+void int2strng(VstInt32 value, char *string) { sprintf(string, "%d", value); }
 
 void mdaDeEss::getParameterDisplay(VstInt32 index, char *text)
 {
 	switch(index)
   {
-    case 0: long2string((long)(60.f * fParam1 - 60.f), text); break;
-    case 1: long2string((long)(1000 + 11000 * fParam2), text); break;
-    case 2: long2string((long)(40.0 * fParam3 - 20.0), text); break;
+    case 0: int2strng((VstInt32)(60.f * fParam1 - 60.f), text); break;
+    case 1: int2strng((VstInt32)(1000 + 11000 * fParam2), text); break;
+    case 2: int2strng((VstInt32)(40.0 * fParam3 - 20.0), text); break;
   }
 }
 

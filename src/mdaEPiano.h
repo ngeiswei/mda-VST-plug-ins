@@ -18,10 +18,6 @@
 class mdaEPianoProgram
 {
   friend class mdaEPiano;
-public:
-  mdaEPianoProgram() {}
-	~mdaEPianoProgram() {}
-
 private:
   float param[NPARAMS];
   char  name[24];
@@ -30,11 +26,11 @@ private:
 
 struct VOICE  //voice state
 {
-  long  delta;  //sample playback
-  long  frac;
-  long  pos;
-  long  end;
-  long  loop;
+  VstInt32  delta;  //sample playback
+  VstInt32  frac;
+  VstInt32  pos;
+  VstInt32  end;
+  VstInt32  loop;
   
   float env;  //envelope
   float dec;
@@ -45,17 +41,17 @@ struct VOICE  //voice state
 
   float outl;
   float outr;
-  long  note; //remember what note triggered this
+  VstInt32  note; //remember what note triggered this
 };
 
 
 struct KGRP  //keygroup
 {
-  long  root;  //MIDI root note
-  long  high;  //highest note
-  long  pos;
-  long  end;
-  long  loop;
+  VstInt32  root;  //MIDI root note
+  VstInt32  high;  //highest note
+  VstInt32  pos;
+  VstInt32  end;
+  VstInt32  loop;
 };
 
 class mdaEPiano : public AudioEffectX
@@ -90,30 +86,29 @@ public:
 
 	virtual VstInt32 getNumMidiInputChannels ()  { return 1; }
 
-  long guiUpdate;
+  VstInt32 guiUpdate;
   void guiGetDisplay(VstInt32 index, char *label);
 
 private:
 	void update();  //my parameter update
-  void noteOn(long note, long velocity);
-  void fillpatch(long p, char *name, float p0, float p1, float p2, float p3, float p4,
+  void noteOn(VstInt32 note, VstInt32 velocity);
+  void fillpatch(VstInt32 p, char *name, float p0, float p1, float p2, float p3, float p4,
                  float p5, float p6, float p7, float p8, float p9, float p10,float p11);
 
-  float param[NPARAMS];
   mdaEPianoProgram* programs;
   float Fs, iFs;
 
   #define EVENTBUFFER 120
   #define EVENTS_DONE 99999999
-  long notes[EVENTBUFFER + 8];  //list of delta|note|velocity for current block
+  VstInt32 notes[EVENTBUFFER + 8];  //list of delta|note|velocity for current block
 
   ///global internal variables
   KGRP  kgrp[34];
   VOICE voice[NVOICES];
-  long  activevoices, poly;
+  VstInt32  activevoices, poly;
   short *waves;
   float width;
-  long  size, sustain;
+  VstInt32  size, sustain;
   float lfo0, lfo1, dlfo, lmod, rmod;
   float treb, tfrq, tl, tr;
   float tune, fine, random, stretch, overdrive;

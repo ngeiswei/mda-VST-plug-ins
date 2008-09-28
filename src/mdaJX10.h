@@ -21,8 +21,6 @@ class mdaJX10Program
   friend class mdaJX10;
 public:
 	mdaJX10Program();
-	~mdaJX10Program() {}
-
 private:
   float param[NPARAMS];
   char  name[24];
@@ -70,7 +68,7 @@ struct VOICE  //voice state
   float  lev;  //osc levels
   float  lev2;
   float  target; //period target
-  long   note; //remember what note triggered this
+  VstInt32   note; //remember what note triggered this
 };
 
 
@@ -108,25 +106,24 @@ public:
 
 private:
 	void update();  //my parameter update
-  void noteOn(long note, long velocity);
-  void fillpatch(long p, char *name,
+  void noteOn(VstInt32 note, VstInt32 velocity);
+  void fillpatch(VstInt32 p, char *name,
                  float p0,  float p1,  float p2,  float p3,  float p4,  float p5, 
                  float p6,  float p7,  float p8,  float p9,  float p10, float p11,
                  float p12, float p13, float p14, float p15, float p16, float p17, 
                  float p18, float p19, float p20, float p21, float p22, float p23);
   
-  float param[NPARAMS];
   mdaJX10Program* programs;
   float Fs;
 
   #define EVENTBUFFER 120
   #define EVENTS_DONE 99999999
-  long notes[EVENTBUFFER + 8];  //list of delta|note|velocity for current block
+  VstInt32 notes[EVENTBUFFER + 8];  //list of delta|note|velocity for current block
   #define KMAX 32
 
   ///global internal variables
   #define SUSTAIN -1
-  long sustain, activevoices;
+  VstInt32 sustain, activevoices;
   VOICE voice[NVOICES];
 
   float semi, cent;
@@ -137,8 +134,8 @@ private:
   float lfo, dlfo, modwhl, press, pbend, ipbend, rezwhl;
   float velsens, volume, voltrim;
   float vibrato, pwmdep, lfoHz, glide, glidedisp;
-  long  K, lastnote, veloff, mode;
-  unsigned long noise;
+  VstInt32  K, lastnote, veloff, mode;
+  unsigned int noise;
 };
 
 #endif

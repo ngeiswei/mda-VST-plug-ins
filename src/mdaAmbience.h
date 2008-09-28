@@ -1,7 +1,7 @@
 #ifndef __mdaAmbience_H
 #define __mdaAmbience_H
 
-#include "audioeffectX.h"
+#include "audioeffectx.h"
 
 class mdaAmbience : public AudioEffectX
 {
@@ -13,6 +13,7 @@ public:
 	virtual void processReplacing(float **inputs, float **outputs, VstInt32 sampleFrames);
 	virtual void setProgramName(char *name);
 	virtual void getProgramName(char *name);
+	virtual bool getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name);
 	virtual void setParameter(VstInt32 index, float value);
 	virtual float getParameter(VstInt32 index);
 	virtual void getParameterLabel(VstInt32 index, char *label);
@@ -34,7 +35,7 @@ protected:
 
   float *buf1, *buf2, *buf3, *buf4;
   float fil, fbak, damp, wet, dry, size;
-  long  pos, den, rdy;
+  VstInt32  pos, den, rdy;
 
   char programName[32];
 };

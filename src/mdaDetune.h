@@ -14,8 +14,6 @@ class mdaDetuneProgram
 {
 public:
   mdaDetuneProgram();
-  ~mdaDetuneProgram() {}
-
 private:
   friend class mdaDetune;
   float param[NPARAMS];
@@ -34,6 +32,7 @@ public:
   virtual void  setProgram(VstInt32 program);
   virtual void  setProgramName(char *name);
   virtual void  getProgramName(char *name);
+  virtual bool getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name);
   virtual void  setParameter(VstInt32 index, float value);
   virtual float getParameter(VstInt32 index);
   virtual void  getParameterLabel(VstInt32 index, char *label);
@@ -48,16 +47,14 @@ public:
 	virtual VstInt32 getVendorVersion() { return 1000; }
 
 protected:
-  float param[NPARAMS];
-  char programName[32];
   mdaDetuneProgram *programs;
 
   ///global internal variables
   float *buf, *win;       //buffer, window
-  long  buflen;           //buffer length
+  VstInt32  buflen;           //buffer length
   float bufres;           //buffer resolution display
   float semi;             //detune display
-  long  pos0;             //buffer input
+  VstInt32  pos0;             //buffer input
   float pos1, dpos1;      //buffer output, rate
   float pos2, dpos2;      //downwards shift
   float wet, dry;         //ouput levels

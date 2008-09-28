@@ -46,7 +46,7 @@ void mdaSpecMeterGUI::close()
 
 void mdaSpecMeterGUI::idle()
 {
-	long xnow = ((mdaSpecMeter *)effect)->counter;
+	VstInt32 xnow = ((mdaSpecMeter *)effect)->counter;
 	if(xnow != xtimer)
 	{
 	  xtimer = xnow;
@@ -63,7 +63,7 @@ void mdaSpecMeterGUI::idle()
 	    draw->Rmin  = ((mdaSpecMeter *)effect)->Rmin;
 	    draw->Rrms  = ((mdaSpecMeter *)effect)->Rrms;
 	    draw->Corr  = ((mdaSpecMeter *)effect)->Corr;
-      for(long i=0; i<13; i++)
+      for(VstInt32 i=0; i<13; i++)
       {
         draw->band[0][i] = ((mdaSpecMeter *)effect)->band[0][i];
         draw->band[1][i] = ((mdaSpecMeter *)effect)->band[1][i];
@@ -81,7 +81,7 @@ CDraw::CDraw(CRect &size, float value, CBitmap *background) : CControl(size)
   bitmap = background;
   
   Lpeak = Lmin = Lrms = Rpeak = Rmin = Rrms = Corr = 0.0f;
-  for(long i=0; i<16; i++) band[0][i] = band[1][i] = 0.0f;
+  for(VstInt32 i=0; i<16; i++) band[0][i] = band[1][i] = 0.0f;
   
   setValue(value);
 }
@@ -93,7 +93,7 @@ CDraw::~CDraw()
 
 void CDraw::draw(CDrawContext *pContext)
 {
-  long r, p;
+  VstInt32 r, p;
   CRect block;
   CRect rect(0, 0, bitmap->getWidth(), bitmap->getHeight());
 
@@ -128,51 +128,51 @@ void CDraw::draw(CDrawContext *pContext)
   //block(x2pix(Rpeak), 18, 478, 26);
   //buf->fillRect(block);
 
-  block(235, 42, 244, 134 - (long)(90 * Corr));
+  block(235, 42, 244, 134 - (VstInt32)(90 * Corr));
   pContext->fillRect(block);
 
-  long i, x1=2, x2=256; //octave bands
+  VstInt32 i, x1=2, x2=256; //octave bands
   float dB;
   for(i=0; i<13; i++)
   {
     dB = band[0][i];
-    block(x1, 42, x1+18, 49 - (long)(20.0 * log(dB)));
+    block(x1, 42, x1+18, 49 - (VstInt32)(20.0 * log(dB)));
     pContext->fillRect(block);
     x1 += 17;
 
     dB = band[1][i];
-    block(x2, 42, x2+18, 49 - (long)(20.0 * log(dB)));
+    block(x2, 42, x2+18, 49 - (VstInt32)(20.0 * log(dB)));
     pContext->fillRect(block);
     x2 += 17;
   }
 }
 
 
-long CDraw::x2pix(float x)
+VstInt32 CDraw::x2pix(float x)
 {
   float dB = x;
-  long p = 478;
+  VstInt32 p = 478;
   
   if(x > 0.00000005f) dB = 8.6858896f * (float)log(x); else dB = -146.0f;
   if(dB < -20.0) 
-    p = 293 + (long)(2.0f * dB); 
+    p = 293 + (VstInt32)(2.0f * dB); 
   else 
-    p = 453 + (long)(10.0f * dB);
+    p = 453 + (VstInt32)(10.0f * dB);
   
   return p;
 }
 
 
-long CDraw::x22pix(float x) //power version for squared summed
+VstInt32 CDraw::x22pix(float x) //power version for squared summed
 {
   float dB = x;
-  long p = 478;
+  VstInt32 p = 478;
   
   if(x > 0.00000005f) dB = 4.3429448f * (float)log(x); else dB = -146.0f;
   if(dB < -20.0) 
-    p = 293 + (long)(2.0f * dB); 
+    p = 293 + (VstInt32)(2.0f * dB); 
   else 
-    if(dB < 0.0f) p = 453 + (long)(10.0f * dB);
+    if(dB < 0.0f) p = 453 + (VstInt32)(10.0f * dB);
   
   return p;
 }

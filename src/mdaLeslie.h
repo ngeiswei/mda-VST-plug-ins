@@ -3,16 +3,16 @@
 
 #include "audioeffectx.h"
 
+#define NPARAMS  9      //number of parameters
+#define NPROGS   3      //number of programs
+
 class mdaLeslieProgram
 {
 public:
 	mdaLeslieProgram();
-	~mdaLeslieProgram() {}
-
 private:	
 	friend class mdaLeslie;
-	float fParam1, fParam3, fParam4, fParam5, fParam6; 
-  float fParam7, fParam9, fParam2, fParam8;
+    float param[NPARAMS];
 	char name[24];
 };
 
@@ -27,6 +27,7 @@ public:
 	virtual void setProgram(VstInt32 program);
 	virtual void setProgramName(char *name);
 	virtual void getProgramName(char *name);
+	virtual bool getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name);
 	virtual void setParameter(VstInt32 index, float value);
 	virtual float getParameter(VstInt32 index);
 	virtual void getParameterLabel(VstInt32 index, char *label);
@@ -40,16 +41,7 @@ public:
 	virtual VstInt32 getVendorVersion() { return 1000; }
 
 protected:
-	float fParam1;
-  float fParam3;
-  float fParam4;
-  float fParam5;
-  float fParam6;
-  float fParam7;
-  float fParam9;
-  float fParam2;
-  float fParam8;
-
+    void update();
 	mdaLeslieProgram *programs;
 
   float filo; //crossover filter coeff
@@ -58,11 +50,9 @@ protected:
   float hspd, hset, hmom, hphi, hwid, hlev, hdep; 
   float lspd, lset, lmom, lphi, lwid, llev, gain;
   float *hbuf;  //HF delay buffer
-	long size, hpos; //buffer length & pointer
+	VstInt32 size, hpos; //buffer length & pointer
   
   float chp, dchp, clp, dclp, shp, dshp, slp, dslp;
-  
-	char programName[32];
 };
 
 #endif

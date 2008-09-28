@@ -45,6 +45,16 @@ void mdaTransient::getProgramName(char *name)
 	strcpy(name, programName);
 }
 
+bool mdaTransient::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if (index == 0) 
+	{
+	    strcpy(name, programName);
+	    return true;
+	}
+	return false;
+}
+
 void mdaTransient::setParameter(VstInt32 index, float value)
 {
 	switch(index)
@@ -126,18 +136,18 @@ void mdaTransient::getParameterName(VstInt32 index, char *label)
 }
 
 #include <stdio.h>
-void long2string(long value, char *string) { sprintf(string, "%ld", value); }
+void int2strng(VstInt32 value, char *string) { sprintf(string, "%d", value); }
 
 void mdaTransient::getParameterDisplay(VstInt32 index, char *text)
 {
 	switch(index)
   {
-    case 0: long2string((long)(200*fParam1 - 100),text); break;
-    case 1: long2string((long)(200*fParam2 - 100),text); break;
-    case 2: long2string((long)(40.0*fParam3 - 20.0),text); break;
-    case 3: long2string((long)(20*fParam4 - 10),text); break;
-    case 4: long2string((long)(100*fParam5),text); break;
-    case 5: long2string((long)(100*fParam6),text); break;
+    case 0: int2strng((VstInt32)(200*fParam1 - 100),text); break;
+    case 1: int2strng((VstInt32)(200*fParam2 - 100),text); break;
+    case 2: int2strng((VstInt32)(40.0*fParam3 - 20.0),text); break;
+    case 3: int2strng((VstInt32)(20*fParam4 - 10),text); break;
+    case 4: int2strng((VstInt32)(100*fParam5),text); break;
+    case 5: int2strng((VstInt32)(100*fParam6),text); break;
   }
 	
 }

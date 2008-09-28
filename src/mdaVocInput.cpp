@@ -49,10 +49,11 @@ bool  mdaVocInput::getEffectName(char* name)    { strcpy(name, "VocInput"); retu
 void mdaVocInput::resume() ///update internal parameters...
 {
   float fs, ifs;
+  float * param = programs[curProgram].param;
   fs = getSampleRate();
   ifs = 1.0f / fs;
 
-  track = (long)(2.99f * param[0]);
+  track = (VstInt32)(2.99f * param[0]);
   pmult = (float)pow(1.0594631f, floor(48.0f * param[1] - 24.0f));
   if(track==0) pstep = 110.0f * pmult * ifs;
 
@@ -80,21 +81,28 @@ mdaVocInput::~mdaVocInput() ///destroy any buffers...
 
 void mdaVocInput::setProgram(VstInt32 program)
 {
-  int i=0;
-
-  mdaVocInputProgram *p = &programs[program];
   curProgram = program;
-  setProgramName(p->name);
-  for(i=0; i<NPARAMS; i++) param[i] = p->param[i];
   resume();
 }
 
 
-void  mdaVocInput::setParameter(VstInt32 index, float value) { param[index] = value; resume(); }
-float mdaVocInput::getParameter(VstInt32 index) { return param[index]; }
-void  mdaVocInput::setProgramName(char *name) { strcpy(programName, name); }
-void  mdaVocInput::getProgramName(char *name) { strcpy(name, programName); }
-
+void  mdaVocInput::setParameter(VstInt32 index, float value)
+{
+  programs[curProgram].param[index] = value;
+  resume();
+}
+float mdaVocInput::getParameter(VstInt32 index) { return programs[curProgram].param[index]; }
+void  mdaVocInput::setProgramName(char *name) { strcpy(programs[curProgram].name, name); }
+void  mdaVocInput::getProgramName(char *name) { strcpy(name, programs[curProgram].name); }
+bool mdaVocInput::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if ((unsigned int)index < NPROGS) 
+	{
+	    strcpy(name, programs[index].name);
+	    return true;
+	}
+	return false;
+}
 
 void mdaVocInput::getParameterName(VstInt32 index, char *label)
 {
@@ -112,6 +120,7 @@ void mdaVocInput::getParameterName(VstInt32 index, char *label)
 void mdaVocInput::getParameterDisplay(VstInt32 index, char *text)
 {
  	char string[16];
+ 	float * param = programs[curProgram].param;
 
   switch(index)
   {
@@ -119,10 +128,10 @@ void mdaVocInput::getParameterDisplay(VstInt32 index, char *text)
                              case 1: strcpy(string, "FREE");   break;
                              case 2: strcpy(string, "QUANT"); } break;
 
-    case  1: if(track) sprintf(string, "%ld", (long)(48.0f * param[1] - 24.0f)); 
-                  else midi2string((long)(48.0f * param[1] + 21.0f), string); break;
+    case  1: if(track) sprintf(string, "%d", (VstInt32)(48.0f * param[1] - 24.0f)); 
+                  else midi2string((VstInt32)(48.0f * param[1] + 21.0f), string); break;
 
-    case  4: midi2string((long)(48.0f * param[4] + 45.0f), string); break;
+    case  4: midi2string((VstInt32)(48.0f * param[4] + 45.0f), string); break;
 
     default: sprintf(string, "%.0f", 100.0f * param[index]);
   }
@@ -143,10 +152,10 @@ void mdaVocInput::getParameterLabel(VstInt32 index, char *label)
 }
 
 
-void mdaVocInput::midi2string(long n, char *text) //show name of MIDI note number (60=C3)
+void mdaVocInput::midi2string(VstInt32 n, char *text) //show name of MIDI note number (60=C3)
 {
   char t[8];
-  long o, s, p=0;
+  VstInt32 o, s, p=0;
 
   t[p++] = ' ';
   t[p++] = ' ';
@@ -190,7 +199,7 @@ void mdaVocInput::process(float **inputs, float **outputs, VstInt32 sampleFrames
   float l0=lbuf0, l1=lbuf1, l2=lbuf2, l3=lbuf3; 
   float le=lenv, he=henv, et=lfreq*0.1f, lf=lfreq, v=vuv, mn=minp, mx=maxp;
   float rootm=39.863137f;
-  long  tr=track;
+  VstInt32  tr=track;
 
   --in1;
   --in2;
@@ -265,7 +274,7 @@ void mdaVocInput::processReplacing(float **inputs, float **outputs, VstInt32 sam
   float l0=lbuf0, l1=lbuf1, l2=lbuf2, l3=lbuf3; 
   float le=lenv, he=henv, et=lfreq*0.1f, lf=lfreq, v=vuv, mn=minp, mx=maxp;
   float rootm=39.863137f;
-  long  tr=track;
+  VstInt32  tr=track;
 
   --in1;
   --in2;

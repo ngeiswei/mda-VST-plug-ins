@@ -55,7 +55,7 @@ mdaLoudness::mdaLoudness(audioMasterCallback audioMaster): AudioEffectX(audioMas
 	DECLARE_VST_DEPRECATED(canMono) ();				      
   canProcessReplacing();
 
-  programs = new mdaLoudnessProgram[numPrograms];
+  programs = new mdaLoudnessProgram[NPROGS];
   setProgram(0);
 
   suspend();
@@ -64,8 +64,9 @@ mdaLoudness::mdaLoudness(audioMasterCallback audioMaster): AudioEffectX(audioMas
 
 void mdaLoudness::resume() ///update internal parameters...
 {
+  float * param = programs[curProgram].param;
   float f, tmp;
-  long  i;
+  VstInt32  i;
   
   tmp = param[0] + param[0] - 1.0f;
   igain = 60.0f * tmp * tmp;
@@ -76,7 +77,7 @@ void mdaLoudness::resume() ///update internal parameters...
   if(tmp<0.0f) ogain *= -1.0f;
 
   f = 0.1f * igain + 6.0f;  //coefficient index + fractional part
-  i = (long)f;
+  i = (VstInt32)f;
   f -= (float)i;
 
   tmp = loudness[i][0];  A0 = tmp + f * (loudness[i + 1][0] - tmp);
@@ -118,24 +119,28 @@ mdaLoudness::~mdaLoudness() ///destroy any buffers...
 
 void mdaLoudness::setProgram(VstInt32 program)
 {
-  int i=0;
-
-  mdaLoudnessProgram *p = &programs[program];
   curProgram = program;
-  setProgramName(p->name);
-  for(i=0; i<NPARAMS; i++) param[i] = p->param[i];
   resume();
 }
 
 void  mdaLoudness::setParameter(VstInt32 index, float value) 
 { 
-  programs[curProgram].param[index] = param[index] = value; //bug was here!
+  programs[curProgram].param[index] = value; //bug was here!
   resume(); 
 }
 
-float mdaLoudness::getParameter(VstInt32 index) { return param[index]; }
-void  mdaLoudness::setProgramName(char *name) { strcpy(programName, name); }
-void  mdaLoudness::getProgramName(char *name) { strcpy(name, programName); }
+float mdaLoudness::getParameter(VstInt32 index) { return programs[curProgram].param[index]; }
+void  mdaLoudness::setProgramName(char *name) { strcpy(programs[curProgram].name, name); }
+void  mdaLoudness::getProgramName(char *name) { strcpy(name, programs[curProgram].name); }
+bool mdaLoudness::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if ((unsigned int)index < NPROGS) 
+	{
+	    strcpy(name, programs[index].name);
+	    return true;
+	}
+	return false;
+}
 
 
 void mdaLoudness::getParameterName(VstInt32 index, char *label)
@@ -156,7 +161,7 @@ void mdaLoudness::getParameterDisplay(VstInt32 index, char *text)
   switch(index)
   {
     case  0: sprintf(string, "%.1f", igain); break;
-    case  2: if(param[index]>0.5f) strcpy (string, "ON");
+    case  2: if(programs[curProgram].param[index]>0.5f) strcpy (string, "ON");
                               else strcpy (string, "OFF"); break;
     default: sprintf(string, "%.1f", ogain); break;
   }

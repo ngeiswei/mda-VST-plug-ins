@@ -11,6 +11,11 @@
 #include <stdlib.h>
 #include <math.h>
 
+#if __linux__
+#include <pthread.h>
+#include <unistd.h>
+#endif
+
 
 AudioEffect *createEffectInstance(audioMasterCallback audioMaster)
 {
@@ -39,7 +44,24 @@ public:
   #include <windows.h>
   #pragma comment(lib, "user32.lib")
   static UINT timer = 0;
-  VOID CALLBACK TimerCallback(HWND hwnd, UINT uMsg, UINT idEvent, DWORD dwTime)
+  VOID CALLBACK TimerCallback(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime)
+#elif __linux__
+  #define IDLE_MICS (IDLE_MSEC * 1000)
+  static pthread_t thread = 0;
+  static unsigned int timer = 0;
+  static void TimerCallback();
+  static void * ThreadCallback(void * args)
+  {
+      while (timer)
+      {
+          TimerCallback();
+          usleep(IDLE_MICS);
+      }
+      thread = 0;
+      pthread_exit(0);
+      return 0;
+  }
+  void TimerCallback()
 #else //OSX
   #include <Carbon/Carbon.h>
   EventLoopTimerRef timer = 0;
@@ -60,10 +82,13 @@ public:
       {
         #if _WIN32
           KillTimer(NULL, timer);
+        #elif defined(__linux__)
+          timer = 0;
+          while (thread) usleep(1000);
         #else //OSX
           RemoveEventLoopTimer(timer);
         #endif
-        timer = 0;
+          timer = 0;
       }
     }
     else
@@ -82,6 +107,30 @@ IdleList::IdleList(mdaLooplex *effect, IdleList *next) : effect(effect), next(ne
   {
     #if WIN32
       timer = SetTimer(NULL, 0, IDLE_MSEC, TimerCallback);
+    #elif __linux__
+      timer = 1;
+      pthread_attr_t attr;
+      pthread_attr_init(&attr);
+      pthread_attr_setstacksize(&attr, 16 * 1024);
+      int policy;
+      
+      if (pthread_attr_getschedpolicy(&attr, &policy) == 0)
+      {
+          struct sched_param param;
+          param.sched_priority = sched_get_priority_min(policy);
+          pthread_attr_setschedpolicy(&attr, SCHED_OTHER);
+          pthread_attr_setschedparam(&attr, &param);
+      }
+      pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+      pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, 0);
+
+      if (pthread_create(&thread, &attr, &ThreadCallback, 0) != 0)
+      {
+          thread = 0;
+          timer = 0;
+          fprintf(stderr, "Error: mdaLooplex.cpp (line %d)\n", __LINE__);
+      }
+      pthread_attr_destroy(&attr);
     #else //OSX
       double ms = kEventDurationMillisecond * (double)IDLE_MSEC;
       InstallEventLoopTimer(GetCurrentEventLoop(), ms, ms, NewEventLoopTimerUPP(TimerCallback), 0, &timer);
@@ -145,6 +194,8 @@ mdaLooplex::mdaLooplex(audioMasterCallback audioMaster) : AudioEffectX(audioMast
 
 void mdaLooplex::update()  //parameter change
 {
+  float * param = programs[curProgram].param;
+
   if(fabs(param[1] - oldParam1) > 0.1f) 
   {
     oldParam1 = param[1]; 
@@ -199,8 +250,8 @@ void mdaLooplex::idle()
   {
     if(busy) return; //only do once per bypass
     busy = 1; 
-
-    bufmax = 2 * (long)Fs * (long)(10.5f + 190.0f * param[0]);
+    float * param = programs[curProgram].param;
+    bufmax = 2 * (VstInt32)Fs * (VstInt32)(10.5f + 190.0f * param[0]);
     if(buffer) delete [] buffer;
     buffer = new short[bufmax + 10];
     if(buffer) memset(buffer, 0, (bufmax + 10) * sizeof(short)); else bufmax = 0;
@@ -219,6 +270,8 @@ mdaLooplex::~mdaLooplex ()  //destroy any buffers...
       item->remove = true;
       #if _WIN32 //and stop timer in case our last instance is about to unload
         TimerCallback(0, 0, 0, 0);
+      #elif __linux__
+        TimerCallback();
       #else
         TimerCallback(0, 0);
       #endif
@@ -237,19 +290,19 @@ mdaLooplex::~mdaLooplex ()  //destroy any buffers...
       char wh[44];
       memcpy(wh, "RIFF____WAVEfmt \20\0\0\0\1\0\2\0________\4\0\20\0data____", 44);
   
-      long l = 36 + buflen * 2;
+      VstInt32 l = 36 + buflen * 2;
       wh[4] = (char)(l & 0xFF);  l >>= 8;
       wh[5] = (char)(l & 0xFF);  l >>= 8;
       wh[6] = (char)(l & 0xFF);  l >>= 8;
       wh[7] = (char)(l & 0xFF);
 
-      l = (long)(Fs + 0.5f);
+      l = (VstInt32)(Fs + 0.5f);
       wh[24] = (char)(l & 0xFF);  l >>= 8;
       wh[25] = (char)(l & 0xFF);  l >>= 8;
       wh[26] = (char)(l & 0xFF);  l >>= 8;
       wh[27] = (char)(l & 0xFF);
 
-      l = 4 * (long)(Fs + 0.5f);
+      l = 4 * (VstInt32)(Fs + 0.5f);
       wh[28] = (char)(l & 0xFF);  l >>= 8;
       wh[29] = (char)(l & 0xFF);  l >>= 8;
       wh[30] = (char)(l & 0xFF);  l >>= 8;
@@ -288,25 +341,19 @@ mdaLooplex::~mdaLooplex ()  //destroy any buffers...
 
 void mdaLooplex::setProgram(VstInt32 program)
 {
-	long i;
-
-  mdaLooplexProgram *p = &programs[program];
 	curProgram = program;
-  setProgramName(p->name);
-	for(i=0; i<NPARAMS; i++) param[i] = p->param[i];
-  update();
+    update();
 }
 
 
 void mdaLooplex::setParameter(VstInt32 index, float value)
 {
-  mdaLooplexProgram *p = &programs[curProgram];
-  param[index] = p->param[index] = value;
+  programs[curProgram].param[index] = value;
   update();
 }
 
 
-float mdaLooplex::getParameter(VstInt32 index)     { return param[index]; }
+float mdaLooplex::getParameter(VstInt32 index)     { return programs[curProgram].param[index]; }
 void  mdaLooplex::setProgramName(char *name)   { strcpy(programs[curProgram].name, name); }
 void  mdaLooplex::getProgramName(char *name)   { strcpy(name, programs[curProgram].name); }
 void  mdaLooplex::setBlockSize(VstInt32 blockSize) {	AudioEffectX::setBlockSize(blockSize); }
@@ -317,7 +364,7 @@ bool  mdaLooplex::getProductString(char* text) { strcpy(text, "mda Looplex"); re
 
 bool mdaLooplex::getProgramNameIndexed(VstInt32 category, VstInt32 index, char* text)
 {
-	if(index<NPROGS)
+	if ((unsigned int)index < NPROGS)
 	{
 		strcpy(text, programs[index].name);
 		return true;
@@ -365,6 +412,7 @@ void mdaLooplex::getParameterName(VstInt32 index, char *label)
 void mdaLooplex::getParameterDisplay(VstInt32 index, char *text)
 {
 	char string[16];
+	float * param = programs[curProgram].param;
   
   switch(index)
   {
@@ -419,10 +467,10 @@ void mdaLooplex::processReplacing(float **inputs, float **outputs, VstInt32 samp
   float* in2 = inputs[1];
   float* out1 = outputs[0];
 	float* out2 = outputs[1];
-	long event=0, frame=0, frames;
+	VstInt32 event=0, frame=0, frames;
   float l, r, dl, dr, d0 = 0.0f, d1;
   float imix = in_mix, ipan = in_pan, omix = out_mix, fb = feedback * modwhl;
-  long x;
+  VstInt32 x;
   
   if((bypassed = bypass)) return;
 
@@ -459,7 +507,7 @@ void mdaLooplex::processReplacing(float **inputs, float **outputs, VstInt32 samp
         dl = fb * (float)buffer[bufpos];
         if(recreq)
         {
-          x = (long)(32768.0f * l + dl + d0 - d1 + 100000.5f) - 100000;
+          x = (VstInt32)(32768.0f * l + dl + d0 - d1 + 100000.5f) - 100000;
           if(x > 32767) x = 32767; else if(x < -32768) x = -32768;
           buffer[bufpos] = (short)x;
         }
@@ -469,7 +517,7 @@ void mdaLooplex::processReplacing(float **inputs, float **outputs, VstInt32 samp
         dr = fb * (float)buffer[bufpos];
         if(recreq)        
         {
-          x = (long)(32768.0f * r + dr - d0 + d1 + 100000.5f) - 100000;
+          x = (VstInt32)(32768.0f * r + dr - d0 + d1 + 100000.5f) - 100000;
           if(x > 32767) x = 32767; else if(x < -32768) x = -32768;
           buffer[bufpos] = (short)x;
         }
@@ -498,8 +546,8 @@ void mdaLooplex::processReplacing(float **inputs, float **outputs, VstInt32 samp
 
     if(frame<sampleFrames)
     {
-      long note = notes[event++];
-      //long vel  = notes[event++];
+      VstInt32 note = notes[event++];
+      //VstInt32 vel  = notes[event++];
 
       if(note == 2)
       {
@@ -517,9 +565,9 @@ void mdaLooplex::processReplacing(float **inputs, float **outputs, VstInt32 samp
 
 VstInt32 mdaLooplex::processEvents(VstEvents* ev)
 {
-  long npos=0;
+  VstInt32 npos=0;
   
-  for (long i=0; i<ev->numEvents; i++)
+  for (VstInt32 i=0; i<ev->numEvents; i++)
 	{
 		if((ev->events[i])->type != kVstMidiType) continue;
 		VstMidiEvent* event = (VstMidiEvent*)ev->events[i];

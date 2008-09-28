@@ -52,7 +52,7 @@ void mdaDelay::setParameter(VstInt32 index, float value)
     case 5: fParam5 = value; break;
  }
   //calcs here
-  ldel = (long)(size * fParam0 * fParam0);
+  ldel = (VstInt32)(size * fParam0 * fParam0);
   if(ldel<4) ldel=4;
   
   switch(int(fParam1 * 17.9f)) //fixed left/right ratios
@@ -68,7 +68,7 @@ void mdaDelay::setParameter(VstInt32 index, float value)
     case   9: tmp = 2.0000f; break;
     default: tmp = 4.0f * fParam1; break; //variable ratio
   }
-  rdel = (long)(size * fParam0 * fParam0 * tmp);
+  rdel = (VstInt32)(size * fParam0 * fParam0 * tmp);
   if(rdel>size) rdel=size;
   if(rdel<4) rdel=4;
 
@@ -115,6 +115,16 @@ void mdaDelay::getProgramName(char *name)
 	strcpy(name, programName);
 }
 
+bool mdaDelay::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+{
+	if (index == 0) 
+	{
+	    strcpy(name, programName);
+	    return true;
+	}
+	return false;
+}
+
 float mdaDelay::getParameter(VstInt32 index)
 {
 	float v=0;
@@ -145,18 +155,18 @@ void mdaDelay::getParameterName(VstInt32 index, char *label)
 }
 
 #include <stdio.h>
-void long2string(long value, char *string) { sprintf(string, "%ld", value); }
+void int2strng(VstInt32 value, char *string) { sprintf(string, "%d", value); }
 
 void mdaDelay::getParameterDisplay(VstInt32 index, char *text)
 {
 	switch(index)
   {
-    case 0: long2string((long)(ldel * 1000.0f / getSampleRate()), text); break;
-    case 1: long2string((long)(100 * rdel / ldel), text); break;
-    case 2: long2string((long)(99 * fParam2), text); break;
-    case 3: long2string((long)(200 * fParam3 - 100), text); break;
-    case 4: long2string((long)(100 * fParam4), text); break;
-    case 5: long2string((long)(20 * log10(2.0 * fParam5)), text); break;
+    case 0: int2strng((VstInt32)(ldel * 1000.0f / getSampleRate()), text); break;
+    case 1: int2strng((VstInt32)(100 * rdel / ldel), text); break;
+    case 2: int2strng((VstInt32)(99 * fParam2), text); break;
+    case 3: int2strng((VstInt32)(200 * fParam3 - 100), text); break;
+    case 4: int2strng((VstInt32)(100 * fParam4), text); break;
+    case 5: int2strng((VstInt32)(20 * log10(2.0 * fParam5)), text); break;
   }
 }
 
@@ -182,7 +192,7 @@ void mdaDelay::process(float **inputs, float **outputs, VstInt32 sampleFrames)
 	float *out2 = outputs[1];
 	float a, b, c, d, ol, or_, w=wet, y=dry, fb=fbk;
   float lx=lmix, hx=hmix, f=fil, f0=fil0, tmp;
-  long i=ipos, l, r, s=size;
+  VstInt32 i=ipos, l, r, s=size;
 
   l = (i + ldel) % (s + 1);
   r = (i + rdel) % (s + 1);
@@ -224,7 +234,7 @@ void mdaDelay::processReplacing(float **inputs, float **outputs, VstInt32 sample
 	float *out2 = outputs[1];
 	float a, b, ol, or_, w=wet, y=dry, fb=fbk;
   float lx=lmix, hx=hmix, f=fil, f0=fil0, tmp;
-  long i=ipos, l, r, s=size;
+  VstInt32 i=ipos, l, r, s=size;
 
   l = (i + ldel) % (s + 1);
   r = (i + rdel) % (s + 1);
