@@ -2,25 +2,29 @@
 # S e t t i n g s
 #========================================
 CC = g++
-DYN = .dll
-EXT = 
+DYN = 
+EXT = .vst
 SRC = ../src/
 VST = ../vst/
 SDK = $(VST)public.sdk/source/vst2.x/
-FFLAGS = -fmessage-length=0 -finline-functions -fno-exceptions -fno-rtti
+FFLAGS = -fmessage-length=0 -finline-functions -fvisibility=hidden -fPIC -fno-exceptions -fno-rtti
 MFLAGS = -mmmx
 CFLAGS = -Wall -Os -c $(MFLAGS) $(FFLAGS) -I$(VST) -I$(SDK)
-LFLAGS = -Wall -s -shared exports.def
+LFLAGS = -Wall -s -bundle -arch i386 -framework Carbon
 
 #========================================
 # O b j e c t s
 #========================================
 # (common)
 #----------------------------------------
+OBJI = intelmain
 OBJM = vstplugmain
 OBJA = audioeffect
 OBJX = audioeffectx
-OBJC = $(OBJM).o $(OBJA).o $(OBJX).o
+OBJC = $(OBJI).o $(OBJM).o $(OBJA).o $(OBJX).o
+
+$(OBJI).o : $(OBJI).cpp
+	$(CC) $(CFLAGS) $(OBJI).cpp
 
 $(OBJM).o : $(SDK)$(OBJM).cpp
 	$(CC) $(CFLAGS) $(SDK)$(OBJM).cpp
@@ -35,7 +39,7 @@ $(OBJA).o : $(SDK)$(OBJA).cpp
 #----------------------------------------
 OBJE = mdaAmbience mdaBandisto mdaBeatBox mdaCombo mdaDe-ess mdaDegrade mdaDelay mdaDetune mdaDither mdaDubDelay mdaDX10 mdaDynamics mdaEnvelope mdaEPiano mdaImage mdaJX10 mdaLeslie mdaLimiter mdaLooplex mdaLoudness  mdaMultiBand mdaOverdrive mdaPiano mdaRePsycho! mdaRezFilter mdaRingMod mdaRoundPan mdaShepard mdaSplitter mdaStereo mdaSubSynth mdaTalkBox mdaTestTone mdaThruZero mdaTracker mdaTransient mdaVocInput mdaVocoder
 	 
-OBJD = $(OBJE:=$(DYN))
+OBJD = $(OBJE:=$(EXT))
 
 #========================================
 # B u i l d
@@ -44,8 +48,10 @@ OBJD = $(OBJE:=$(DYN))
 #----------------------------------------
 all: $(OBJE)
 
+post: $(OBJD)
+
 clean:
-	rm -f *.o $(OBJD)
+	rm -f *.o $(OBJE)
 	
 cleanobj:
 	rm -f *.o
@@ -112,15 +118,15 @@ mdaDynamics: $(OBJC) mdaDynamics.o
 mdaDynamics.o: $(SRC)mdaDynamics.cpp $(SRC)mdaDynamics.h
 	$(CC) $(CFLAGS) $(SRC)mdaDynamics.cpp
 #----------------------------------------
-mdaEPiano: $(OBJC) mdaEPiano.o
-	$(CC) $(LFLAGS) $(OBJC) mdaEPiano.o -o mdaEPiano$(DYN)
-mdaEPiano.o: $(SRC)mdaEPiano.cpp $(SRC)mdaEPiano.h
-	$(CC) $(CFLAGS) $(SRC)mdaEPiano.cpp
-#----------------------------------------
 mdaEnvelope: $(OBJC) mdaEnvelope.o
 	$(CC) $(LFLAGS) $(OBJC) mdaEnvelope.o -o mdaEnvelope$(DYN)
 mdaEnvelope.o: $(SRC)mdaEnvelope.cpp $(SRC)mdaEnvelope.h
 	$(CC) $(CFLAGS) $(SRC)mdaEnvelope.cpp
+#----------------------------------------
+mdaEPiano: $(OBJC) mdaEPiano.o
+	$(CC) $(LFLAGS) $(OBJC) mdaEPiano.o -o mdaEPiano$(DYN)
+mdaEPiano.o: $(SRC)mdaEPiano.cpp $(SRC)mdaEPiano.h
+	$(CC) $(CFLAGS) $(SRC)mdaEPiano.cpp
 #----------------------------------------
 mdaImage: $(OBJC) mdaImage.o
 	$(CC) $(LFLAGS) $(OBJC) mdaImage.o -o mdaImage$(DYN)

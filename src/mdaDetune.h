@@ -10,11 +10,8 @@
 
 #include "audioeffectx.h"
 
-class mdaDetuneProgram
+struct mdaDetuneProgram
 {
-public:
-  mdaDetuneProgram();
-private:
   friend class mdaDetune;
   float param[NPARAMS];
   char name[32];
@@ -25,7 +22,6 @@ class mdaDetune : public AudioEffectX
 {
 public:
   mdaDetune(audioMasterCallback audioMaster);
-  ~mdaDetune();
 
   virtual void  process(float **inputs, float **outputs, VstInt32 sampleFrames);
   virtual void  processReplacing(float **inputs, float **outputs, VstInt32 sampleFrames);
@@ -47,10 +43,11 @@ public:
 	virtual VstInt32 getVendorVersion() { return 1000; }
 
 protected:
-  mdaDetuneProgram *programs;
+	mdaDetuneProgram programs[NPROGS];
+	float buf[BUFMAX];
+	float win[BUFMAX];
 
   ///global internal variables
-  float *buf, *win;       //buffer, window
   VstInt32  buflen;           //buffer length
   float bufres;           //buffer resolution display
   float semi;             //detune display

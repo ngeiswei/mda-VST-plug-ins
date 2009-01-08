@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------
 
-© 1996, Steinberg Soft und Hardware GmbH, All Rights Reserved
+ï¿½ 1996, Steinberg Soft und Hardware GmbH, All Rights Reserved
 
 -----------------------------------------------------------------------------*/
 #ifndef __mdaEnvelope_H
@@ -18,12 +18,13 @@ public:
 	virtual void processReplacing(float **inputs, float **outputs, VstInt32 sampleFrames);
 	virtual void setProgramName(char *name);
 	virtual void getProgramName(char *name);
+	virtual bool getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name);
 	virtual void setParameter(VstInt32 index, float value);
 	virtual float getParameter(VstInt32 index);
 	virtual void getParameterLabel(VstInt32 index, char *label);
 	virtual void getParameterDisplay(VstInt32 index, char *text);
 	virtual void getParameterName(VstInt32 index, char *text);
-  virtual void suspend();
+    virtual void suspend();
 
 	virtual bool getEffectName(char *name);
 	virtual bool getVendorString(char *text);

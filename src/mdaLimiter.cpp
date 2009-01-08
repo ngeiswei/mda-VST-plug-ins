@@ -139,7 +139,7 @@ void mdaLimiter::getParameterLabel(VstInt32 index, char *label)
   {
     case 0: strcpy(label, "dB"); break;
     case 1: strcpy(label, "dB"); break;
-    case 3: strcpy(label, "�s"); break; 
+    case 3: strcpy(label, "ms"); break; 
     case 2: strcpy(label, "ms"); break; 
     case 4: strcpy(label, ""); break; 
   }

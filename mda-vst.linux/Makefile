@@ -3,11 +3,12 @@
 #========================================
 CC = g++
 DYN = .so
+EXT = 
 SRC = ../src/
 VST = ../vst/
 SDK = $(VST)public.sdk/source/vst2.x/
-MFLAGS = -mmmx -mpc80
 FFLAGS = -fmessage-length=0 -finline-functions -fvisibility=hidden -fPIC -fno-exceptions -fno-rtti
+MFLAGS = -mmmx
 CFLAGS = -Wall -Os -c $(MFLAGS) $(FFLAGS) -I$(VST) -I$(SDK)
 LFLAGS = -Wall -s -shared
 
@@ -36,7 +37,7 @@ $(OBJA).o : $(SDK)$(OBJA).cpp
 #----------------------------------------
 # (output)
 #----------------------------------------
-OBJE = mdaAmbience mdaBandisto mdaBeatBox mdaCombo mdaDe-ess mdaDegrade mdaDelay mdaDetune mdaDither mdaDubDelay mdaDX10 mdaDynamics mdaEPiano mdaImage mdaJX10 mdaLeslie mdaLimiter mdaLooplex mdaLoudness  mdaMultiBand mdaOverdrive mdaPiano mdaRePsycho! mdaRezFilter mdaRingMod mdaRoundPan mdaShepard mdaSplitter mdaStereo mdaSubSynth mdaTalkBox mdaTestTone mdaThruZero mdaTracker mdaTransient mdaVocInput mdaVocoder
+OBJE = mdaAmbience mdaBandisto mdaBeatBox mdaCombo mdaDe-ess mdaDegrade mdaDelay mdaDetune mdaDither mdaDubDelay mdaDX10 mdaDynamics mdaEnvelope mdaEPiano mdaImage mdaJX10 mdaLeslie mdaLimiter mdaLooplex mdaLoudness  mdaMultiBand mdaOverdrive mdaPiano mdaRePsycho! mdaRezFilter mdaRingMod mdaRoundPan mdaShepard mdaSplitter mdaStereo mdaSubSynth mdaTalkBox mdaTestTone mdaThruZero mdaTracker mdaTransient mdaVocInput mdaVocoder
 	 
 OBJD = $(OBJE:=$(DYN))
 
@@ -114,6 +115,11 @@ mdaDynamics: $(OBJC) mdaDynamics.o
 	$(CC) $(LFLAGS) $(OBJC) mdaDynamics.o -o mdaDynamics$(DYN)
 mdaDynamics.o: $(SRC)mdaDynamics.cpp $(SRC)mdaDynamics.h
 	$(CC) $(CFLAGS) $(SRC)mdaDynamics.cpp
+#----------------------------------------
+mdaEnvelope: $(OBJC) mdaEnvelope.o
+	$(CC) $(LFLAGS) $(OBJC) mdaEnvelope.o -o mdaEnvelope$(DYN)
+mdaEnvelope.o: $(SRC)mdaEnvelope.cpp $(SRC)mdaEnvelope.h
+	$(CC) $(CFLAGS) $(SRC)mdaEnvelope.cpp
 #----------------------------------------
 mdaEPiano: $(OBJC) mdaEPiano.o
 	$(CC) $(LFLAGS) $(OBJC) mdaEPiano.o -o mdaEPiano$(DYN)

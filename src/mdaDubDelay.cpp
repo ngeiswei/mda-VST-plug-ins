@@ -29,7 +29,7 @@ mdaDubDelay::mdaDubDelay(audioMasterCallback audioMaster)	: AudioEffectX(audioMa
 
   setNumInputs(2);		  
 	setNumOutputs(2);		  
-	setUniqueID('mda�');  //identify here
+	setUniqueID('mdab');  //identify here
 	DECLARE_VST_DEPRECATED(canMono) ();				      
 	canProcessReplacing();	
 	strcpy(programName, "Dub Feedback Delay");

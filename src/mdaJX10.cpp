@@ -280,8 +280,8 @@ float mdaJX10::getParameter(VstInt32 index)     { return programs[curProgram].pa
 void  mdaJX10::setProgramName(char *name)   { strcpy(programs[curProgram].name, name); }
 void  mdaJX10::getProgramName(char *name)   { strcpy(name, programs[curProgram].name); }
 void  mdaJX10::setBlockSize(VstInt32 blockSize) {	AudioEffectX::setBlockSize(blockSize); }
-bool  mdaJX10::getEffectName(char* name)    { strcpy(name, "mda JX10 Synth"); return true; }
-bool  mdaJX10::getVendorString(char* text)  {	strcpy(text, "maxim digital audio"); return true; }
+bool  mdaJX10::getEffectName(char* name)    { strcpy(name, "JX10"); return true; }
+bool  mdaJX10::getVendorString(char* text)  {	strcpy(text, "mda"); return true; }
 bool  mdaJX10::getProductString(char* text) { strcpy(text, "mda JX10 Synth"); return true; }
 
 
