@@ -494,7 +494,7 @@ void mdaEPiano::noteOn(VstInt32 note, VstInt32 velocity)
     if(note > 60) l += stretch * (float)k; //stretch
 
     s = size;
-    if(velocity > 40) s += (VstInt32)(sizevel * (float)(velocity - 40));  
+    //if(velocity > 40) s += (VstInt32)(sizevel * (float)(velocity - 40));  - no velocity to hardness in ePiano
 
     k = 0;
     while(note > (kgrp[k].high + s)) k += 3;  //find keygroup
