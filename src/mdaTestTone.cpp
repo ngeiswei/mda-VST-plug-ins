@@ -85,7 +85,7 @@ void mdaTestTone::setParameter(VstInt32 index, float value)
 
 
   //just update display text...
-  int mode = int(8.9 * fParam0);
+  mode = int(8.9 * fParam0);
   float f, df=0.0f;
   if(fParam4>0.6) df = 1.25f*fParam4 - 0.75f;
   if(fParam4<0.4) df = 1.25f*fParam4 - 0.50f;
