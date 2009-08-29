@@ -29,9 +29,6 @@ mdaDetune::mdaDetune(audioMasterCallback audioMaster): AudioEffectX(audioMaster,
 	DECLARE_VST_DEPRECATED(canMono) ();
   canProcessReplacing();
 
-  ///initialise...
-  buflen=0;
-
   programs[0].param[0] = 0.20f; //fine
   programs[0].param[1] = 0.90f; //mix
   programs[0].param[2] = 0.50f; //output
@@ -48,43 +45,32 @@ mdaDetune::mdaDetune(audioMasterCallback audioMaster): AudioEffectX(audioMaster,
   programs[2].param[3] = 0.50f;
   strcpy(programs[2].name,"Out Of Tune");
 
-  setProgram(0);
+  ///initialise...
+  curProgram=0;
   suspend();
-}
-
-
-void mdaDetune::resume() ///update internal parameters...
-{
-  float * param = programs[curProgram].param;
-
-  semi = 3.0f * param[0] * param[0] * param[0];
+  
+  semi = 3.0f * 0.20f * 0.20f * 0.20f;
   dpos2 = (float)pow(1.0594631f, semi);
   dpos1 = 1.0f / dpos2;
-
-  wet = (float)pow(10.0f, 2.0f * param[2] - 1.0f);
-  dry = wet - wet * param[1] * param[1];
-  wet = (wet + wet - wet * param[1]) * param[1];
-
-  VstInt32 tmp = 1 << (8 + (VstInt32)(4.9f * param[3]));
-
-  if(tmp!=buflen) //recalculate crossfade window
-  {
-    buflen = tmp;
-	  if (buflen > BUFMAX) buflen = BUFMAX;
-    bufres = 1000.0f * (float)buflen / getSampleRate();
-
-    VstInt32 i; //hanning half-overlap-and-add
-    double p=0.0, dp=6.28318530718/buflen;
-    for(i=0;i<buflen;i++) { win[i] = (float)(0.5 - 0.5 * cos(p)); p+=dp; }
-  }
+  wet = 1.0f;
+  dry = wet - wet * 0.90f * 0.90f;
+  wet = (wet + wet - wet * 0.90f) * 0.90f;
 }
-
 
 void mdaDetune::suspend() ///clear any buffers...
 {
-  memset(buf, 0, BUFMAX * sizeof(float));
-  memset(win, 0, BUFMAX * sizeof(float));
+  memset(buf, 0, sizeof (buf));
+  memset(win, 0, sizeof (win));
   pos0 = 0; pos1 = pos2 = 0.0f;
+  
+  //recalculate crossfade window
+  buflen = 1 << (8 + (VstInt32)(4.9f * programs[curProgram].param[3]));
+	if (buflen > BUFMAX) buflen = BUFMAX;
+  bufres = 1000.0f * (float)buflen / getSampleRate();
+
+  VstInt32 i; //hanning half-overlap-and-add
+  double p=0.0, dp=6.28318530718/buflen;
+  for(i=0;i<buflen;i++) { win[i] = (float)(0.5 - 0.5 * cos(p)); p+=dp; }
 }
 
 
@@ -93,15 +79,47 @@ void mdaDetune::setProgram(VstInt32 program)
 	if ((unsigned int)program < NPROGS)
 	{
 		curProgram = program;
-		resume();
 	}
 }
 
 
 void  mdaDetune::setParameter(VstInt32 which, float value)
 {
-  programs[curProgram].param[which] = value;
-  resume();
+  float * param = programs[curProgram].param;
+  param[which] = value;
+
+  switch(which)
+  {
+    case  0:
+      semi = 3.0f * param[0] * param[0] * param[0];
+      dpos2 = (float)pow(1.0594631f, semi);
+      dpos1 = 1.0f / dpos2;
+      break;
+    case  1:
+    case  2:
+      wet = (float)pow(10.0f, 2.0f * param[2] - 1.0f);
+      dry = wet - wet * param[1] * param[1];
+      wet = (wet + wet - wet * param[1]) * param[1];
+      break;
+    case 3:
+    {
+      VstInt32 tmp = 1 << (8 + (VstInt32)(4.9f * param[3]));
+
+      if(tmp!=buflen) //recalculate crossfade window
+      {
+        buflen = tmp;
+	      if (buflen > BUFMAX) buflen = BUFMAX;
+        bufres = 1000.0f * (float)buflen / getSampleRate();
+
+        VstInt32 i; //hanning half-overlap-and-add
+        double p=0.0, dp=6.28318530718/buflen;
+        for(i=0;i<buflen;i++) { win[i] = (float)(0.5 - 0.5 * cos(p)); p+=dp; }
+      }
+      break;
+    }
+    default:
+      break;
+  }
 }
 
 
