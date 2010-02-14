@@ -9,8 +9,8 @@ VST = ../vst/
 SDK = $(VST)public.sdk/source/vst2.x/
 FFLAGS = -fmessage-length=0 -finline-functions -fno-exceptions -fno-rtti
 MFLAGS = -mmmx
-CFLAGS = -Wall -Os -c $(MFLAGS) $(FFLAGS) -I$(VST) -I$(SDK)
-LFLAGS = -Wall -s -shared exports.def
+CFLAGS = -Wall -Os -s -c $(MFLAGS) $(FFLAGS) -I$(VST) -I$(SDK)
+LFLAGS = -Wall -s -shared -static exports.def
 
 #========================================
 # O b j e c t s

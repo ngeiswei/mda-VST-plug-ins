@@ -8,9 +8,9 @@ SRC = ../src/
 VST = ../vst/
 SDK = $(VST)public.sdk/source/vst2.x/
 FFLAGS = -fmessage-length=0 -finline-functions -fvisibility=hidden -fPIC -fno-exceptions -fno-rtti
-MFLAGS = -mmmx
-CFLAGS = -Wall -Os -c $(MFLAGS) $(FFLAGS) -I$(VST) -I$(SDK)
-LFLAGS = -Wall -s -bundle -arch i386 -framework Carbon
+MFLAGS =
+CFLAGS = -Wall -Os -s -arch ppc -arch i386 -arch x86_64 -c $(MFLAGS) $(FFLAGS) -I$(VST) -I$(SDK)
+LFLAGS = -Wall -s -bundle -arch ppc -arch i386 -arch x86_64 -framework Carbon
 
 #========================================
 # O b j e c t s
