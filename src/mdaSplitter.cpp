@@ -17,18 +17,6 @@ AudioEffect *createEffectInstance(audioMasterCallback audioMaster)
   return new mdaSplitter(audioMaster);
 }
 
-mdaSplitterProgram::mdaSplitterProgram() ///default program settings
-{
-  param[0] = 0.10f;  //mode
-  param[1] = 0.50f;  //freq
-  param[2] = 0.25f;  //freq mode
-  param[3] = 0.50f;  //level (was 2)
-  param[4] = 0.50f;  //level mode
-  param[5] = 0.50f;  //envelope
-  param[6] = 0.50f;  //gain
-  strcpy(name, "Frequency/Level Splitter");
-}
-
 
 mdaSplitter::mdaSplitter(audioMasterCallback audioMaster): AudioEffectX(audioMaster, NPROGS, NPARAMS)
 {
@@ -37,9 +25,8 @@ mdaSplitter::mdaSplitter(audioMasterCallback audioMaster): AudioEffectX(audioMas
   setUniqueID('mda7');  ///identify plug-in here
 	DECLARE_VST_DEPRECATED(canMono) ();				      
   canProcessReplacing();
-
-  programs = new mdaSplitterProgram[NPROGS];
-  setProgram(0);
+  
+  env = buf0 = buf1 = buf2 = buf3 = 0.0f;
   
   ///differences from default program...
   programs[1].param[2] = 0.50f;
@@ -48,7 +35,7 @@ mdaSplitter::mdaSplitter(audioMasterCallback audioMaster): AudioEffectX(audioMas
   programs[2].param[0] = 0.60f;
   strcpy(programs[2].name,"Stereo Crossover");
   
-  suspend();
+  setProgram(0);  
 }
 
 bool  mdaSplitter::getProductString(char* text) { strcpy(text, "mda Splitter"); return true; }
@@ -105,12 +92,6 @@ void mdaSplitter::suspend() ///clear any buffers...
 }
 
 
-mdaSplitter::~mdaSplitter() ///destroy any buffers...
-{
-  if(programs) delete [] programs;
-}
-
-
 void mdaSplitter::setProgram(VstInt32 program)
 {
   curProgram = program;
@@ -118,80 +99,134 @@ void mdaSplitter::setProgram(VstInt32 program)
 }
 
 
-void  mdaSplitter::setParameter(VstInt32 index, float value) 
+void  mdaSplitter::setParameter(VstInt32 which, float value) 
 { 
-  programs[curProgram].param[index] = value; //bug was here!
-  resume(); 
+  float * param = programs[curProgram].param;
+  param[which] = value;
+  
+  switch (which)
+  {
+    case 0:
+    case 6:
+      i2l = i2r = o2l = o2r = (float)pow(10.0f, 2.0f * param[6] - 1.0f);  //gain
+      mode = (VstInt32)(3.9f * param[0]);  //output routing
+      switch(mode)
+      {
+        case  0: i2l  =  0.0f;  i2r  =  0.0f;  break;
+        case  1: o2l *= -1.0f;  o2r *= -1.0f;  break;
+        case  2: i2l  =  0.0f;  o2r *= -1.0f;  break;
+        default: o2l *= -1.0f;  i2r  =  0.0f;  break;
+      }
+      break;
+    case 1:
+    case 2:
+    {      
+      freq = param[1];
+      fdisp = (float)pow(10.0f, 2.0f + 2.0f * freq);  //frequency
+      freq = 5.5f * fdisp / getSampleRate();
+      if(freq>1.0f) freq = 1.0f;
+      ff = -1.0f;               //above
+      VstInt32 tmp = (VstInt32)(2.9f * param[2]);  //frequency switching
+      if(tmp==0) ff = 0.0f;     //below
+      if(tmp==1) freq = 0.001f; //all
+      break;
+    }
+    case 3:
+    case 4:
+    {
+      ldisp = 40.0f * param[3] - 40.0f;  //level
+      level = (float)pow(10.0f, 0.05f * ldisp + 0.3f);
+      ll = 0.0f;                //above
+      VstInt32 tmp = (VstInt32)(2.9f * param[4]);  //level switching
+      if(tmp==0) ll = -1.0f;    //below
+      if(tmp==1) level = 0.0f;  //all
+      break;
+    }
+    case 5:
+      att = 0.05f - 0.05f * param[5];
+      rel = 1.0f - (float)exp(-6.0f - 4.0f * param[5]); //envelope
+      if(att>0.02f) att=0.02f;
+      if(rel<0.9995f) rel = 0.9995f;
+      break;
+    default:
+      break;
+  }
 }
 
 
-float mdaSplitter::getParameter(VstInt32 index) { return programs[curProgram].param[index]; }
+float mdaSplitter::getParameter(VstInt32 which) { return programs[curProgram].param[which]; }
 void  mdaSplitter::setProgramName(char *name) { strcpy(programs[curProgram].name, name); }
 void  mdaSplitter::getProgramName(char *name) { strcpy(name, programs[curProgram].name); }
-bool mdaSplitter::getProgramNameIndexed (VstInt32 category, VstInt32 index, char* name)
+bool mdaSplitter::getProgramNameIndexed (VstInt32 category, VstInt32 which, char* name)
 {
-	if ((unsigned int)index < NPROGS) 
+	if ((unsigned int)which < NPROGS) 
 	{
-	    strcpy(name, programs[index].name);
+	    strcpy(name, programs[which].name);
 	    return true;
 	}
 	return false;
 }
 
-void mdaSplitter::getParameterName(VstInt32 index, char *label)
+void mdaSplitter::getParameterName(VstInt32 which, char *label)
 {
-  switch(index)
+  switch(which)
   {
     case  0: strcpy(label, "Mode"); break; 
-    case  1: 
-    case  2: strcpy(label, "Freq"); break;
-    case  3: 
-    case  4: strcpy(label, "Level"); break;
+    case  1: strcpy(label, "Freq"); break;
+    case  2: strcpy(label, "Freq SW"); break;
+    case  3: strcpy(label, "Level"); break;
+    case  4: strcpy(label, "Level SW"); break;
     case  5: strcpy(label, "Envelope"); break;
     default: strcpy(label, "Output");
   }
 }
 
 
-void mdaSplitter::getParameterDisplay(VstInt32 index, char *text)
+void mdaSplitter::getParameterDisplay(VstInt32 which, char *text)
 {
  	char string[16];
  	float * param = programs[curProgram].param;
 
-  switch(index)
+  switch(which)
   {
-    case  0: switch(mode)
-             {
-               case  0:  strcpy (string, "NORMAL "); break;
-               case  1:  strcpy (string, "INVERSE "); break;
-               case  2:  strcpy (string, "NORM/INV"); break;
-               default:  strcpy (string, "INV/NORM"); break;
-             } break;
+    case  0:
+      switch(mode)
+      {
+        case  0:  strcpy (string, "NORMAL "); break;
+        case  1:  strcpy (string, "INVERSE "); break;
+        case  2:  strcpy (string, "NORM/INV"); break;
+        default:  strcpy (string, "INV/NORM"); break;
+      }
+      break;
     case  1: sprintf(string, "%.0f", fdisp); break;
     case  3: sprintf(string, "%.0f", ldisp); break;
-    case  5: sprintf(string, "%.0f", (float)pow(10.0f, 1.0f + 2.0f * param[index])); break;
-    case  6: sprintf(string, "%.1f", 40.0f * param[index] - 20.0f); break;
-    default: switch((VstInt32)(2.9f * param[index]))
-             {
-                case  0: strcpy (string, "BELOW"); break;
-                case  1: strcpy (string, "ALL"); break;
-                default: strcpy (string, "ABOVE"); break;
-             } break;
+    case  5: sprintf(string, "%.0f", (float)pow(10.0f, 1.0f + 2.0f * param[which])); break;
+    case  6: sprintf(string, "%.1f", 40.0f * param[which] - 20.0f); break;
+    default:
+      switch((VstInt32)(2.9f * param[which]))
+      {
+        case  0: strcpy (string, "BELOW"); break;
+        case  1: strcpy (string, "ALL"); break;
+        default: strcpy (string, "ABOVE"); break;
+      }
+      break;
   }
 	string[8] = 0;
-	strcpy(text, (char *)string);
+	strcpy(text, string);
 }
 
 
-void mdaSplitter::getParameterLabel(VstInt32 index, char *label)
+void mdaSplitter::getParameterLabel(VstInt32 which, char *label)
 {
-  switch(index)
+  *label = '\0';
+
+  switch(which)
   {
     case  1: strcpy(label, "Hz"); break;
     case  3: 
     case  6: strcpy(label, "dB"); break;
     case  5: strcpy(label, "ms"); break;
-    default: strcpy(label, "");
+    default: break;
   }
 }
 

@@ -79,6 +79,29 @@ void mdaDetune::setProgram(VstInt32 program)
 	if ((unsigned int)program < NPROGS)
 	{
 		curProgram = program;
+		
+		// update
+		float * param = programs[curProgram].param;
+    semi = 3.0f * param[0] * param[0] * param[0];
+    dpos2 = (float)pow(1.0594631f, semi);
+    dpos1 = 1.0f / dpos2;
+    
+    wet = (float)pow(10.0f, 2.0f * param[2] - 1.0f);
+    dry = wet - wet * param[1] * param[1];
+    wet = (wet + wet - wet * param[1]) * param[1];
+    
+    VstInt32 tmp = 1 << (8 + (VstInt32)(4.9f * param[3]));
+
+    if(tmp!=buflen) //recalculate crossfade window
+    {
+      buflen = tmp;
+	    if (buflen > BUFMAX) buflen = BUFMAX;
+      bufres = 1000.0f * (float)buflen / getSampleRate();
+
+      VstInt32 i; //hanning half-overlap-and-add
+      double p=0.0, dp=6.28318530718/buflen;
+      for(i=0;i<buflen;i++) { win[i] = (float)(0.5 - 0.5 * cos(p)); p+=dp; }
+    }
 	}
 }
 

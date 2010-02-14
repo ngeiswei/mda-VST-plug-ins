@@ -282,7 +282,7 @@ void  mdaJX10::getProgramName(char *name)   { strcpy(name, programs[curProgram].
 void  mdaJX10::setBlockSize(VstInt32 blockSize) {	AudioEffectX::setBlockSize(blockSize); }
 bool  mdaJX10::getEffectName(char* name)    { strcpy(name, "JX10"); return true; }
 bool  mdaJX10::getVendorString(char* text)  {	strcpy(text, "mda"); return true; }
-bool  mdaJX10::getProductString(char* text) { strcpy(text, "mda JX10 Synth"); return true; }
+bool  mdaJX10::getProductString(char* text) { strcpy(text, "mda JX10"); return true; }
 
 
 bool mdaJX10::getOutputProperties(VstInt32 index, VstPinProperties* properties)
