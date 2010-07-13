@@ -27,16 +27,16 @@ const long kBufferSize_Minus1 = kBufferSize - 1;
 class Shepard : public AUEffectBase
 {
 public:
-	Shepard(AudioUnit inComponentInstance);
+	Shepard(AudioComponentInstance inComponentInstance);
 	virtual ~Shepard();
 
-	virtual ComponentResult Initialize();
-	virtual ComponentResult Reset(AudioUnitScope inScope, AudioUnitElement inElement);
-	virtual ComponentResult GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
-	virtual ComponentResult GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
+	virtual OSStatus Initialize();
+	virtual OSStatus Reset(AudioUnitScope inScope, AudioUnitElement inElement);
+	virtual OSStatus GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
+	virtual OSStatus GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
 	virtual bool SupportsTail()
 		{	return true;	}
-	virtual ComponentResult Version()
+	virtual OSStatus Version()
 		{	return PLUGIN_VERSION;	}
 	OSStatus ProcessBufferLists(AudioUnitRenderActionFlags & ioActionFlags, const AudioBufferList & inBuffer, AudioBufferList & outBuffer, UInt32 inFramesToProcess);
 
@@ -52,7 +52,7 @@ private:
 COMPONENT_ENTRY(Shepard)
 
 //--------------------------------------------------------------------------------
-Shepard::Shepard(AudioUnit inComponentInstance)
+Shepard::Shepard(AudioComponentInstance inComponentInstance)
 	: AUEffectBase(inComponentInstance)
 {
 	buf1 = NULL;
@@ -62,8 +62,8 @@ Shepard::Shepard(AudioUnit inComponentInstance)
 	for (AudioUnitParameterID i=0; i < kNumParams; i++)
 	{
 		AudioUnitParameterInfo paramInfo;
-		ComponentResult result = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
-		if (result == noErr)
+		OSStatus status = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
+		if (status == noErr)
 			SetParameter(i, paramInfo.defaultValue);
 	}
 }
@@ -80,11 +80,11 @@ Shepard::~Shepard()
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult	Shepard::Initialize()
+OSStatus	Shepard::Initialize()
 {
-	ComponentResult result = AUEffectBase::Initialize();
+	OSStatus status = AUEffectBase::Initialize();
 
-	if (result == noErr)
+	if (status == noErr)
 	{
 		// we only need to create and fill the wavetable the first time we Initialize
 		if ( (buf1 == NULL) || (buf2 == NULL) )
@@ -115,24 +115,24 @@ ComponentResult	Shepard::Initialize()
 		Reset(kAudioUnitScope_Global, (AudioUnitElement)0);
 	}
 
-	return result;
+	return status;
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult Shepard::Reset(AudioUnitScope inScope, AudioUnitElement inElement)
+OSStatus Shepard::Reset(AudioUnitScope inScope, AudioUnitElement inElement)
 {
-	ComponentResult result = AUEffectBase::Reset(inScope, inElement);
+	OSStatus status = AUEffectBase::Reset(inScope, inElement);
 
 	pos = 0.0f; 
 	rate = 1.0f; 
 
-	return result;
+	return status;
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult Shepard::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
+OSStatus Shepard::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
 {
-	ComponentResult result = noErr;
+	OSStatus status = noErr;
 
 	outParameterInfo.flags = kAudioUnitParameterFlag_IsWritable | kAudioUnitParameterFlag_IsReadable;
 
@@ -171,15 +171,15 @@ ComponentResult Shepard::GetParameterInfo(AudioUnitScope inScope, AudioUnitParam
 			break;
 
 		default:
-			result = kAudioUnitErr_InvalidParameter;
+			status = kAudioUnitErr_InvalidParameter;
 			break;
 	}
 
-	return result;
+	return status;
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult	Shepard::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef *outStrings)
+OSStatus Shepard::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef *outStrings)
 {
 	if (inScope != kAudioUnitScope_Global)
 		return kAudioUnitErr_InvalidScope;

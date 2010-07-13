@@ -33,13 +33,13 @@ enum {
 class Degrade : public AUEffectBase
 {
 public:
-	Degrade(AudioUnit inComponentInstance);
+	Degrade(AudioComponentInstance inComponentInstance);
 
-	virtual ComponentResult GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
-	virtual ComponentResult GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
+	virtual OSStatus GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
+	virtual OSStatus GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
 	virtual bool SupportsTail()
 		{	return true;	}
-	virtual ComponentResult Version()
+	virtual OSStatus Version()
 		{	return PLUGIN_VERSION;	}
 	virtual AUKernelBase * NewKernel()
 		{	return new DegradeKernel(this);	}
@@ -68,7 +68,7 @@ private:
 COMPONENT_ENTRY(Degrade)
 
 //--------------------------------------------------------------------------------
-Degrade::Degrade(AudioUnit inComponentInstance)
+Degrade::Degrade(AudioComponentInstance inComponentInstance)
 	: AUEffectBase(inComponentInstance)
 {
 	// make sure that GetSampleRate() is available to be called without crashing
@@ -78,8 +78,8 @@ Degrade::Degrade(AudioUnit inComponentInstance)
 	for (AudioUnitParameterID i=0; i < kNumParams; i++)
 	{
 		AudioUnitParameterInfo paramInfo;
-		ComponentResult result = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
-		if (result == noErr)
+		OSStatus status = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
+		if (status == noErr)
 			SetParameter(i, paramInfo.defaultValue);
 	}
 }
@@ -99,9 +99,9 @@ void Degrade::DegradeKernel::Reset()
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult Degrade::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
+OSStatus Degrade::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
 {
-	ComponentResult result = noErr;
+	OSStatus status = noErr;
 
 	outParameterInfo.flags = kAudioUnitParameterFlag_IsWritable | kAudioUnitParameterFlag_IsReadable;
 
@@ -191,15 +191,15 @@ ComponentResult Degrade::GetParameterInfo(AudioUnitScope inScope, AudioUnitParam
 			break;
 
 		default:
-			result = kAudioUnitErr_InvalidParameter;
+			status = kAudioUnitErr_InvalidParameter;
 			break;
 	}
 
-	return result;
+	return status;
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult	Degrade::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef *outStrings)
+OSStatus Degrade::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef *outStrings)
 {
 	if (inScope != kAudioUnitScope_Global)
 		return kAudioUnitErr_InvalidScope;

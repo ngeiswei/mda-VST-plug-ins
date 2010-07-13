@@ -32,17 +32,17 @@ const double kBufferSize_Seconds = 0.1;
 class Stereo : public AUEffectBase
 {
 public:
-	Stereo(AudioUnit inComponentInstance);
+	Stereo(AudioComponentInstance inComponentInstance);
 
-	virtual ComponentResult Initialize();
+	virtual OSStatus Initialize();
 	virtual void Cleanup();
-	virtual ComponentResult Reset(AudioUnitScope inScope, AudioUnitElement inElement);
-	virtual ComponentResult GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
-	virtual ComponentResult GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
+	virtual OSStatus Reset(AudioUnitScope inScope, AudioUnitElement inElement);
+	virtual OSStatus GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
+	virtual OSStatus GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
 	virtual bool SupportsTail()
 		{	return true;	}
 	virtual UInt32 SupportedNumChannels(const AUChannelInfo ** outChannelInfo);
-	virtual ComponentResult Version()
+	virtual OSStatus Version()
 		{	return PLUGIN_VERSION;	}
 	virtual OSStatus ProcessBufferLists(AudioUnitRenderActionFlags & ioActionFlags, const AudioBufferList & inBuffer, AudioBufferList & outBuffer, UInt32 inFramesToProcess);
 
@@ -59,7 +59,7 @@ private:
 COMPONENT_ENTRY(Stereo)
 
 //--------------------------------------------------------------------------------
-Stereo::Stereo(AudioUnit inComponentInstance)
+Stereo::Stereo(AudioComponentInstance inComponentInstance)
 	: AUEffectBase(inComponentInstance, false)
 {
 	bufsize = 0;
@@ -67,18 +67,18 @@ Stereo::Stereo(AudioUnit inComponentInstance)
 	for (AudioUnitParameterID i=0; i < kNumParams; i++)
 	{
 		AudioUnitParameterInfo paramInfo;
-		ComponentResult result = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
-		if (result == noErr)
+		OSStatus status = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
+		if (status == noErr)
 			SetParameter(i, paramInfo.defaultValue);
 	}
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult	Stereo::Initialize()
+OSStatus	Stereo::Initialize()
 {
-	ComponentResult result = AUEffectBase::Initialize();
+	OSStatus status = AUEffectBase::Initialize();
 
-	if (result == noErr)
+	if (status == noErr)
 	{
 		bufsize = (long) (kBufferSize_Seconds * GetSampleRate());
 		buffer = (float*) malloc(bufsize * sizeof(float));
@@ -96,7 +96,7 @@ ComponentResult	Stereo::Initialize()
 		}
 	}
 
-	return result;
+	return status;
 }
 
 // still do something sensible with stereo inputs? Haas?
@@ -112,22 +112,22 @@ void Stereo::Cleanup()
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult Stereo::Reset(AudioUnitScope inScope, AudioUnitElement inElement)
+OSStatus Stereo::Reset(AudioUnitScope inScope, AudioUnitElement inElement)
 {
-	ComponentResult result = AUEffectBase::Reset(inScope, inElement);
+	OSStatus status = AUEffectBase::Reset(inScope, inElement);
 
 	bufpos = 0;
 	phi = 0.0f;
 	if (buffer != NULL)
 		memset(buffer, 0, bufsize * sizeof(float));
 
-	return result;
+	return status;
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult Stereo::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
+OSStatus Stereo::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
 {
-	ComponentResult result = noErr;
+	OSStatus status = noErr;
 
 	outParameterInfo.flags = kAudioUnitParameterFlag_IsWritable | kAudioUnitParameterFlag_IsReadable;
 
@@ -186,15 +186,15 @@ ComponentResult Stereo::GetParameterInfo(AudioUnitScope inScope, AudioUnitParame
 			break;
 
 		default:
-			result = kAudioUnitErr_InvalidParameter;
+			status = kAudioUnitErr_InvalidParameter;
 			break;
 	}
 
-	return result;
+	return status;
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult	Stereo::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef *outStrings)
+OSStatus Stereo::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef *outStrings)
 {
 	if (inScope != kAudioUnitScope_Global)
 		return kAudioUnitErr_InvalidScope;

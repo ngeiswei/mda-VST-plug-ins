@@ -18,12 +18,12 @@ const float kTwoPi = 6.2831853f;
 class Ring : public AUEffectBase
 {
 public:
-	Ring(AudioUnit inComponentInstance);
+	Ring(AudioComponentInstance inComponentInstance);
 
-	virtual ComponentResult GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
+	virtual OSStatus GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
 	virtual bool SupportsTail()
 		{	return true;	}
-	virtual ComponentResult Version()
+	virtual OSStatus Version()
 		{	return PLUGIN_VERSION;	}
 	virtual AUKernelBase * NewKernel()
 		{	return new RingKernel(this);	}
@@ -50,15 +50,15 @@ private:
 COMPONENT_ENTRY(Ring)
 
 //--------------------------------------------------------------------------------
-Ring::Ring(AudioUnit inComponentInstance)
+Ring::Ring(AudioComponentInstance inComponentInstance)
 	: AUEffectBase(inComponentInstance)
 {
 	// init internal parameters...
 	for (AudioUnitParameterID i=0; i < kNumParams; i++)
 	{
 		AudioUnitParameterInfo paramInfo;
-		ComponentResult result = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
-		if (result == noErr)
+		OSStatus status = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
+		if (status == noErr)
 			SetParameter(i, paramInfo.defaultValue);
 	}
 }
@@ -78,9 +78,9 @@ void Ring::RingKernel::Reset()
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult Ring::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
+OSStatus Ring::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
 {
-	ComponentResult result = noErr;
+	OSStatus status = noErr;
 
 	outParameterInfo.flags = kAudioUnitParameterFlag_IsWritable | kAudioUnitParameterFlag_IsReadable;
 
@@ -89,9 +89,7 @@ ComponentResult Ring::GetParameterInfo(AudioUnitScope inScope, AudioUnitParamete
 		case kParam_Freq:
 			FillInParameterName(outParameterInfo, CFSTR("frequency"), false);
 			outParameterInfo.unit = kAudioUnitParameterUnit_Hertz;
-//outParameterInfo.unit = kAudioUnitParameterUnit_CustomUnit;
-//outParameterInfo.unitName = CFSTR("Hz");
-			outParameterInfo.minValue = 0.0f;
+			outParameterInfo.minValue = 0.1f;
 			outParameterInfo.maxValue = 16000.0f;
 			outParameterInfo.defaultValue = 1000.0f;
 			outParameterInfo.flags |= kAudioUnitParameterFlag_DisplaySquareRoot;
@@ -114,11 +112,11 @@ ComponentResult Ring::GetParameterInfo(AudioUnitScope inScope, AudioUnitParamete
 			break;
 
 		default:
-			result = kAudioUnitErr_InvalidParameter;
+			status = kAudioUnitErr_InvalidParameter;
 			break;
 	}
 
-	return result;
+	return status;
 }
 
 //--------------------------------------------------------------------------------

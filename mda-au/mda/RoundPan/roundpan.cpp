@@ -1,5 +1,4 @@
 // "mda Talkbox" v1.0  Copyright(c)2002 Paul Kellett (@mda-vst.com)
-// Based on "SampleEffectUnit" © Copyright 2002 Apple Computer, Inc. All rights reserved.
 
 #include "AUEffectBase.h"
 
@@ -26,16 +25,16 @@ const SInt16 kNumOutputs = 2;
 class RoundPan : public AUEffectBase
 {
 public:
-	RoundPan(AudioUnit inComponentInstance);
-	virtual ComponentResult Initialize();
-	virtual ComponentResult GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
+	RoundPan(AudioComponentInstance inComponentInstance);
+	virtual OSStatus Initialize();
+	virtual OSStatus GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
 	virtual bool SupportsTail()
 		{	return true;	}
 	virtual UInt32 SupportedNumChannels(const AUChannelInfo ** outChannelInfo);
 #if 0
 	virtual void SetBypassEffect(bool inFlag);
 #endif
-	virtual ComponentResult Version()
+	virtual OSStatus Version()
 		{	return PLUGIN_VERSION;	}
 	virtual OSStatus ProcessBufferLists(AudioUnitRenderActionFlags & ioActionFlags, const AudioBufferList & inBuffer, AudioBufferList & outBuffer, UInt32 inFramesToProcess);
 
@@ -50,7 +49,7 @@ COMPONENT_ENTRY(RoundPan)
 
 
 //--------------------------------------------------------------------------------
-RoundPan::RoundPan(AudioUnit inComponentInstance) : AUEffectBase(inComponentInstance, false)
+RoundPan::RoundPan(AudioComponentInstance inComponentInstance) : AUEffectBase(inComponentInstance, false)
 {
 	l = r = oldpos = pos = 0.0f;
 
@@ -58,8 +57,8 @@ RoundPan::RoundPan(AudioUnit inComponentInstance) : AUEffectBase(inComponentInst
 	for (AudioUnitParameterID i=0; i < kNumParams; i++)
 	{
 		AudioUnitParameterInfo paramInfo;
-		ComponentResult result = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
-		if (result == noErr)
+		OSStatus status = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
+		if (status == noErr)
 			SetParameter(i, paramInfo.defaultValue);
 	}
 
@@ -72,11 +71,11 @@ RoundPan::RoundPan(AudioUnit inComponentInstance) : AUEffectBase(inComponentInst
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult	RoundPan::Initialize()
+OSStatus RoundPan::Initialize()
 {
-	ComponentResult result = AUEffectBase::Initialize();
+	OSStatus status = AUEffectBase::Initialize();
 
-	if (result == noErr)
+	if (status == noErr)
 	{
 		const AudioUnitElement elem = 0;
 
@@ -92,14 +91,14 @@ ComponentResult	RoundPan::Initialize()
 		}
 	}
 
-	return result;
+	return status;
 }
 
 
 //--------------------------------------------------------------------------------
-ComponentResult RoundPan::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
+OSStatus RoundPan::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
 {
-	ComponentResult result = noErr;
+	OSStatus status = noErr;
 
 	outParameterInfo.flags = kAudioUnitParameterFlag_IsWritable | kAudioUnitParameterFlag_IsReadable;
 	
@@ -122,10 +121,10 @@ ComponentResult RoundPan::GetParameterInfo(AudioUnitScope inScope, AudioUnitPara
 			break;
 			
 		default:
-			result = kAudioUnitErr_InvalidParameter;
+			status = kAudioUnitErr_InvalidParameter;
 			break;
 	}
-	return result;
+	return status;
 }
 
 

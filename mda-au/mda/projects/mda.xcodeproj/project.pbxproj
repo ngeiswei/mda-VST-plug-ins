@@ -247,8 +247,8 @@
 				49142E2806C56A87005EBD00 /* Utility */,
 			);
 			name = AUPublic;
-			path = /Developer/Examples/CoreAudio/AudioUnits/AUPublic;
-			sourceTree = "<absolute>";
+			path = Extras/CoreAudio/AudioUnits/AUPublic;
+			sourceTree = SYSTEM_DEVELOPER_DIR;
 		};
 		49142DFE06C569CF005EBD00 /* PublicUtility */ = {
 			isa = PBXGroup;
@@ -265,8 +265,8 @@
 				B07F35210B9C8F3A00DB2325 /* CAAUParameter.cpp */,
 			);
 			name = PublicUtility;
-			path = /Developer/Examples/CoreAudio/PublicUtility;
-			sourceTree = "<absolute>";
+			path = Extras/CoreAudio/PublicUtility;
+			sourceTree = SYSTEM_DEVELOPER_DIR;
 		};
 		49142E0D06C56A87005EBD00 /* AUBase */ = {
 			isa = PBXGroup;
@@ -372,9 +372,11 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = B0765F7D08C5389B00EA1425 /* Build configuration list for PBXProject "mda" */;
+			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
 			mainGroup = 089C166AFE841209C02AAC07 /* crazyivan */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				8D01CCC60486CAD60068D4B7 /* mda */,
 			);
@@ -479,11 +481,10 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = "SUPPORT_AU_VERSION_1=0";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
-				GCC_WARN_PEDANTIC = YES;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
@@ -494,32 +495,24 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_PKGINFO_FILE = YES;
 				INFOPLIST_FILE = "mda-info.plist";
-				INSTALL_MODE_FLAG = "u+w,a+rX";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Audio/Plug-Ins/Components";
 				MACOSX_DEPLOYMENT_TARGET = 10.2;
-				OTHER_REZFLAGS = "-append -d ppc_$ppc -d i386_$i386";
+				OTHER_REZFLAGS = "-append -d ppc_$ppc -d i386_$i386 -d x86_64_$x86_64 -d ppc64_$ppc64";
 				PRODUCT_NAME = mda;
 				REZ_SEARCH_PATHS = (
 					/Developer/Examples/CoreAudio/AudioUnits/AUPublic/AUBase,
 					/System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers,
 				);
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
+				WARNING_CFLAGS = "-Wmost";
 				WRAPPER_EXTENSION = component;
-				ZERO_LINK = YES;
 			};
 			name = Development;
 		};
 		B0765F7B08C5389B00EA1425 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEPLOYMENT_LOCATION = YES;
@@ -531,14 +524,10 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"SUPPORT_AU_VERSION_1=0",
-					NDEBUG,
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
-				GCC_WARN_PEDANTIC = YES;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -549,10 +538,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_PKGINFO_FILE = YES;
 				INFOPLIST_FILE = "mda-info.plist";
-				INSTALL_MODE_FLAG = "u+w,a+rX";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Audio/Plug-Ins/Components";
 				MACOSX_DEPLOYMENT_TARGET = 10.2;
-				OTHER_REZFLAGS = "-append -d ppc_$ppc -d i386_$i386";
+				OTHER_REZFLAGS = "-append -d ppc_$ppc -d i386_$i386 -d x86_64_$x86_64 -d ppc64_$ppc64";
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PRODUCT_NAME = mda;
 				REZ_SEARCH_PATHS = (
@@ -560,27 +548,20 @@
 					/System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers,
 				);
 				SEPARATE_STRIP = YES;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
+				WARNING_CFLAGS = "-Wmost";
 				WRAPPER_EXTENSION = component;
-				ZERO_LINK = NO;
 			};
 			name = Deployment;
 		};
 		B0765F7E08C5389B00EA1425 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = Development;
 		};
 		B0765F7F08C5389B00EA1425 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = Deployment;
 		};

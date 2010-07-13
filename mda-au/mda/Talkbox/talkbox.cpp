@@ -1,5 +1,4 @@
 // "mda Talkbox" v1.0  Copyright(c)2002 Paul Kellett (@mda-vst.com)
-// Based on "SampleEffectUnit" © Copyright 2002 Apple Computer, Inc. All rights reserved.
 
 #include "AUEffectBase.h"
 
@@ -57,17 +56,17 @@ private:
 class Talkbox : public AUEffectBase
 {
 public:
-	Talkbox(AudioUnit component);
+	Talkbox(AudioComponentInstance component);
 	virtual void PostConstructor();
-	virtual ComponentResult Initialize();
+	virtual OSStatus Initialize();
 	virtual void Cleanup();
-	virtual ComponentResult Reset(AudioUnitScope inScope, AudioUnitElement inElement);
+	virtual OSStatus Reset(AudioUnitScope inScope, AudioUnitElement inElement);
 
-	virtual ComponentResult GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo &outParameterInfo);
+	virtual OSStatus GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
 	virtual Float64 GetLatency() { return BUF_MAX_SECONDS; }
 	virtual bool SupportsTail() { return true; }
-	virtual ComponentResult Version() { return PLUGIN_VERSION; }
-	virtual ComponentResult Render(AudioUnitRenderActionFlags & ioActionFlags, const AudioTimeStamp & inTimeStamp, UInt32 inFramesToProcess);
+	virtual OSStatus Version() { return PLUGIN_VERSION; }
+	virtual OSStatus Render(AudioUnitRenderActionFlags & ioActionFlags, const AudioTimeStamp & inTimeStamp, UInt32 inFramesToProcess);
 
 private:
 	TalkboxDSP ** dspKernels;
@@ -85,14 +84,14 @@ void lpc_durbin(float *r, int p, float *k, float *g);
 COMPONENT_ENTRY(Talkbox)
 
 
-Talkbox::Talkbox(AudioUnit component) : AUEffectBase(component, true)
+Talkbox::Talkbox(AudioComponentInstance component) : AUEffectBase(component, true)
 {
 	// init internal parameters...
 	for (AudioUnitParameterID i=0; i < NPARAM; i++)
 	{
 		AudioUnitParameterInfo paramInfo;
-		ComponentResult result = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
-		if (result == noErr)
+		OSStatus status = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
+		if (status == noErr)
 			SetParameter(i, paramInfo.defaultValue);
 	}
 
@@ -104,9 +103,14 @@ void Talkbox::PostConstructor()
 {
 	AUEffectBase::PostConstructor();
 
-	Inputs().Initialize(this, kAudioUnitScope_Input, 2);
-	Inputs().SafeGetElement(0)->SetName(CFSTR("modulator"));
-	Inputs().SafeGetElement(1)->SetName(CFSTR("carrier"));
+	try
+	{
+		SetBusCount(kAudioUnitScope_Input, 2);
+
+		SafeGetElement(kAudioUnitScope_Input, 0)->SetName(CFSTR("modulator"));
+		SafeGetElement(kAudioUnitScope_Input, 1)->SetName(CFSTR("carrier"));
+	}
+	catch (...) {}
 }
 
 
@@ -171,11 +175,11 @@ void TalkboxDSP::Reset()
 }
 
 
-ComponentResult Talkbox::Initialize()
+OSStatus Talkbox::Initialize()
 {
-	ComponentResult result = AUEffectBase::Initialize();
+	OSStatus status = AUEffectBase::Initialize();
 
-	if (result == noErr)
+	if (status == noErr)
 	{
 		numAllocatedChannels = GetNumberOfChannels();
 		dspKernels = (TalkboxDSP**) malloc(numAllocatedChannels * sizeof(TalkboxDSP*));
@@ -183,7 +187,7 @@ ComponentResult Talkbox::Initialize()
 			dspKernels[i] = new TalkboxDSP(this);
 	}
 
-	return result;
+	return status;
 }
 
 void Talkbox::Cleanup()
@@ -203,11 +207,11 @@ void Talkbox::Cleanup()
 	dspKernels = NULL;
 }
 
-ComponentResult Talkbox::Reset(AudioUnitScope inScope, AudioUnitElement inElement)
+OSStatus Talkbox::Reset(AudioUnitScope inScope, AudioUnitElement inElement)
 {
-	ComponentResult result = AUEffectBase::Reset(inScope, inElement);
+	OSStatus status = AUEffectBase::Reset(inScope, inElement);
 
-	if (result == noErr)
+	if (status == noErr)
 	{
 		if (dspKernels != NULL)
 		{
@@ -219,13 +223,13 @@ ComponentResult Talkbox::Reset(AudioUnitScope inScope, AudioUnitElement inElemen
 		}
 	}
 
-	return result;
+	return status;
 }
 
 
-ComponentResult Talkbox::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo &outParameterInfo)
+OSStatus Talkbox::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
 {
-	ComponentResult result = noErr;
+	OSStatus status = noErr;
 
 	outParameterInfo.flags = kAudioUnitParameterFlag_IsWritable | kAudioUnitParameterFlag_IsReadable;
 	
@@ -264,93 +268,100 @@ ComponentResult Talkbox::GetParameterInfo(AudioUnitScope inScope, AudioUnitParam
 			break;
 			
 		default:
-			result = kAudioUnitErr_InvalidParameter;
+			status = kAudioUnitErr_InvalidParameter;
 			break;
 	}
-	return result;
+	return status;
 }
 
 
-ComponentResult Talkbox::Render(AudioUnitRenderActionFlags & ioActionFlags, const AudioTimeStamp & inTimeStamp, UInt32 inFramesToProcess)
+OSStatus Talkbox::Render(AudioUnitRenderActionFlags & ioActionFlags, const AudioTimeStamp & inTimeStamp, UInt32 inFramesToProcess)
 {
-	if (!HasInput(0))
+	if (! HasInput(0) )
 {
 //fprintf(stderr, "no input bus 0 connection\n");
 		return kAudioUnitErr_NoConnection;
 }
 
-	ComponentResult result = noErr;
-	AUOutputElement *theOutput = GetOutput(0);	// throws if error
+	OSStatus status = noErr;
+	AUOutputElement * theOutput = GetOutput(0);	// throws if error
 
-	AUInputElement *theInput = GetInput(0);
-	result = theInput->PullInput(ioActionFlags, inTimeStamp, 0 /* element */, inFramesToProcess);
-	if (result != noErr)
-		return result;
+	AUInputElement * theInput = GetInput(0);
+	status = theInput->PullInput(ioActionFlags, inTimeStamp, 0 /* element */, inFramesToProcess);
+	if (status != noErr)
+		return status;
 	
-	if (result == noErr)
+	if (status == noErr)
 	{
 		if ( ProcessesInPlace() )
 		{
-			theOutput->SetBufferList(theInput->GetBufferList() );
+			theOutput->SetBufferList( theInput->GetBufferList() );
 		}
 
 		AUInputElement * theInput2 = NULL;
-		if (HasInput(1))
+		try
 		{
-			theInput2 = GetInput(1);
-			result = theInput2->PullInput(ioActionFlags, inTimeStamp, 1 /* element */, inFramesToProcess);
+			if ( HasInput(1) )
+				theInput2 = GetInput(1);
+		}
+		catch (...) { theInput2 = NULL; }
+		if (theInput2 != NULL)
+		{
+			bool mainInputSilentFlag = (ioActionFlags & kAudioUnitRenderAction_OutputIsSilence) ? true : false;
+			status = theInput2->PullInput(ioActionFlags, inTimeStamp, 1 /* element */, inFramesToProcess);
 //if (result != noErr) fprintf(stderr, "PullInput(bus 1) error %ld\n", result);
+			if ( !mainInputSilentFlag && (ioActionFlags & kAudioUnitRenderAction_OutputIsSilence) )
+				ioActionFlags &= ~kAudioUnitRenderAction_OutputIsSilence;
 		}
 		else
 {
-//fprintf(stderr, "no input bus 1 connection\n");
-			result = kAudioUnitErr_NoConnection;
+			status = kAudioUnitErr_NoConnection;
+//fprintf(stderr, "could not access input bus 1 connection\n");
 }
 
-		if ( ShouldBypassEffect() || (result != noErr) )
+		if ( ShouldBypassEffect() || (status != noErr) )
 		{
-			result = noErr;
+			status = noErr;
 			// leave silence bit alone
 			if (! ProcessesInPlace() )
 			{
-				theInput->CopyBufferContentsTo(theOutput->GetBufferList());
+				theInput->CopyBufferContentsTo( theOutput->GetBufferList() );
 			}
 		}
 		else
 		{
-			// this will read/write silence bit
 			for (UInt32 i=0; i < numAllocatedChannels; i++)
 			{
-				dspKernels[i]->Process((const float*)(theInput->GetBufferList().mBuffers[i].mData), 
-										(const float*)(theInput2->GetBufferList().mBuffers[i].mData), 
-										(float*)(theOutput->GetBufferList().mBuffers[i].mData), 
+				dspKernels[i]->Process(theInput->GetChannelData(i), 
+										theInput2->GetChannelData(i), 
+										theOutput->GetChannelData(i), 
 										inFramesToProcess);
 			}
 		}
 	}
 
-	return result;
+	return status;
 }
 
 void TalkboxDSP::Process(const float * in1, const float * in2, float * out, UInt32 inFramesToProcess)
 {
 	UInt32 nFrames = inFramesToProcess;
 
-	//algorithm starts here...
+	// algorithm starts here...
 	float fs = GetSampleRate();
 	if(fs <  MIN_SUPPORTED_SAMPLE_RATE) fs =  MIN_SUPPORTED_SAMPLE_RATE;
 //	else if(fs > 96000.0f) fs = 96000.0f;
 	long n = BUF_MAX;
 	O = (long)((0.0001f + 0.000004f * GetParameter(_QUAL)) * fs);
 
-	if(GetParameter(_SWAP) > 0.5f) { const float *tmp = in1;  in1 = in2;  in2 = tmp; } 
+	if (GetParameter(_SWAP) > 0.5f) { const float *tmp = in1;  in1 = in2;  in2 = tmp; } 
 	
-	if(n != N) //recalc hanning window
+	if (n != N) //recalc hanning window
 	{
 		N = n;
 		float dp = TWO_PI / (float)N;
 		float p = 0.0f;
-		for(n=0; n<N; n++)
+		for (n=0; n<N; n++)
 		{
 			window[n] = 0.5f - 0.5f * (float)cos(p);
 			p += dp;
@@ -364,7 +375,7 @@ void TalkboxDSP::Process(const float * in1, const float * in2, float * out, UInt
 	float e=emphasis, w, o, x, dr, fx=FX;
 	float p, q, h0=0.3f, h1=0.77f;
 	
-	while(nFrames-- > 0)
+	while (nFrames-- > 0)
 	{
 		o = *in1;  in1++;
 		x = *in2;  in2++;

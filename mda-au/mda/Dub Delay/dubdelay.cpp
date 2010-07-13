@@ -34,14 +34,14 @@ const float kMaxDelayTime = 16.0f;	// in seconds
 class DubDelay : public AUEffectBase
 {
 public:
-	DubDelay(AudioUnit inComponentInstance);
+	DubDelay(AudioComponentInstance inComponentInstance);
 
-	virtual ComponentResult Initialize();
-	virtual ComponentResult GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
+	virtual OSStatus Initialize();
+	virtual OSStatus GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
 #ifdef USE_SOPHIA_PARAMETERS
-	virtual ComponentResult GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
+	virtual OSStatus GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
 #endif
-	virtual ComponentResult Version()
+	virtual OSStatus Version()
 		{	return PLUGIN_VERSION;	}
 	virtual AUKernelBase * NewKernel()
 		{	return new DubDelayKernel(this);	}
@@ -75,15 +75,15 @@ private:
 COMPONENT_ENTRY(DubDelay)
 
 //--------------------------------------------------------------------------------
-DubDelay::DubDelay(AudioUnit inComponentInstance)
+DubDelay::DubDelay(AudioComponentInstance inComponentInstance)
 	: AUEffectBase(inComponentInstance)
 {
 	// init internal parameters...
 	for (AudioUnitParameterID i=0; i < kNumParams; i++)
 	{
 		AudioUnitParameterInfo paramInfo;
-		ComponentResult result = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
-		if (result == noErr)
+		OSStatus status = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
+		if (status == noErr)
 			SetParameter(i, paramInfo.defaultValue);
 	}
 }
@@ -109,11 +109,11 @@ DubDelay::DubDelayKernel::~DubDelayKernel()
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult DubDelay::Initialize()
+OSStatus DubDelay::Initialize()
 {
-	ComponentResult result = AUEffectBase::Initialize();
+	OSStatus status = AUEffectBase::Initialize();
 
-	if (result == noErr)
+	if (status == noErr)
 	{
 		for (KernelList::iterator it = mKernelList.begin(); it != mKernelList.end(); it++)
 		{
@@ -125,7 +125,7 @@ ComponentResult DubDelay::Initialize()
 		Reset(kAudioUnitScope_Global, (AudioUnitElement)0);
 	}
 
-	return result;
+	return status;
 }
 
 //--------------------------------------------------------------------------------
@@ -155,9 +155,9 @@ void DubDelay::DubDelayKernel::UpdateBuffer()
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult DubDelay::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
+OSStatus DubDelay::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
 {
-	ComponentResult result = noErr;
+	OSStatus status = noErr;
 
 	outParameterInfo.flags = kAudioUnitParameterFlag_IsWritable | kAudioUnitParameterFlag_IsReadable;
 
@@ -241,16 +241,16 @@ ComponentResult DubDelay::GetParameterInfo(AudioUnitScope inScope, AudioUnitPara
 			break;
 
 		default:
-			result = kAudioUnitErr_InvalidParameter;
+			status = kAudioUnitErr_InvalidParameter;
 			break;
 	}
 
-	return result;
+	return status;
 }
 
 #ifdef USE_SOPHIA_PARAMETERS
 //--------------------------------------------------------------------------------
-ComponentResult DubDelay::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings)
+OSStatus DubDelay::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings)
 {
 	if (inScope != kAudioUnitScope_Global)
 		return kAudioUnitErr_InvalidScope;

@@ -31,14 +31,14 @@ enum {
 class Tracker : public AUEffectBase
 {
 public:
-	Tracker(AudioUnit inComponentInstance);
-	virtual ComponentResult Initialize();
+	Tracker(AudioComponentInstance inComponentInstance);
+	virtual OSStatus Initialize();
 	virtual void Cleanup();
-	virtual ComponentResult GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
-	virtual ComponentResult GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
+	virtual OSStatus GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
+	virtual OSStatus GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
 	virtual bool SupportsTail()
 		{	return true;	}
-	virtual ComponentResult Version()
+	virtual OSStatus Version()
 		{	return PLUGIN_VERSION;	}
 	virtual AUKernelBase * NewKernel()
 		{	return new TrackerKernel(this);	}
@@ -81,7 +81,7 @@ private:
 COMPONENT_ENTRY(Tracker)
 
 //--------------------------------------------------------------------------------
-Tracker::Tracker(AudioUnit inComponentInstance)
+Tracker::Tracker(AudioComponentInstance inComponentInstance)
 	: AUEffectBase(inComponentInstance)
 {
 	summedInputBuffer = NULL;
@@ -90,8 +90,8 @@ Tracker::Tracker(AudioUnit inComponentInstance)
 	for (AudioUnitParameterID i=0; i < kNumParams; i++)
 	{
 		AudioUnitParameterInfo paramInfo;
-		ComponentResult result = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
-		if (result == noErr)
+		OSStatus status = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
+		if (status == noErr)
 			SetParameter(i, paramInfo.defaultValue);
 	}
 }
@@ -126,11 +126,11 @@ void Tracker::TrackerKernel::Reset()
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult	Tracker::Initialize()
+OSStatus Tracker::Initialize()
 {
-	ComponentResult result = AUEffectBase::Initialize();
+	OSStatus status = AUEffectBase::Initialize();
 
-	if (result == noErr)
+	if (status == noErr)
 	{
 		summedInputBuffer = (float*) malloc(GetMaxFramesPerSlice() * sizeof(float));
 		if (summedInputBuffer != NULL)
@@ -139,10 +139,10 @@ ComponentResult	Tracker::Initialize()
 				summedInputBuffer[i] = 0.0f;
 		}
 		else
-			result = memFullErr;
+			status = memFullErr;
 	}
 
-	return result;
+	return status;
 }
 
 //--------------------------------------------------------------------------------
@@ -154,9 +154,9 @@ void Tracker::Cleanup()
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult Tracker::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
+OSStatus Tracker::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
 {
-	ComponentResult result = noErr;
+	OSStatus status = noErr;
 
 	outParameterInfo.flags = kAudioUnitParameterFlag_IsWritable | kAudioUnitParameterFlag_IsReadable;
 
@@ -236,15 +236,15 @@ ComponentResult Tracker::GetParameterInfo(AudioUnitScope inScope, AudioUnitParam
 			break;
 
 		default:
-			result = kAudioUnitErr_InvalidParameter;
+			status = kAudioUnitErr_InvalidParameter;
 			break;
 	}
 
-	return result;
+	return status;
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult	Tracker::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef *outStrings)
+OSStatus Tracker::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef *outStrings)
 {
 	if (inScope != kAudioUnitScope_Global)
 		return kAudioUnitErr_InvalidScope;

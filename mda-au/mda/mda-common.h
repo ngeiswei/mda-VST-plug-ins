@@ -7,7 +7,7 @@
 
 /* common mda Audio Units version */
 #ifndef PLUGIN_VERSION
-	#define PLUGIN_VERSION	0x00010002
+	#define PLUGIN_VERSION	0x00010003
 #endif
 
 

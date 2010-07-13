@@ -23,19 +23,19 @@ const float kBufferSize_seconds = 0.5f;
 class RePsycho : public AUEffectBase
 {
 public:
-	RePsycho(AudioUnit inComponentInstance);
+	RePsycho(AudioComponentInstance inComponentInstance);
 
-	virtual ComponentResult Initialize();
+	virtual OSStatus Initialize();
 
-	virtual ComponentResult GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
-	virtual ComponentResult GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
+	virtual OSStatus GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
+	virtual OSStatus GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
 
 	virtual bool SupportsTail()
 		{	return true;	}
 	virtual Float64 GetTailTime()
 		{	return kBufferSize_seconds;	}	// actually less, but this is fine enough
 
-	virtual ComponentResult Version()
+	virtual OSStatus Version()
 		{	return PLUGIN_VERSION;	}
 	virtual AUKernelBase * NewKernel()
 		{	return new RePsychoKernel(this);	}
@@ -77,15 +77,15 @@ private:
 COMPONENT_ENTRY(RePsycho)
 
 //--------------------------------------------------------------------------------
-RePsycho::RePsycho(AudioUnit inComponentInstance)
+RePsycho::RePsycho(AudioComponentInstance inComponentInstance)
 	: AUEffectBase(inComponentInstance)
 {
 	// init internal parameters...
 	for (AudioUnitParameterID i=0; i < kNumParams; i++)
 	{
 		AudioUnitParameterInfo paramInfo;
-		ComponentResult result = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
-		if (result == noErr)
+		OSStatus status = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
+		if (status == noErr)
 			AUEffectBase::SetParameter(i, paramInfo.defaultValue);
 	}
 }
@@ -111,11 +111,11 @@ RePsycho::RePsychoKernel::~RePsychoKernel()
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult	RePsycho::Initialize()
+OSStatus RePsycho::Initialize()
 {
-	ComponentResult result = AUEffectBase::Initialize();
+	OSStatus status = AUEffectBase::Initialize();
 
-	if (result == noErr)
+	if (status == noErr)
 	{
 		for (KernelList::iterator it = mKernelList.begin(); it != mKernelList.end(); it++)
 		{
@@ -127,7 +127,7 @@ ComponentResult	RePsycho::Initialize()
 		Reset(kAudioUnitScope_Global, (AudioUnitElement)0);
 	}
 
-	return result;
+	return status;
 }
 
 //--------------------------------------------------------------------------------
@@ -161,9 +161,9 @@ void RePsycho::RePsychoKernel::UpdateBuffer()
 #pragma mark parameters
 
 //--------------------------------------------------------------------------------
-ComponentResult RePsycho::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
+OSStatus RePsycho::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
 {
-	ComponentResult result = noErr;
+	OSStatus status = noErr;
 
 	outParameterInfo.flags = kAudioUnitParameterFlag_IsWritable | kAudioUnitParameterFlag_IsReadable;
 
@@ -226,15 +226,15 @@ ComponentResult RePsycho::GetParameterInfo(AudioUnitScope inScope, AudioUnitPara
 			break;
 
 		default:
-			result = kAudioUnitErr_InvalidParameter;
+			status = kAudioUnitErr_InvalidParameter;
 			break;
 	}
 
-	return result;
+	return status;
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult	RePsycho::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef *outStrings)
+OSStatus RePsycho::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef *outStrings)
 {
 	if (inScope != kAudioUnitScope_Global)
 		return kAudioUnitErr_InvalidScope;

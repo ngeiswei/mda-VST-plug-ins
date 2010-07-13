@@ -32,18 +32,18 @@ const long kNumPresets = 3;	// number of presets
 class Detune : public AUEffectBase
 {
 public:
-	Detune(AudioUnit inComponentInstance);
+	Detune(AudioComponentInstance inComponentInstance);
 	virtual ~Detune();
 
-	virtual ComponentResult Initialize();
+	virtual OSStatus Initialize();
 	virtual void Cleanup();
-	virtual ComponentResult Reset(AudioUnitScope inScope, AudioUnitElement inElement);
+	virtual OSStatus Reset(AudioUnitScope inScope, AudioUnitElement inElement);
 
-	virtual ComponentResult GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
-	virtual ComponentResult GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
-	virtual ComponentResult SetParameter(AudioUnitParameterID inParameterID, AudioUnitScope inScope, AudioUnitElement inElement, Float32 inValue, UInt32 inBufferOffsetInFrames);
+	virtual OSStatus GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
+	virtual OSStatus GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
+	virtual OSStatus SetParameter(AudioUnitParameterID inParameterID, AudioUnitScope inScope, AudioUnitElement inElement, Float32 inValue, UInt32 inBufferOffsetInFrames);
 
-	virtual ComponentResult GetPresets(CFArrayRef * outData) const;
+	virtual OSStatus GetPresets(CFArrayRef * outData) const;
 	virtual OSStatus NewFactoryPresetSet(const AUPreset & inNewFactoryPreset);
 
 	virtual UInt32 SupportedNumChannels(const AUChannelInfo ** outChannelInfo);
@@ -52,7 +52,7 @@ public:
 	virtual bool SupportsTail()
 		{	return true;	}
 
-	virtual ComponentResult Version()
+	virtual OSStatus Version()
 		{	return PLUGIN_VERSION;	}
 
 	virtual OSStatus ProcessBufferLists(AudioUnitRenderActionFlags & ioActionFlags, const AudioBufferList & inBuffer, AudioBufferList & outBuffer, UInt32 inFramesToProcess);
@@ -84,7 +84,7 @@ private:
 COMPONENT_ENTRY(Detune)
 
 //--------------------------------------------------------------------------------
-Detune::Detune(AudioUnit inComponentInstance)
+Detune::Detune(AudioComponentInstance inComponentInstance)
 	: AUEffectBase(inComponentInstance)
 {
 	// initialise...
@@ -98,8 +98,8 @@ Detune::Detune(AudioUnit inComponentInstance)
 	for (AudioUnitParameterID i=0; i < kNumParams; i++)
 	{
 		AudioUnitParameterInfo paramInfo;
-		ComponentResult result = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
-		if (result == noErr)
+		OSStatus status = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
+		if (status == noErr)
 		{
 			AUEffectBase::SetParameter(i, paramInfo.defaultValue);
 			for (long presetNum=0; presetNum < kNumPresets; presetNum++)
@@ -127,17 +127,17 @@ Detune::~Detune()
 
 
 //--------------------------------------------------------------------------------
-ComponentResult Detune::Initialize()
+OSStatus Detune::Initialize()
 {
-	ComponentResult result = AUEffectBase::Initialize();
-	if (result == noErr)
+	OSStatus status = AUEffectBase::Initialize();
+	if (status == noErr)
 	{
 		buf = (float*) malloc(kMaxBufferSize * sizeof(float));;
 		win = (float*) malloc(kMaxBufferSize * sizeof(float));;
 
 		Reset(kAudioUnitScope_Global, (AudioUnitElement)0);
 	}
-	return result;
+	return status;
 }
 
 //--------------------------------------------------------------------------------
@@ -155,7 +155,7 @@ void Detune::Cleanup()
 
 //--------------------------------------------------------------------------------
 // clear any buffers...
-ComponentResult Detune::Reset(AudioUnitScope inScope, AudioUnitElement inElement)
+OSStatus Detune::Reset(AudioUnitScope inScope, AudioUnitElement inElement)
 {
 	if (buf != NULL)
 		memset(buf, 0, kMaxBufferSize * sizeof(float));
@@ -170,9 +170,9 @@ ComponentResult Detune::Reset(AudioUnitScope inScope, AudioUnitElement inElement
 #pragma mark parameters
 
 //--------------------------------------------------------------------------------
-ComponentResult Detune::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
+OSStatus Detune::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
 {
-	ComponentResult result = noErr;
+	OSStatus status = noErr;
 
 	outParameterInfo.flags = kAudioUnitParameterFlag_IsWritable | kAudioUnitParameterFlag_IsReadable;
 
@@ -212,15 +212,15 @@ ComponentResult Detune::GetParameterInfo(AudioUnitScope inScope, AudioUnitParame
 			break;
 
 		default:
-			result = kAudioUnitErr_InvalidParameter;
+			status = kAudioUnitErr_InvalidParameter;
 			break;
 	}
 
-	return result;
+	return status;
 }
 
 //--------------------------------------------------------------------------
-ComponentResult Detune::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings)
+OSStatus Detune::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings)
 {
 	if (inScope != kAudioUnitScope_Global)
 		return kAudioUnitErr_InvalidScope;
@@ -256,10 +256,10 @@ ComponentResult Detune::GetParameterValueStrings(AudioUnitScope inScope, AudioUn
 }
 
 //--------------------------------------------------------------------------
-ComponentResult Detune::SetParameter(AudioUnitParameterID inParameterID, AudioUnitScope inScope, AudioUnitElement inElement, Float32 inValue, UInt32 inBufferOffsetInFrames)
+OSStatus Detune::SetParameter(AudioUnitParameterID inParameterID, AudioUnitScope inScope, AudioUnitElement inElement, Float32 inValue, UInt32 inBufferOffsetInFrames)
 {
-	ComponentResult result = AUBase::SetParameter(inParameterID, inScope, inElement, inValue, inBufferOffsetInFrames);
-	if (result == noErr)
+	OSStatus status = AUBase::SetParameter(inParameterID, inScope, inElement, inValue, inBufferOffsetInFrames);
+	if (status == noErr)
 	{
 		if (inParameterID == kParam_WindowSize)
 		{
@@ -267,7 +267,7 @@ ComponentResult Detune::SetParameter(AudioUnitParameterID inParameterID, AudioUn
 			PropertyChanged(kAudioUnitProperty_TailTime, kAudioUnitScope_Global, (AudioUnitElement)0);
 		}
 	}
-	return result;
+	return status;
 }
 
 
@@ -291,7 +291,7 @@ Detune::DetunePreset::~DetunePreset()
 }
 
 //--------------------------------------------------------------------------
-ComponentResult Detune::GetPresets(CFArrayRef * outData) const
+OSStatus Detune::GetPresets(CFArrayRef * outData) const
 {
 	// this is just to say that the property is supported (GetPropertyInfo needs this)
 	if (outData == NULL)

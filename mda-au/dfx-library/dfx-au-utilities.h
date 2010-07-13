@@ -1,7 +1,7 @@
 /*
 	Destroy FX AU Utilities is a collection of helpful utility functions 
 	for creating and hosting Audio Unit plugins.
-	Copyright (C) 2003-2007  Sophia Poirier
+	Copyright (C) 2003-2010  Sophia Poirier
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without 
@@ -53,7 +53,7 @@ extern "C" {
 
 
 /* this is for getting a Component's version from the Component's resource cache */
-extern OSErr GetComponentVersionFromResource(Component inComponent, long * outVersion);
+extern OSErr GetComponentVersionFromResource(Component inComponent, SInt32 * outVersion);
 
 /* these handle a CoreFoundation-like container object for AUPreset called CFAUPreset */
 typedef const struct CFAUPreset * CFAUPresetRef;
@@ -95,24 +95,24 @@ extern Boolean ComponentAndDescriptionMatch_Loosely(Component inComponent, const
 
 /* stuff for handling AU preset files... */
 /* main */
-extern ComponentResult SaveAUStateToPresetFile(AudioUnit inAUComponentInstance, CFStringRef inDefaultAUPresetName, CFURLRef * outSavedAUPresetFileURL);
-extern ComponentResult SaveAUStateToPresetFile_Bundle(AudioUnit inAUComponentInstance, CFStringRef inDefaultAUPresetName, CFURLRef * outSavedAUPresetFileURL, CFBundleRef inBundle);
-extern CFTreeRef CFTreeCreateFromAUPresetFilesInDomain(Component inAUComponent, short inFileSystemDomain);
-extern ComponentResult RestoreAUStateFromPresetFile(AudioUnit inAUComponentInstance, CFURLRef inAUPresetFileURL);
-extern ComponentResult CustomRestoreAUPresetFile(AudioUnit inAUComponentInstance);
-extern OSStatus GetAUComponentDescriptionFromPresetFile(CFURLRef inAUPresetFileURL, ComponentDescription * outComponentDescription);
+extern OSStatus SaveAUStateToPresetFile(AudioUnit inAUComponentInstance, CFStringRef inDefaultAUPresetName, CFURLRef * outSavedAUPresetFileURL);
+extern OSStatus SaveAUStateToPresetFile_Bundle(AudioUnit inAUComponentInstance, CFStringRef inDefaultAUPresetName, CFURLRef * outSavedAUPresetFileURL, CFBundleRef inBundle);
+extern CFTreeRef CFTreeCreateFromAUPresetFilesInDomain(Component inAUComponent, FSVolumeRefNum inFileSystemDomain);
+extern OSStatus RestoreAUStateFromPresetFile(AudioUnit inAUComponentInstance, CFURLRef inAUPresetFileURL);
+extern OSStatus CustomRestoreAUPresetFile(AudioUnit inAUComponentInstance);
 extern OSStatus GetAUComponentDescriptionFromStateData(CFPropertyListRef inAUStateData, ComponentDescription * outComponentDescription);
+extern OSStatus GetAUComponentDescriptionFromPresetFile(CFURLRef inAUPresetFileURL, ComponentDescription * outComponentDescription);
 /* access */
 extern CFURLRef GetCFURLFromFileURLsTreeNode(CFTreeRef inTree);
 /* handies */
 extern CFStringRef CopyAUPresetNameFromCFURL(CFURLRef inAUPresetFileURL);
 extern Boolean CFURLIsAUPreset(CFURLRef inURL);
 extern Boolean FSRefIsAUPreset(const FSRef * inFileRef);
-extern OSStatus FindPresetsDirForAU(Component inAUComponent, short inFileSystemDomain, Boolean inCreateDir, FSRef * outDirRef);
+extern OSStatus FindPresetsDirForAU(Component inAUComponent, FSVolumeRefNum inFileSystemDomain, Boolean inCreateDir, FSRef * outDirRef);
 
 /* system services availability / version-checking stuff */
-extern long GetMacOSVersion();
-extern long GetQuickTimeVersion();
+extern SInt32 GetMacOSVersion();
+extern SInt32 GetQuickTimeVersion();
 extern UInt32 GetAudioToolboxFrameworkVersion();
 extern Boolean IsAvailable_AU2rev1();
 extern Boolean IsTransportStateProcSafe();

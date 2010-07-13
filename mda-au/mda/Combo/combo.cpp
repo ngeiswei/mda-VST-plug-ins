@@ -1,5 +1,4 @@
 // "mda Combo" v1.0  Copyright(c)2002 Paul Kellett (@mda-vst.com)
-// Based on "SampleEffectUnit" © Copyright 2002 Apple Computer, Inc. All rights reserved.
 
 #include "AUEffectBase.h"
 
@@ -23,13 +22,13 @@ const size_t kBufferSize = 1024;
 class Combo : public AUEffectBase
 {
 public:
-	Combo(AudioUnit inComponentInstance);
+	Combo(AudioComponentInstance inComponentInstance);
 	virtual AUKernelBase * NewKernel() { return new Kernel(this); }
-	virtual ComponentResult GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
-	virtual ComponentResult GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
+	virtual OSStatus GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
+	virtual OSStatus GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
 	virtual bool SupportsTail() { return true; }
 	virtual Float64 GetTailTime() { return 0.010; }	// estimate (10 ms)
-	virtual ComponentResult Version() { return PLUGIN_VERSION; }
+	virtual OSStatus Version() { return PLUGIN_VERSION; }
 
 private:
 	class Kernel : public AUKernelBase
@@ -37,7 +36,7 @@ private:
 	public:
 		Kernel(AUEffectBase * inAudioUnit);
 		virtual ~Kernel();
-		virtual void Process(const Float32 *inSourceP, Float32 *inDestP, UInt32 inFramesToProcess, UInt32 inNumChannels, bool &ioSilence);
+		virtual void Process(const Float32 * inSourceP, Float32 * inDestP, UInt32 inFramesToProcess, UInt32 inNumChannels, bool & ioSilence);
 		virtual void Reset();
 		float filterFreq(float hz, float fs);
 
@@ -51,22 +50,22 @@ private:
 
 COMPONENT_ENTRY(Combo)
 
-Combo::Combo(AudioUnit inComponentInstance) : AUEffectBase(inComponentInstance)
+Combo::Combo(AudioComponentInstance inComponentInstance) : AUEffectBase(inComponentInstance)
 {
 	// init internal parameters...
 	for (AudioUnitParameterID i=0; i < NPARAM; i++)
 	{
 		AudioUnitParameterInfo paramInfo;
-		ComponentResult result = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
-		if (result == noErr)
+		OSStatus status = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
+		if (status == noErr)
 			SetParameter(i, paramInfo.defaultValue);
 	}
 }
 
 
-ComponentResult Combo::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo &outParameterInfo)
+OSStatus Combo::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
 {
-	ComponentResult result = noErr;
+	OSStatus status = noErr;
 
 	outParameterInfo.flags = kAudioUnitParameterFlag_IsWritable | kAudioUnitParameterFlag_IsReadable;
 
@@ -122,18 +121,19 @@ ComponentResult Combo::GetParameterInfo(AudioUnitScope inScope, AudioUnitParamet
 		break;
 
 	default:
-		result = kAudioUnitErr_InvalidParameter;
+		status = kAudioUnitErr_InvalidParameter;
 		break;
 	}
-	return result;
+	return status;
 }
 
 
-ComponentResult	Combo::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef *outStrings)
+OSStatus Combo::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef *outStrings)
 {
-	if(inScope != kAudioUnitScope_Global) return kAudioUnitErr_InvalidScope;
+	if (inScope != kAudioUnitScope_Global)
+		return kAudioUnitErr_InvalidScope;
 
-	switch(inParameterID)
+	switch (inParameterID)
 	{
 		case _MODEL:
 			if (outStrings != NULL)
@@ -183,7 +183,7 @@ float Combo::Kernel::filterFreq(float hz, float fs)
 }
 
 
-void Combo::Kernel::Process(const Float32 *inSourceP, Float32 *inDestP, UInt32 inFramesToProcess, UInt32 inNumChannels, bool &ioSilence)
+void Combo::Kernel::Process(const Float32 * inSourceP, Float32 * inDestP, UInt32 inFramesToProcess, UInt32 inNumChannels, bool & ioSilence)
 {
   //if ioSilence, nothing to process. Also set ioSilence to reflect plug-in output
 

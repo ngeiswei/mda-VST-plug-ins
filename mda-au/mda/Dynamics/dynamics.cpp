@@ -1,5 +1,4 @@
 // "mda Dynamics" v1.0  Copyright(c)2002 Paul Kellett (@mda-vst.com)
-// Based on "SampleEffectUnit" © Copyright 2002 Apple Computer, Inc. All rights reserved.
 
 #include "AUEffectBase.h"
 
@@ -29,12 +28,12 @@ enum
 class Dynamics : public AUEffectBase
 {
 public:
-	Dynamics(AudioUnit inComponentInstance);
-	virtual ComponentResult Initialize();
+	Dynamics(AudioComponentInstance inComponentInstance);
+	virtual OSStatus Initialize();
 	virtual void Cleanup();
-	virtual ComponentResult GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
+	virtual OSStatus GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
 	virtual bool SupportsTail() { return true; }
-	virtual ComponentResult Version() { return PLUGIN_VERSION; }
+	virtual OSStatus Version() { return PLUGIN_VERSION; }
 	virtual OSStatus ProcessBufferLists(AudioUnitRenderActionFlags & ioActionFlags, const AudioBufferList & inBuffer, AudioBufferList & outBuffer, UInt32 inFramesToProcess);
 
 private:
@@ -47,7 +46,7 @@ private:
 COMPONENT_ENTRY(Dynamics)
 
 
-Dynamics::Dynamics(AudioUnit inComponentInstance) : AUEffectBase(inComponentInstance)
+Dynamics::Dynamics(AudioComponentInstance inComponentInstance) : AUEffectBase(inComponentInstance)
 {
 	env = env2 = genv = 0.0f;
 
@@ -57,26 +56,26 @@ Dynamics::Dynamics(AudioUnit inComponentInstance) : AUEffectBase(inComponentInst
 	for (AudioUnitParameterID i=0; i < NPARAM; i++)
 	{
 		AudioUnitParameterInfo paramInfo;
-		ComponentResult result = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
-		if (result == noErr)
+		OSStatus status = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
+		if (status == noErr)
 			SetParameter(i, paramInfo.defaultValue);
 	}
 }
 
 
-ComponentResult	Dynamics::Initialize()
+OSStatus Dynamics::Initialize()
 {
-	ComponentResult result = AUEffectBase::Initialize();
+	OSStatus status = AUEffectBase::Initialize();
 
-	if (result == noErr)
+	if (status == noErr)
 	{
 		in = (float**) malloc(GetNumberOfChannels() * sizeof(float*));
 		out = (float**) malloc(GetNumberOfChannels() * sizeof(float*));
 		if ( (in == NULL) || (out == NULL) )
-			result = memFullErr;
+			status = memFullErr;
 	}
 
-	return result;
+	return status;
 }
 
 void Dynamics::Cleanup()
@@ -92,13 +91,13 @@ void Dynamics::Cleanup()
 }
 
 
-ComponentResult Dynamics::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo &outParameterInfo)
+OSStatus Dynamics::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
 {
-  ComponentResult result = noErr;
+	OSStatus status = noErr;
 
 	outParameterInfo.flags = kAudioUnitParameterFlag_IsWritable | kAudioUnitParameterFlag_IsReadable;
-	
-	switch(inParameterID)
+
+	switch (inParameterID)
 	{
 /*		case _LIMIT:
 			FillInParameterName(outParameterInfo, CFSTR("Limiter"), false);
@@ -189,14 +188,14 @@ ComponentResult Dynamics::GetParameterInfo(AudioUnitScope inScope, AudioUnitPara
 			break;
 			
 		default:
-			result = kAudioUnitErr_InvalidParameter;
+			status = kAudioUnitErr_InvalidParameter;
 			break;
 	}
-	return result;
+	return status;
 }
 
 
-OSStatus Dynamics::ProcessBufferLists(AudioUnitRenderActionFlags &ioActionFlags,
+OSStatus Dynamics::ProcessBufferLists(AudioUnitRenderActionFlags & ioActionFlags,
 	const AudioBufferList & inBuffer, AudioBufferList & outBuffer, UInt32 inFramesToProcess)
 {
 	UInt32 nChannels = outBuffer.mNumberBuffers;

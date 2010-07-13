@@ -1,5 +1,4 @@
 // "mda TestTone" v1.0  Copyright(c)2002 Paul Kellett (@mda-vst.com)
-// Based on "SampleEffectUnit" © Copyright 2002 Apple Computer, Inc. All rights reserved.
 
 #include "AUEffectBase.h"
 
@@ -31,14 +30,14 @@ static float gaintab[51] = { 2.434f, 2.409f, 2.39f, 2.372f, 2.341f, 2.304f, 2.26
 class TestTone : public AUEffectBase
 {
 public:
-	TestTone(AudioUnit component);
-	virtual ComponentResult Initialize();
+	TestTone(AudioComponentInstance component);
+	virtual OSStatus Initialize();
 	virtual void Cleanup();
-	virtual ComponentResult GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo &outParameterInfo);
-	virtual ComponentResult GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef *outStrings);
+	virtual OSStatus GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
+	virtual OSStatus GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
 	virtual bool SupportsTail() { return true; }
-	virtual ComponentResult Version() { return PLUGIN_VERSION; }
-	virtual OSStatus ProcessBufferLists(AudioUnitRenderActionFlags &ioActionFlags, const AudioBufferList &inBuffer, AudioBufferList &outBuffer, UInt32 inFramesToProcess);
+	virtual OSStatus Version() { return PLUGIN_VERSION; }
+	virtual OSStatus ProcessBufferLists(AudioUnitRenderActionFlags & ioActionFlags, const AudioBufferList & inBuffer, AudioBufferList & outBuffer, UInt32 inFramesToProcess);
 
 protected:
 	void thirdOct(float w);
@@ -56,7 +55,7 @@ protected:
 COMPONENT_ENTRY(TestTone)
 
 
-TestTone::TestTone(AudioUnit component) : AUEffectBase(component)
+TestTone::TestTone(AudioComponentInstance component) : AUEffectBase(component)
 {
 	//init internal parameters...
 	count = mode = 0;
@@ -70,26 +69,26 @@ TestTone::TestTone(AudioUnit component) : AUEffectBase(component)
 	for (AudioUnitParameterID i=0; i < NPARAM; i++)
 	{
 		AudioUnitParameterInfo paramInfo;
-		ComponentResult result = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
-		if (result == noErr)
+		OSStatus status = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
+		if (status == noErr)
 			SetParameter(i, paramInfo.defaultValue);
 	}
 }
 
 
-ComponentResult	TestTone::Initialize()
+OSStatus TestTone::Initialize()
 {
-	ComponentResult result = AUEffectBase::Initialize();
+	OSStatus status = AUEffectBase::Initialize();
 
-	if (result == noErr)
+	if (status == noErr)
 	{
 		in = (float**) malloc(GetNumberOfChannels() * sizeof(float*));
 		out = (float**) malloc(GetNumberOfChannels() * sizeof(float*));
 		if ( (in == NULL) || (out == NULL) )
-			result = memFullErr;
+			status = memFullErr;
 	}
 
-	return result;
+	return status;
 }
 
 void TestTone::Cleanup()
@@ -105,13 +104,14 @@ void TestTone::Cleanup()
 }
 
 
-ComponentResult	TestTone::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef *outStrings)
+OSStatus TestTone::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings)
 {
-  if(inScope != kAudioUnitScope_Global) return kAudioUnitErr_InvalidProperty;
+  if (inScope != kAudioUnitScope_Global)
+	return kAudioUnitErr_InvalidProperty;
 
-	switch(inParameterID)
+	switch (inParameterID)
 	{
-    case _MODE:
+		case _MODE:
 			if (outStrings != NULL)
 				*outStrings = CFStringCreateArrayBySeparatingStrings(kCFAllocatorDefault, 
 								CFSTR("Off|White Noise|Pink Noise|1/3 Octave|Sine Wave|Log Sweep|Lin Sweep"), CFSTR("|"));	
@@ -127,13 +127,13 @@ ComponentResult	TestTone::GetParameterValueStrings(AudioUnitScope inScope, Audio
 }
 
 
-ComponentResult TestTone::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo &outParameterInfo)
+OSStatus TestTone::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
 {
-  ComponentResult result = noErr;
+	OSStatus status = noErr;
 
 	outParameterInfo.flags = kAudioUnitParameterFlag_IsWritable | kAudioUnitParameterFlag_IsReadable;
-	
-	switch(inParameterID)
+
+	switch (inParameterID)
 	{
 		case _MODE:
 			FillInParameterName(outParameterInfo, CFSTR("Mode"), false);
@@ -193,10 +193,10 @@ ComponentResult TestTone::GetParameterInfo(AudioUnitScope inScope, AudioUnitPara
 			break;
 
 		default:
-			result = kAudioUnitErr_InvalidParameter;
+			status = kAudioUnitErr_InvalidParameter;
 			break;
 	}
-	return result;
+	return status;
 }
 
 
@@ -241,8 +241,8 @@ void TestTone::thirdOct(float w)
 }
 
 
-OSStatus TestTone::ProcessBufferLists(AudioUnitRenderActionFlags &ioActionFlags,
-	const AudioBufferList &inBuffer, AudioBufferList &outBuffer, UInt32 inFramesToProcess)
+OSStatus TestTone::ProcessBufferLists(AudioUnitRenderActionFlags & ioActionFlags,
+	const AudioBufferList & inBuffer, AudioBufferList & outBuffer, UInt32 inFramesToProcess)
 {
   //bool silentInput = (ioActionFlags & kAudioUnitRenderAction_OutputIsSilence) != 0;
   //ioActionFlags |= kAudioUnitRenderAction_OutputIsSilence;

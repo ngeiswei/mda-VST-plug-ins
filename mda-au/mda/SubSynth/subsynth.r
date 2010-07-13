@@ -5,7 +5,7 @@
 // Note that resource IDs must be spaced 2 apart for the 'STR ' name and description
 #define RES_ID        2200
 #define COMP_TYPE     kAudioUnitType_Effect
-#define COMP_SUBTYPE  'MDAB'
+#define COMP_SUBTYPE  'mdaB'
 #define COMP_MANUF    PLUGIN_MANUFACTURER_ID
 #define VERSION       PLUGIN_VERSION
 #define NAME          PLUGIN_MANUFACTURER_NAME": Sub-Bass Synthesizer"

@@ -43,17 +43,17 @@ const long kNumPresets = 3;	// number of presets
 class Leslie : public AUEffectBase
 {
 public:
-	Leslie(AudioUnit inComponentInstance);
+	Leslie(AudioComponentInstance inComponentInstance);
 	virtual ~Leslie();
 
-	virtual ComponentResult Initialize();
+	virtual OSStatus Initialize();
 	virtual void Cleanup();
-	virtual ComponentResult Reset(AudioUnitScope inScope, AudioUnitElement inElement);
+	virtual OSStatus Reset(AudioUnitScope inScope, AudioUnitElement inElement);
 
-	virtual ComponentResult GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
-	virtual ComponentResult GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
+	virtual OSStatus GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo);
+	virtual OSStatus GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef * outStrings);
 
-	virtual ComponentResult GetPresets(CFArrayRef * outData) const;
+	virtual OSStatus GetPresets(CFArrayRef * outData) const;
 	virtual OSStatus NewFactoryPresetSet(const AUPreset & inNewFactoryPreset);
 
 	virtual UInt32 SupportedNumChannels(const AUChannelInfo ** outChannelInfo);
@@ -65,7 +65,7 @@ public:
 	virtual void SetBypassEffect(bool inFlag);
 #endif
 
-	virtual ComponentResult Version()
+	virtual OSStatus Version()
 		{	return PLUGIN_VERSION;	}
 
 	virtual OSStatus ProcessBufferLists(AudioUnitRenderActionFlags & ioActionFlags, const AudioBufferList & inBuffer, AudioBufferList & outBuffer, UInt32 inFramesToProcess);
@@ -97,7 +97,7 @@ private:
 COMPONENT_ENTRY(Leslie)
 
 //--------------------------------------------------------------------------------
-Leslie::Leslie(AudioUnit inComponentInstance)
+Leslie::Leslie(AudioComponentInstance inComponentInstance)
 	: AUEffectBase(inComponentInstance, false)
 {
 	hbuf = NULL;
@@ -108,8 +108,8 @@ Leslie::Leslie(AudioUnit inComponentInstance)
 	for (AudioUnitParameterID i=0; i < kNumParams; i++)
 	{
 		AudioUnitParameterInfo paramInfo;
-		ComponentResult result = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
-		if (result == noErr)
+		OSStatus status = GetParameterInfo(kAudioUnitScope_Global, i, paramInfo);
+		if (status == noErr)
 		{
 			AUEffectBase::SetParameter(i, paramInfo.defaultValue);
 			for (long presetNum=0; presetNum < kNumPresets; presetNum++)
@@ -143,15 +143,15 @@ Leslie::~Leslie()
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult	Leslie::Initialize()
+OSStatus Leslie::Initialize()
 {
-	ComponentResult result = AUEffectBase::Initialize();
+	OSStatus status = AUEffectBase::Initialize();
 
-	if (result == noErr)
+	if (status == noErr)
 	{
 		hbuf = (float*) malloc(kBufferSize * sizeof(float));
 		if (hbuf == NULL)
-			result = memFullErr;
+			status = memFullErr;
 
 		Reset(kAudioUnitScope_Global, (AudioUnitElement)0);
 
@@ -172,7 +172,7 @@ ComponentResult	Leslie::Initialize()
 		}
 	}
 
-	return result;
+	return status;
 }
 
 //--------------------------------------------------------------------------------
@@ -184,7 +184,7 @@ void Leslie::Cleanup()
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult Leslie::Reset(AudioUnitScope inScope, AudioUnitElement inElement)
+OSStatus Leslie::Reset(AudioUnitScope inScope, AudioUnitElement inElement)
 {
 	lspd = 0.0f; hspd = 0.0f;
 	lphi = 0.0f; hphi = 1.6f; 
@@ -204,9 +204,9 @@ ComponentResult Leslie::Reset(AudioUnitScope inScope, AudioUnitElement inElement
 #pragma mark parameters
 
 //--------------------------------------------------------------------------------
-ComponentResult Leslie::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
+OSStatus Leslie::GetParameterInfo(AudioUnitScope inScope, AudioUnitParameterID inParameterID, AudioUnitParameterInfo & outParameterInfo)
 {
-	ComponentResult result = noErr;
+	OSStatus status = noErr;
 
 	outParameterInfo.flags = kAudioUnitParameterFlag_IsWritable | kAudioUnitParameterFlag_IsReadable;
 
@@ -286,15 +286,15 @@ ComponentResult Leslie::GetParameterInfo(AudioUnitScope inScope, AudioUnitParame
 			break;
 
 		default:
-			result = kAudioUnitErr_InvalidParameter;
+			status = kAudioUnitErr_InvalidParameter;
 			break;
 	}
 
-	return result;
+	return status;
 }
 
 //--------------------------------------------------------------------------------
-ComponentResult	Leslie::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef *outStrings)
+OSStatus Leslie::GetParameterValueStrings(AudioUnitScope inScope, AudioUnitParameterID inParameterID, CFArrayRef *outStrings)
 {
 	if (inScope != kAudioUnitScope_Global)
 		return kAudioUnitErr_InvalidScope;
@@ -336,7 +336,7 @@ Leslie::LesliePreset::~LesliePreset()
 }
 
 //--------------------------------------------------------------------------
-ComponentResult Leslie::GetPresets(CFArrayRef * outData) const
+OSStatus Leslie::GetPresets(CFArrayRef * outData) const
 {
 	// this is just to say that the property is supported (GetPropertyInfo needs this)
 	if (outData == NULL)
@@ -471,7 +471,7 @@ OSStatus Leslie::ProcessBufferLists(AudioUnitRenderActionFlags & ioActionFlags, 
 	if (inBuffer.mNumberBuffers > 1)
 		in2 = (float*)(inBuffer.mBuffers[1].mData);
 	float * out[kNumOutputs];
-	for (SInt16 i=0; i < kNumOutputs; i++)
+	for (long i=0; i < kNumOutputs; i++)
 		out[i] = (float*)(outBuffer.mBuffers[i].mData);
 
 	float a, c, d, h, l;
